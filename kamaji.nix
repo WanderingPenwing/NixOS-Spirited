@@ -126,6 +126,7 @@ in
     gnome.gnome-bluetooth
     # Env
     python3
+    python311Packages.pip
     # CLIs
     git
     calc

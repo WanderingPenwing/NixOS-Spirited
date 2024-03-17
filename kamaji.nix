@@ -126,7 +126,7 @@ in
     gnome.gnome-bluetooth
     # Env
     python3
-    python311Packages.kivy
+    python3Packages.virtualenv
     # CLIs
     git
     calc

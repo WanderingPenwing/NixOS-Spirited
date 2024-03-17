@@ -106,7 +106,6 @@ in
     description = "Penwing";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
-      firefox
     #  thunderbird
     ];
   };

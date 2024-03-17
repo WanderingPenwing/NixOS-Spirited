@@ -6,7 +6,7 @@
 set -e
 
 # cd to your config dir
-pushd /home/penwing/dotfiles/nixos/
+pushd /home/penwing/dotfiles/nixos/ > /dev/null 2>&1
 
 # Early return if no changes were detected (thanks @singiamtel!)
 if git diff --quiet *.nix; then
@@ -15,29 +15,39 @@ if git diff --quiet *.nix; then
     exit 0
 fi
 
-# Edit your config
-#nano kamaji.nix
-
-# Autoformat your nix files
-#alejandra . >/dev/null
-
 # Shows your changes
 git diff -U0 *.nix
 
 echo "NixOS Rebuilding..."
 
 # Rebuild, output simplified errors, log trackebacks
-sudo nixos-rebuild switch &>nixos-switch.log || (cat nixos-switch.log | grep --color error && false)
+if sudo nixos-rebuild switch >nixos-switch.log 2>&1; then
+    echo "Rebuild successful"
+
+    echo "Getting generation..."
+
+    current=$( nixos-rebuild list-generations | grep current )
+    wait
+    echo $current
+else
+    echo "Rebuild failed"
+    cat nixos-switch.log | grep --color error
+    false
+fi
+
+
 
 # Get current generation metadata
-current=$(nixos-rebuild list-generations | grep current)
 
-echo "generation : $current"
+#echo "Current generation: $current"
+
 # Commit all changes witih the generation metadata
-git commit -am "$current"
+#git commit -am "$current"
 
 # Back to where you were
-popd
+#wait
+popd > /dev/null 2>&1
 
+echo "Finished"
 # Notify all OK!
-notify-send -e "NixOS Rebuilt OK!" --icon=software-update-available
+#notify-send -e "NixOS Rebuilt OK!" --icon=software-update-available

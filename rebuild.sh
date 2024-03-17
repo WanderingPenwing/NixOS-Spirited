@@ -32,8 +32,8 @@ sudo nixos-rebuild switch &>nixos-switch.log || (cat nixos-switch.log | grep --c
 # Get current generation metadata
 current=$(nixos-rebuild list-generations | grep current)
 
+echo "generation : $current"
 # Commit all changes witih the generation metadata
-git add .
 git commit -am "$current"
 
 # Back to where you were

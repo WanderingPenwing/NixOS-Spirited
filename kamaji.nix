@@ -126,8 +126,6 @@ in
     gnome.gnome-bluetooth
     # Env
     python3
-    gcc-unwrapped
-    python3Packages.virtualenv
     # CLIs
     git
     calc

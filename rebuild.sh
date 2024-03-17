@@ -16,10 +16,10 @@ if git diff --quiet *.nix; then
 fi
 
 # Edit your config
-$EDITOR kamaji.nix
+#nano kamaji.nix
 
 # Autoformat your nix files
-alejandra . >/dev/null
+#alejandra . >/dev/null
 
 # Shows your changes
 git diff -U0 *.nix
@@ -33,6 +33,7 @@ sudo nixos-rebuild switch &>nixos-switch.log || (cat nixos-switch.log | grep --c
 current=$(nixos-rebuild list-generations | grep current)
 
 # Commit all changes witih the generation metadata
+git add .
 git commit -am "$current"
 
 # Back to where you were

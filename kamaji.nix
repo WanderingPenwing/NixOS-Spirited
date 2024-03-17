@@ -1,4 +1,4 @@
-# My nix-os config
+# My custom nix-os config
 { config, pkgs, ... }:
 
 let

@@ -1,4 +1,4 @@
-# My custom nix-os config
+# My custom nix-os config, named after the spirited away character
 { config, pkgs, ... }:
 
 let

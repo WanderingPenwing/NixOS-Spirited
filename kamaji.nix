@@ -1,5 +1,5 @@
 # My custom nix-os config, named after the spirited away character
-{ config, pkgs, ... }:
+{ config, pkgs, options, ... }:
 
 let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-23.11.tar.gz";
@@ -144,6 +144,10 @@ in
     lxappearance
     i3blocks
   ];
+
+  xdg.mime.defaultApplications = {
+    "inode/directory" = "Thunar.desktop"; # This line sets Thunar as the default file manager
+  };
 
   fonts.packages = with pkgs; [
     font-awesome

@@ -138,6 +138,7 @@ in
     vivaldi
     discord
     sublime
+    gimp
     # Appearance
     picom
     feh

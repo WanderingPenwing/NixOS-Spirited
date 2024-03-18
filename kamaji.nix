@@ -100,7 +100,7 @@ in
     # Env
     python3 #python311Packages.pygobject3
     # CLIs
-    git calc btop unzip acpi gawk
+    git calc btop unzip acpi gawk alejandra
     # Apps
     vivaldi discord sublime gimp
     # Appearance

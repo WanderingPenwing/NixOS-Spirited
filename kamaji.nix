@@ -119,7 +119,7 @@ in
     # Utilities
     home-manager
     xfce.thunar
-    xfce.thunar-archive-plugin
+    gnome.nautilus
     sakura
     bluez
     blueberry

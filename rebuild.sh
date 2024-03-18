@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-
 set -e
 
 # cd to your config dir
@@ -13,6 +12,7 @@ if git diff --quiet *.nix; then
     exit 0
 fi
 
+alejandra . &>/dev/null
 # Shows your changes
 git diff -U0 *.nix
 

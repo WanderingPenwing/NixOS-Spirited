@@ -1,11 +1,13 @@
-{ config, pkgs, options, ... }:
-
-let
+{
+  config,
+  pkgs,
+  options,
+  ...
+}: let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-23.11.tar.gz";
-in
-{# Include the results of the hardware scan.
-  imports =
-    [ (import "${home-manager}/nixos") ];
+in {
+  # Include the results of the hardware scan.
+  imports = [(import "${home-manager}/nixos")];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -33,7 +35,6 @@ in
     LC_TELEPHONE = "fr_FR.UTF-8";
     LC_TIME = "fr_FR.UTF-8";
   };
-
 
   # Configure keymap in X11
   services.xserver = {
@@ -86,7 +87,7 @@ in
   users.users.penwing = {
     isNormalUser = true;
     description = "Penwing";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
   };
 
   # Allow unfree packages
@@ -96,15 +97,33 @@ in
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # Utilities
-    home-manager xfce.thunar sakura bluez blueberry 
+    home-manager
+    xfce.thunar
+    sakura
+    bluez
+    blueberry
     # Env
     python3 #python311Packages.pygobject3
     # CLIs
-    git calc btop unzip acpi gawk alejandra
+    git
+    calc
+    btop
+    unzip
+    acpi
+    gawk
+    alejandra
     # Apps
-    vivaldi discord sublime gimp
+    vivaldi
+    discord
+    sublime
+    gimp
     # Appearance
-    picom feh yaru-theme papirus-icon-theme lxappearance i3blocks
+    picom
+    feh
+    yaru-theme
+    papirus-icon-theme
+    lxappearance
+    i3blocks
   ];
 
   xdg.mime.defaultApplications = {
@@ -115,7 +134,7 @@ in
     font-awesome
     powerline-fonts
     powerline-symbols
-    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
+    (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
   ];
 
   home-manager.users.penwing = {
@@ -157,5 +176,4 @@ in
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }

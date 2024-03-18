@@ -96,35 +96,15 @@ in
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # Utilities
-    home-manager
-    xfce.thunar
-    gnome.nautilus
-    sakura
-    bluez
-    blueberry
-    gnome.gnome-bluetooth
+    home-manager xfce.thunar sakura bluez blueberry 
     # Env
-    python3
-    python311Packages.pygobject3
+    python3 #python311Packages.pygobject3
     # CLIs
-    git
-    calc
-    btop
-    unzip
-    acpi
-    gawk
+    git calc btop unzip acpi gawk
     # Apps
-    vivaldi
-    discord
-    sublime
-    gimp
+    vivaldi discord sublime gimp
     # Appearance
-    picom
-    feh
-    yaru-theme
-    papirus-icon-theme
-    lxappearance
-    i3blocks
+    picom feh yaru-theme papirus-icon-theme lxappearance i3blocks
   ];
 
   xdg.mime.defaultApplications = {

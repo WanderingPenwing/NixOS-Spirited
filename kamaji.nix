@@ -1,24 +1,15 @@
-# My custom nix-os config, named after the spirited away character
 { config, pkgs, options, ... }:
 
 let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-23.11.tar.gz";
 in
-{
+{# Include the results of the hardware scan.
   imports =
-    [ # Include the results of the hardware scan.
-      (import "${home-manager}/nixos")
-    ];
+    [ (import "${home-manager}/nixos") ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -31,7 +22,6 @@ in
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "fr_FR.UTF-8";
     LC_IDENTIFICATION = "fr_FR.UTF-8";
@@ -48,14 +38,9 @@ in
   # Configure keymap in X11
   services.xserver = {
     enable = true;
-    
-    desktopManager = {
-      xterm.enable = false;
-    };
 
-    displayManager = {
-      defaultSession = "none+i3";
-    };
+    desktopManager.xterm.enable = false;
+    displayManager.defaultSession = "none+i3";
 
     windowManager.i3 = {
       enable = true;
@@ -97,17 +82,11 @@ in
     #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.penwing = {
     isNormalUser = true;
     description = "Penwing";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
   };
 
   # Allow unfree packages
@@ -194,20 +173,6 @@ in
       ssh-add ~/.ssh/github
     fi
   '';
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
 
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).

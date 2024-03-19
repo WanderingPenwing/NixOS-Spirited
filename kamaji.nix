@@ -124,6 +124,7 @@ in {
     feh
     yaru-theme
     papirus-icon-theme
+    hack-font
     lxappearance
     i3blocks
   ];

@@ -102,10 +102,6 @@ in {
     sakura
     bluez
     blueberry
-    # Env
-    python3 #python311Packages.pygobject3
-    rustc
-    cargo
     # CLIs
     git
     calc

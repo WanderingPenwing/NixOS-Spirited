@@ -100,6 +100,7 @@ in {
     home-manager
     xfce.thunar
     sakura
+    gnome.gnome-terminal
     bluez
     blueberry
     # CLIs

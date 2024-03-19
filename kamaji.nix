@@ -113,6 +113,7 @@ in {
     alejandra
     nix-index
     ffmpeg
+    pamixer
     # Apps
     vivaldi
     discord

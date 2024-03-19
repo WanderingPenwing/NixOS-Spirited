@@ -114,6 +114,7 @@ in {
     nix-index
     ffmpeg
     pamixer
+    lynx
     # Apps
     vivaldi
     discord

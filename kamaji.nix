@@ -104,6 +104,8 @@ in {
     blueberry
     # Env
     python3 #python311Packages.pygobject3
+    rustc
+    cargo
     # CLIs
     git
     calc
@@ -136,42 +138,6 @@ in {
     powerline-symbols
     (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
   ];
-
-  home-manager.users.penwing = {
-    # The stateversion does not have a default and must be set
-    home.stateVersion = "18.09";
-    # Here goes the rest, eg home.packages = [pkgs.foo];
-    programs.git = {
-      enable = true;
-      userName = "WanderingPenwing";
-      userEmail = "nicolas.pinson31@gmail.com";
-    };
-  };
-
-  services.openssh.enable = true;
-
-  ## Define a systemd service for SSH agent
-  systemd.user.services.ssh-agent = {
-    enable = true;
-    description = "SSH agent";
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = "${pkgs.openssh}/bin/ssh-agent -D -a $HOME/.ssh/agent-socket";
-      Restart = "always";
-      RestartSec = "10";
-      KillMode = "process";
-    };
-  };
-
-  # Automatically add your SSH key to the agent
-  environment.sessionVariables.SSH_AUTH_SOCK = "${builtins.getEnv "HOME"}/.ssh/agent-socket";
-
-  # Define a shell script to add SSH key
-  environment.etc."profile.d/ssh-add.sh".text = ''
-    if [ -n "$SSH_AUTH_SOCK" ] && [ -z "$(ssh-add -l)" ]; then
-      ssh-add ~/.ssh/github
-    fi
-  '';
 
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).

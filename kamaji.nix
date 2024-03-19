@@ -110,6 +110,7 @@ in {
     acpi
     gawk
     alejandra
+    nix-index
     # Apps
     vivaldi
     discord

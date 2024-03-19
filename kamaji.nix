@@ -100,7 +100,6 @@ in {
     home-manager
     xfce.thunar
     sakura
-    st
     bluez
     blueberry
     # CLIs
@@ -129,9 +128,9 @@ in {
     i3blocks
   ];
 
-  nixpkgs.config = {
-    st.conf = builtins.readFile ./st-config.h;
-  };
+  #nixpkgs.config = {
+  # st.conf = builtins.readFile ./st-config.h;
+  #};
   xdg.mime.defaultApplications = {
     "inode/directory" = "Thunar.desktop"; # This line sets Thunar as the default file manager
   };

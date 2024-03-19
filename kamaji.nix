@@ -112,6 +112,7 @@ in {
     gawk
     alejandra
     nix-index
+    ffmpeg
     # Apps
     vivaldi
     discord

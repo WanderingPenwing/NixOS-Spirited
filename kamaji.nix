@@ -100,7 +100,7 @@ in {
     home-manager
     xfce.thunar
     sakura
-    kitty
+    st
     bluez
     blueberry
     # CLIs

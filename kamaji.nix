@@ -42,8 +42,14 @@ in {
 
     desktopManager.xterm.enable = false;
     displayManager.defaultSession = "none+i3";
-    displayManager.lightdm.enable = true;
-
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.extraGSettingsOverrides = ''
+      [com.ubuntu.login-screen]
+      background-repeat='no-repeat'
+      background-size='cover'
+      background-color='#777777'
+      background-picture-uri='file:///home/penwing/Pictures/Wallpapers/nixos/arrietty.png'
+    '';
     windowManager.i3 = {
       enable = true;
       extraPackages = with pkgs; [

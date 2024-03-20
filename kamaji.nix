@@ -5,6 +5,7 @@
   ...
 }: let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-23.11.tar.gz";
+  #where-is-my-sddm-theme = pkgs.callPackage ./sddm/where-is-my-sddm-theme.nix {};
 in {
   # Include the results of the hardware scan.
   imports = [(import "${home-manager}/nixos")];
@@ -43,15 +44,8 @@ in {
     desktopManager.xterm.enable = false;
     displayManager.defaultSession = "none+i3";
     displayManager.sddm.enable = true;
-    displayManager.sddm.theme = "Where is my SDDM theme";
+    displayManager.sddm.theme = "where-is-my-sddm-theme";
 
-    desktopManager.gnome.extraGSettingsOverrides = ''
-      [com.ubuntu.login-screen]
-      background-repeat='no-repeat'
-      background-size='cover'
-      background-color='#777777'
-      background-picture-uri='file:///home/penwing/Pictures/Wallpapers/nixos/arrietty.png'
-    '';
     windowManager.i3 = {
       enable = true;
       extraPackages = with pkgs; [
@@ -123,6 +117,7 @@ in {
     nix-prefetch
     ffmpeg
     pamixer
+    micro
     # Apps
     vivaldi
     discord
@@ -136,6 +131,7 @@ in {
     hack-font
     lxappearance
     i3blocks
+    #where-is-my-sddm-theme
   ];
 
   nixpkgs.config = {

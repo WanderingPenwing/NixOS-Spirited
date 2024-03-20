@@ -116,14 +116,13 @@ in {
     git
     calc
     btop
-    unzip
     acpi
     gawk
     alejandra
     nix-index
+    nix-prefetch
     ffmpeg
     pamixer
-    lynx
     # Apps
     vivaldi
     discord

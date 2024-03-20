@@ -132,7 +132,7 @@ in {
     hack-font
     lxappearance
     i3blocks
-    where-is-my-sddm-theme
+    where-is-my-sddm-theme # custom import, coming from github
   ];
 
   nixpkgs.config = {

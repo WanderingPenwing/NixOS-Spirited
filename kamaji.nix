@@ -42,7 +42,9 @@ in {
 
     desktopManager.xterm.enable = false;
     displayManager.defaultSession = "none+i3";
-    displayManager.gdm.enable = true;
+    displayManager.sddm.enable = true;
+    displayManager.sddm.theme = "Where is my SDDM theme";
+
     desktopManager.gnome.extraGSettingsOverrides = ''
       [com.ubuntu.login-screen]
       background-repeat='no-repeat'

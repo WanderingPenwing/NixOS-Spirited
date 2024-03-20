@@ -86,7 +86,7 @@ in {
     #media-session.enable = true;
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # Define a user account. Don t forget to set a password with ‘passwd’.
   users.users.penwing = {
     isNormalUser = true;
     description = "Penwing";
@@ -118,6 +118,7 @@ in {
     ffmpeg
     pamixer
     micro
+    xclip
     # Apps
     vivaldi
     discord

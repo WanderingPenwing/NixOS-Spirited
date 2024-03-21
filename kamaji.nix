@@ -119,6 +119,7 @@ in {
     pamixer
     micro
     xclip
+    wine
     # Apps
     vivaldi
     discord

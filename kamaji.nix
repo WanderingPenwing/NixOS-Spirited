@@ -41,13 +41,7 @@ in {
   services.xserver = {
     enable = true;
 
-    desktopManager = {
-      xfce = {
-        enable = false;
-        thunarPlugins = [pkgs.xfce.thunar-archive-plugin];
-      };
-      xterm.enable = false;
-    };
+    desktopManager.xterm.enable = false;
     displayManager.defaultSession = "none+i3";
     displayManager.sddm.enable = true;
     displayManager.sddm.theme = "where-is-my-sddm-theme";

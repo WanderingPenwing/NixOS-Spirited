@@ -41,7 +41,13 @@ in {
   services.xserver = {
     enable = true;
 
-    desktopManager.xterm.enable = false;
+    desktopManager = {
+      xfce = {
+        enable = false;
+        thunarPlugins = [pkgs.xfce.thunar-archive-plugin];
+      };
+      xterm.enable = false;
+    };
     displayManager.defaultSession = "none+i3";
     displayManager.sddm.enable = true;
     displayManager.sddm.theme = "where-is-my-sddm-theme";
@@ -136,10 +142,6 @@ in {
     i3blocks
     where-is-my-sddm-theme # custom import, coming from github
   ];
-
-  nixpkgs.config = {
-    sakura.conf = builtins.readFile ./apps/sakura.conf;
-  };
 
   xdg.mime.defaultApplications = {
     "inode/directory" = "Thunar.desktop"; # This line sets Thunar as the default file manager

@@ -124,9 +124,10 @@ in {
     discord
     sublime
     gimp
+    heroic
     # Appearance
-    picom
     feh
+    picom
     yaru-theme
     papirus-icon-theme
     hack-font

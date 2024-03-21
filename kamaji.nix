@@ -119,18 +119,13 @@ in {
     pamixer
     micro
     xclip
-    wine
-    wine64
-    winetricks
-    legendary-gl
-    proton-caller
+    zip
+    unzip
     # Apps
     vivaldi
     discord
     sublime
     gimp
-    heroic
-    lutris
     # Appearance
     feh
     picom

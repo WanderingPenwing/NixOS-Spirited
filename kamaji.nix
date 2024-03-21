@@ -125,6 +125,7 @@ in {
     sublime
     gimp
     heroic
+    lutris
     # Appearance
     feh
     picom

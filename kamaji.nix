@@ -123,6 +123,7 @@ in {
     wine64
     winetricks
     legendary-gl
+    proton-caller
     # Apps
     vivaldi
     discord

@@ -142,6 +142,14 @@ in {
     "inode/directory" = "Thunar.desktop"; # This line sets Thunar as the default file manager
   };
 
+  systemd.user.services.start_parcellite = {
+    description = "Start parcellite";
+    script = ''
+      parcellite
+    '';
+    wantedBy = ["multi-user.target"]; # starts after login
+  };
+
   fonts.packages = with pkgs; [
     font-awesome
     powerline-fonts

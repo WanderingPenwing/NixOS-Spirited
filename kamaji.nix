@@ -120,6 +120,7 @@ in {
     micro
     xclip
     wine
+    winetricks
     # Apps
     vivaldi
     discord

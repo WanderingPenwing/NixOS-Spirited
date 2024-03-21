@@ -122,6 +122,7 @@ in {
     wine
     wine64
     winetricks
+    legendary-gl
     # Apps
     vivaldi
     discord

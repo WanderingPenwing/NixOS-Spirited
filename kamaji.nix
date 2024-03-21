@@ -126,6 +126,7 @@ in {
     discord
     sublime
     gimp
+    parcellite
     # Appearance
     feh
     picom

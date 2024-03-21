@@ -120,6 +120,7 @@ in {
     micro
     xclip
     wine
+    wine64
     winetricks
     # Apps
     vivaldi

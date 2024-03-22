@@ -121,6 +121,8 @@ in {
     xclip
     zip
     unzip
+    maim
+    xdotool
     # Apps
     vivaldi
     discord

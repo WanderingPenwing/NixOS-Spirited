@@ -5,7 +5,8 @@
   ...
 }: let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-23.11.tar.gz";
-  where-is-my-sddm-theme = pkgs.callPackage ./sddm/where-is-my-sddm-theme.nix {};
+  where-is-my-sddm-theme = pkgs.callPackage ./apps/sddm/where-is-my-sddm-theme.nix {};
+  calcifer = pkgs.callPackage ./apps/calcifer/install.nix {};
 in {
   # Include the results of the hardware scan.
   imports = [(import "${home-manager}/nixos")];

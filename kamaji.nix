@@ -129,7 +129,7 @@ in {
     discord
     sublime
     gimp
-    parcellite
+    #calcifer
     # Appearance
     feh
     picom

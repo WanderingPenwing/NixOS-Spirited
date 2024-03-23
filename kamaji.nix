@@ -150,7 +150,7 @@ in {
     };
 
     #home.file.".config/sakura/sakura.conf".source = ./apps/sakura.conf;
-    home.file.".config/i3/config".source = ./apps/i3.conf;
+    #home.file.".config/i3/config".source = ./apps/i3.conf;
   };
 
   xdg.mime.defaultApplications = {

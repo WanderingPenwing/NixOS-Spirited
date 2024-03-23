@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 
+echo "Trying to rebuild..."
+
 set -e
 
 # cd to your config dir
-pushd /home/penwing/dotfiles/nixos/ > /dev/null 2>&1
+pushd /home/penwing/nixos/ > /dev/null 2>&1
 
 # Early return if no changes were detected
 if git diff --quiet; then

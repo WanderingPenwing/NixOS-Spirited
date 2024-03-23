@@ -140,6 +140,18 @@ in {
     where-is-my-sddm-theme # custom import, coming from github
   ];
 
+  home-manager.users.penwing = {
+    home.stateVersion = "18.09";
+
+    programs.git = {
+      enable = true;
+      userName = "WanderingPenwing";
+      userEmail = "nicolas.pinson31@gmail.com";
+    };
+
+    home.file.".config/sakura/sakura.conf".source = ./apps/sakura.conf;
+  };
+
   xdg.mime.defaultApplications = {
     "inode/directory" = "Thunar.desktop"; # This line sets Thunar as the default file manager
   };
@@ -155,5 +167,5 @@ in {
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  #nix.settings.experimental-features = ["nix-command" "flakes"];
 }

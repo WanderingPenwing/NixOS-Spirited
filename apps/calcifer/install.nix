@@ -1,32 +1,39 @@
 {
-  pkgs,
+  stdenv,
+  lib,
   fetchurl,
+  libxkbcommon,
+  autoPatchelfHook,
 }:
-pkgs.stdenv.mkDerivation rec {
+stdenv.mkDerivation rec {
   pname = "calcifer";
   version = "1.2";
 
-  # src = fetchurl {
-  #   url = "https://github.com/WanderingPenwing/Calcifer/releases/download/1.2/calcifer-v1.2.tar.gz";
-  #   sha256 = "fd0d7be09dd669d6ad3b87752eeb8c8c8069871d6f6869ce4ab65efd6fb4f0a0";
-  # };
-  src = "/home/penwing/nixos/apps/calcifer/calcifer-v1.2.tar.gz";
+  src = fetchurl {
+    url = "https://github.com/WanderingPenwing/Calcifer/releases/download/${version}/calcifer-v${version}.tar.gz";
+    hash = "fd0d7be09dd669d6ad3b87752eeb8c8c8069871d6f6869ce4ab65efd6fb4f0a0";
+  };
 
-  nativeBuildInputs = [pkgs.libxkbcommon]; # Keep libxkbcommon as a build input
+  nativeBuildInputs = [
+    ${version}
+    autoPatchelfHook
+  ];
 
-  # cp -a $src $out/bin/calcifer
+  buildInputs = [
+    libxkbcommon
+  ];
+  # echo 'export LD_LIBRARY_PATH=/run/opengl-driver/lib/:${pkgs.lib.makeLibraryPath [pkgs.libxkbcommon]}' > $out/etc/profile.d/calcifer_ld_library_path.sh
+
+  sourceRoot = ".";
+
   installPhase = ''
-    mkdir -p $out/bin
-    cp $src $out/bin/calcifer
-    # Set LD_LIBRARY_PATH in a post-installation hook
-    mkdir -p $out/etc/profile.d
-    echo 'export LD_LIBRARY_PATH=/run/opengl-driver/lib/:${pkgs.lib.makeLibraryPath [pkgs.libxkbcommon]}' > $out/etc/profile.d/calcifer_ld_library_path.sh
+    runHook preInstall
+    install -m755 -D calcifer $out/bin/calcifer
+    runHook postInstall
   '';
 
-  meta = with pkgs.lib; {
+  meta = with lib; {
     description = "My Fiery IDE";
     homepage = "https://github.com/WanderingPenwing/Calcifer";
-    license = licenses.mit;
-    maintainers = [];
   };
 }

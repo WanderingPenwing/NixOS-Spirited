@@ -4,6 +4,13 @@
   fetchurl,
   libxkbcommon,
   autoPatchelfHook,
+  glib,
+  libGL,
+  libGLU,
+  atk,
+  gdk-pixbuf,
+  webkitgtk,
+  gtk3-x11,
 }:
 stdenv.mkDerivation rec {
   pname = "calcifer";
@@ -11,12 +18,18 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://github.com/WanderingPenwing/Calcifer/releases/download/${version}/calcifer-v${version}.tar.gz";
-    hash = "fd0d7be09dd669d6ad3b87752eeb8c8c8069871d6f6869ce4ab65efd6fb4f0a0";
+    hash = "sha256-/Q174J3WadatO4d1LuuMjIBphx1vaGnOSrZe/W+08KA=";
   };
 
   nativeBuildInputs = [
-    ${version}
     autoPatchelfHook
+    glib
+    libGL
+    libGLU
+    atk
+    gdk-pixbuf
+    webkitgtk
+    gtk3-x11
   ];
 
   buildInputs = [

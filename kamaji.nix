@@ -129,7 +129,7 @@ in {
     discord
     sublime
     gimp
-    #calcifer
+    calcifer
     # Appearance
     feh
     picom

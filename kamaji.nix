@@ -124,6 +124,7 @@ in {
     unzip
     maim
     xdotool
+    fzf
     # Apps
     vivaldi
     discord

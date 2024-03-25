@@ -127,6 +127,7 @@ in {
     fzf
     # Apps
     vivaldi
+    firefox
     discord
     sublime
     gimp

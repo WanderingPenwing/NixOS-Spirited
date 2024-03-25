@@ -3,6 +3,7 @@
   lib,
   fetchurl,
   libxkbcommon,
+  patchelf,
   autoPatchelfHook,
   glib,
   libGL,
@@ -34,8 +35,8 @@ stdenv.mkDerivation rec {
 
   buildInputs = [
     libxkbcommon
+    patchelf
   ];
-  # echo 'export LD_LIBRARY_PATH=/run/opengl-driver/lib/:${pkgs.lib.makeLibraryPath [pkgs.libxkbcommon]}' > $out/etc/profile.d/calcifer_ld_library_path.sh
 
   sourceRoot = ".";
 
@@ -43,6 +44,13 @@ stdenv.mkDerivation rec {
     runHook preInstall
     install -m755 -D calcifer $out/bin/calcifer
     runHook postInstall
+  '';
+
+  # lib.optionalString (!stdenv.isDarwin)
+  postFixup = ''
+    patchelf --add-needed ${libxkbcommon}/lib/libxkbcommon-x11.so  $out/bin/calcifer
+    patchelf --add-needed ${libGL}/lib/libGL.so  $out/bin/calcifer
+    patchelf --add-needed ${libGLU}/lib/libGLU.so  $out/bin/calcifer
   '';
 
   meta = with lib; {

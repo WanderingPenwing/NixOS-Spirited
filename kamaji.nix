@@ -130,6 +130,7 @@ in {
     sublime
     gimp
     calcifer
+    mpv
     # Appearance
     feh
     picom

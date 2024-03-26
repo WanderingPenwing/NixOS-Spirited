@@ -2,6 +2,7 @@
   config,
   pkgs,
   options,
+  lib,
   ...
 }: let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-23.11.tar.gz";
@@ -48,13 +49,14 @@ in {
     displayManager.sddm.theme = "where-is-my-sddm-theme";
 
     windowManager.i3 = {
-      enable = true;
       package = pkgs.i3-rounded;
-      extraPackages = with pkgs; [
-        dmenu #app launcher commonly used
-        i3status #default i3 status bar
-        i3lock #default screen locker
-      ];
+      enable = true;
+
+      # extraPackages = with pkgs; [
+      #   dmenu #app launcher commonly used
+      #   i3status #default i3 status bar
+      #   i3lock #default screen locker
+      # ];
     };
 
     layout = "fr";

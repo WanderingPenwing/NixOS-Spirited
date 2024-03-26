@@ -126,7 +126,7 @@ in {
     unzip
     maim
     xdotool
-    fzf
+    starship
     # Apps
     vivaldi
     discord

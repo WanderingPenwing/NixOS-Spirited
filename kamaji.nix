@@ -106,12 +106,10 @@ in {
     home-manager
     xfce.thunar
     sakura
-    gnome.gnome-terminal
     bluez
     blueberry
     # CLIs
     git
-    calc
     btop
     acpi
     gawk
@@ -133,13 +131,12 @@ in {
     gimp
     calcifer
     mpv
-    openshot-qt
-    arandr
+    #arandr # check hdmi
     # Appearance
     feh
     yaru-theme
     papirus-icon-theme
-    hack-font
+    #hack-font
     lxappearance
     i3blocks
     where-is-my-sddm-theme # custom import, coming from github

@@ -137,7 +137,6 @@ in {
     arandr
     # Appearance
     feh
-    picom-next
     yaru-theme
     papirus-icon-theme
     hack-font
@@ -174,16 +173,7 @@ in {
 
   services.picom = {
     enable = true;
-    fade = true;
-    shadow = true;
-    fadeDelta = 4;
-    inactiveOpacity = 0.8;
-    activeOpacity = 1;
-    settings = {
-      blur = {
-        strength = 5;
-      };
-    };
+    package = pkgs.picom-next;
   };
 
   # Before changing this value read the documentation for this option

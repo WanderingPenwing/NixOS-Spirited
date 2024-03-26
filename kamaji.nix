@@ -155,6 +155,8 @@ in {
       userEmail = "nicolas.pinson31@gmail.com";
     };
 
+    #programs.picom.settings = builtins.readFile ./apps/picom.conf;
+
     #home.file.".config/sakura/sakura.conf".source = ./apps/sakura.conf;
     #home.file.".config/i3/config".source = ./apps/i3.conf;
   };

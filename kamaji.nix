@@ -49,7 +49,7 @@ in {
     displayManager.sddm.theme = "where-is-my-sddm-theme";
 
     windowManager.i3 = {
-      package = pkgs.i3-rounded;
+      package = pkgs.i3-gaps;
       enable = true;
 
       # extraPackages = with pkgs; [

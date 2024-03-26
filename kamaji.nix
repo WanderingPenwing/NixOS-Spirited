@@ -172,6 +172,20 @@ in {
     (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
   ];
 
+  services.picom = {
+    enable = true;
+    fade = true;
+    shadow = true;
+    fadeDelta = 4;
+    inactiveOpacity = 0.8;
+    activeOpacity = 1;
+    settings = {
+      blur = {
+        strength = 5;
+      };
+    };
+  };
+
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?

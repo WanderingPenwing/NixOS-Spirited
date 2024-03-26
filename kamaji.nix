@@ -49,6 +49,7 @@ in {
 
     windowManager.i3 = {
       enable = true;
+      package = pkgs.i3-rounded;
       extraPackages = with pkgs; [
         dmenu #app launcher commonly used
         i3status #default i3 status bar

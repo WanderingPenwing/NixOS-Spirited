@@ -2,7 +2,6 @@
   config,
   pkgs,
   options,
-  lib,
   ...
 }: let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-23.11.tar.gz";
@@ -138,7 +137,7 @@ in {
     arandr
     # Appearance
     feh
-    picom
+    picom-next
     yaru-theme
     papirus-icon-theme
     hack-font

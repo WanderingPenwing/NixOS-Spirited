@@ -132,6 +132,7 @@ in {
     calcifer
     mpv
     openshot-qt
+    arandr
     # Appearance
     feh
     picom

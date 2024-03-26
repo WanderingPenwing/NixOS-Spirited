@@ -127,12 +127,11 @@ in {
     fzf
     # Apps
     vivaldi
-    firefox
     discord
-    sublime
     gimp
     calcifer
     mpv
+    openshot-qt
     # Appearance
     feh
     picom

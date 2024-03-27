@@ -130,6 +130,7 @@ in {
     discord
     gimp
     calcifer
+    nyxt
     mpv
     #arandr # check hdmi
     # Appearance

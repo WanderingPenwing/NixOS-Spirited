@@ -106,7 +106,6 @@ in {
     home-manager
     xfce.thunar
     rxvt-unicode-unwrapped
-    sakura
     bluez
     blueberry
     # CLIs
@@ -143,6 +142,8 @@ in {
     xborders
     where-is-my-sddm-theme # custom import, coming from github
   ];
+
+  environment.variables.EDITOR = "urxvt";
 
   home-manager.users.penwing = {
     home.stateVersion = "18.09";

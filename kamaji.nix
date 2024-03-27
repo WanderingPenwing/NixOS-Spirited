@@ -113,31 +113,29 @@ in {
     btop
     acpi
     gawk
-    alejandra
-    nix-index
-    nix-prefetch
-    ffmpeg
-    pamixer
+    alejandra # format code
+    ffmpeg # convert multimedia
+    pamixer # sound settings
     micro
     xclip
     zip
     unzip
     maim
     xdotool
-    starship
+    starship # shell more pretty
+    xorg.xbacklight # brightness settings
     # Apps
     vivaldi
     discord
     gimp
     calcifer
-    epiphany
+    #epiphany
     mpv
     #arandr # check hdmi
     # Appearance
     feh
     yaru-theme
     papirus-icon-theme
-    #hack-font
     lxappearance
     i3blocks
     xborders

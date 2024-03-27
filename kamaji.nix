@@ -116,6 +116,7 @@ in {
     alejandra # format code
     ffmpeg # convert multimedia
     pamixer # sound settings
+    brightnessctl # brightness settings
     micro
     xclip
     zip

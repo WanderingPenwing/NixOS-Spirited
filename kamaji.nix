@@ -124,6 +124,8 @@ in {
     maim
     xdotool
     starship # shell more pretty
+    mount #for usb
+    unixtools.fdisk #for usb
     # Apps
     vivaldi
     discord

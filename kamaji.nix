@@ -124,14 +124,13 @@ in {
     maim
     xdotool
     starship # shell more pretty
-    mount #for usb
-    unixtools.fdisk #for usb
     # Apps
     vivaldi
+    qutebrowser
     discord
     gimp
     calcifer
-    #epiphany
+    epiphany
     steam
     mpv
     #arandr # check hdmi

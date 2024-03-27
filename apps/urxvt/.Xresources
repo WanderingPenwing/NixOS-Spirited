@@ -1,4 +1,5 @@
 ! Nordic Color scheme
+! xrdb .Xresources
 #define nord0 #222222
 #define nord1 #FF5555
 #define nord2 #5FD38D
@@ -40,14 +41,14 @@
 *.color15: nord15
 
 ! URxvt Settings
-URxvt.font:     xft:DejaVu Sans Mono:size=11.5:antialias=true
-URxvt.boldFont: xft:DejaVu Sans Mono:bold:size=11.5:antialias=true
+URxvt.font:     xft:DejaVu Sans Mono:size=13:antialias=true
+URxvt.boldFont: xft:DejaVu Sans Mono:bold:size=13:antialias=true
 urxvt*scrollBar:                  false
 urxvt*mouseWheelScrollPage:       true
 urxvt*cursorBlink:                true
 urxvt*saveLines:                  5000
 urxvt*internalBorder: 15
-urxvt*geometry: 90x32
+urxvt*geometry: 90x90
 ! Setting transparency and background                                                                                                                                       
  URxvt*depth:      32                                                                                                                                                        
  URxvt.background: [70]#222222 
@@ -66,19 +67,3 @@ urxvt.keysym.Shift-Control-Up:    \033[1;6A
 urxvt.keysym.Control-Down:        \033[1;5B
 urxvt.keysym.Shift-Control-Down:  \033[1;6B
 
-! Xterm Settings
-xterm*font:     xft:DejaVu Sans Mono:size=11.5:antialias=true
-xterm*geometry: 90x32
-xterm*mouseWheelScrollPage:       true
-xterm*cursorBlink:                true
-xterm*saveLines:                  5000
-xterm*internalBorder: 15
-! Normal cut & paste key conventions ( ctrl-shift c/v )
-XTerm*selectToClipboard:          true
-XTerm*VT100.Translations: #override \
-      Shift Ctrl<Key>C: copy-selection(CLIPBOARD) \n\
-      Shift Ctrl<Key>V: insert-selection(CLIPBOARD) \n\ 
-      Shift Ctrl<Key>V: insert-selection(PRIMARY) \n\ 
-      Shift<Btn1Down>: select-start() \n\ 
-      Shift<Btn1Motion>: select-extend() \n\ 
-      Shift<Btn1Up>: select-end(CLIPBOARD) \n

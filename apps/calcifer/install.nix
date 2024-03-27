@@ -15,11 +15,11 @@
 }:
 stdenv.mkDerivation rec {
   pname = "calcifer";
-  version = "1.2";
+  version = "1.3";
 
   src = fetchurl {
     url = "https://github.com/WanderingPenwing/Calcifer/releases/download/${version}/calcifer-v${version}.tar.gz";
-    hash = "sha256-/Q174J3WadatO4d1LuuMjIBphx1vaGnOSrZe/W+08KA=";
+    hash = "sha256-sgE0TSws3F1V3jhaL/XIjzdsWNMNzZ2dIW1Fmj2ChoY=";
   };
 
   nativeBuildInputs = [

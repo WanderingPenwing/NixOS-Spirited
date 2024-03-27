@@ -123,7 +123,6 @@ in {
     maim
     xdotool
     starship # shell more pretty
-    xorg.xbacklight # brightness settings
     # Apps
     vivaldi
     discord

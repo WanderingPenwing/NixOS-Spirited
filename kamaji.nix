@@ -130,6 +130,7 @@ in {
     gimp
     calcifer
     #epiphany
+    steam
     mpv
     #arandr # check hdmi
     # Appearance

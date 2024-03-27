@@ -105,6 +105,7 @@ in {
     # Utilities
     home-manager
     xfce.thunar
+    xterm
     sakura
     bluez
     blueberry

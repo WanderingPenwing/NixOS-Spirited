@@ -105,7 +105,7 @@ in {
     # Utilities
     home-manager
     xfce.thunar
-    xterm
+    rxvt-unicode-unwrapped
     sakura
     bluez
     blueberry

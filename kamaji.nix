@@ -180,6 +180,7 @@ in {
   systemd.user.services.terminal_config = {
     script = ''
       xborders -c ~/nixos/apps/xborders/config.json
+      xrdb ~/nixos/apps/urxvt/.Xresources
     '';
     wantedBy = ["graphical-session.target"];
     partOf = ["graphical-session.target"];

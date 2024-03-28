@@ -179,6 +179,9 @@ in {
   services.picom = {
     enable = true;
     package = pkgs.picom-next;
+    settings = {
+      corner-radius = 20;
+    };
   };
 
   environment.interactiveShellInit = ''

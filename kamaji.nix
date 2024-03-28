@@ -192,7 +192,7 @@ in {
     eval "$(starship init bash)"
     eval "$(ssh-agent -s)"
     ssh-add ~/.ssh/github > /dev/null 2>&1
-    trap 'ssh-agent -k' SIGHUP
+    trap 'ssh-agent -k' EXIT SIGHUP SIGINT SIGTERM
   '';
 
   # Before changing this value read the documentation for this option

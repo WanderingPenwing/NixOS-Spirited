@@ -189,6 +189,7 @@ in {
     alias rust="cd ~/Documents/Projects/Rust/"
     alias py="cd  ~/Documents/Projects/Python/"
     alias lc="fc -nl -1 | xclip -selection clipboard"
+    eval "$(starship init bash)"
   '';
 
   # Before changing this value read the documentation for this option

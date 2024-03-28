@@ -46,8 +46,8 @@
       *.color15: nord15
 
       ! URxvt Settings DejaVu Sans Mono
-      URxvt.font:     xft:Hurmit Nerd Font:size=13:antialias=true
-      URxvt.boldFont: xft:Hurmit Nerd Font:bold:size=13:antialias=true
+      URxvt.font:     xft:DejaVu Sans Mono, Symbols Nerd Font Mono:size=13:antialias=true
+      URxvt.boldFont: xft:DejaVu Sans Mono, Symbols Nerd Font Mono:bold:size=13:antialias=true
       urxvt*scrollBar:                  false
       urxvt*mouseWheelScrollPage:       true
       urxvt*cursorBlink:                true

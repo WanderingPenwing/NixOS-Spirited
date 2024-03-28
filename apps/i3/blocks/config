@@ -5,7 +5,9 @@ separator_block_width=25
 markup=none
 
 [name]
-label="kamaji"
+label=
+command=echo "kamaji"
+interval=once
 
 [memory]
 label= 

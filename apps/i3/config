@@ -157,16 +157,10 @@ bindsym $mod+r mode "resize"
 # You can also use any non-zero value if you'd like to have a border
 for_window [class=".*"] border pixel 0
 
-#gaps inner all set 20
-#border_radius 5
-
-# Transparency with picom compositor
-# exec_always picom --corner-radius 30
-
 # Color shemes for windows  
 set $bgcolor    #3fb36dff
 set $in-bgcolor #22222242
-set $text       #ffffff
+set $text       #ff0000
 set $u-bgcolor  #ffb380d9
 set $indicator  #a8a3c1
 set $in-text    #ffffff

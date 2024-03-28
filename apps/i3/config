@@ -160,7 +160,7 @@ for_window [class=".*"] border pixel 0
 # Color shemes for windows  
 set $bgcolor    #3fb36dff
 set $in-bgcolor #22222242
-set $text       #ff00ff
+set $text       #ffffff
 set $u-bgcolor  #ffb380d9
 set $indicator  #a8a3c1
 set $in-text    #ffffff

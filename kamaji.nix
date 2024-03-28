@@ -177,6 +177,14 @@ in {
     package = pkgs.picom-next;
   };
 
+  systemd.user.services.terminal_config = {
+    script = ''
+      xborders -c ~/nixos/apps/xborders/config.json
+    '';
+    wantedBy = ["graphical-session.target"];
+    partOf = ["graphical-session.target"];
+  };
+
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?

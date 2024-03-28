@@ -191,7 +191,8 @@ in {
     alias lc="fc -nl -1 | xclip -selection clipboard"
     eval "$(starship init bash)"
     eval "$(ssh-agent -s)"
-    trap 'ssh-agent -k' EXIT
+    ssh-add ~/.ssh/github > /dev/null 2>&1
+    trap 'kill $SSH_AGENT_PID' EXIT
   '';
 
   # Before changing this value read the documentation for this option

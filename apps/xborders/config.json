@@ -1,9 +1,9 @@
 {
-    "border-rgba": "0x5FD38DFF",
-    "border-radius": 14,
-    "border-width": 6,
+    "border-rgba": "0x3FB36DFF",
+    "border-radius": 24,
+    "border-width": 8,
     "border-mode": "outside",
-    "disable-version-warning": false,
+    "disable-version-warning": true,
 
     "positive-x-offset": 0,
     "positive-y-offset": 0,

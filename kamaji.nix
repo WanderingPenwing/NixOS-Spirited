@@ -55,11 +55,7 @@ in {
       package = pkgs.i3-gaps;
       enable = true;
 
-      # extraPackages = with pkgs; [
-      #   dmenu #app launcher commonly used
-      #   i3status #default i3 status bar
-      #   i3lock #default screen locker
-      # ];
+      configFile = ./apps/i3/config;
     };
 
     layout = "fr";

@@ -135,6 +135,7 @@ in {
     feh
     yaru-theme
     papirus-icon-theme
+    nerdfonts
     lxappearance
     i3blocks
     xborders

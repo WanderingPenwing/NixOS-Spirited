@@ -1,0 +1,35 @@
+# i3blocks config file
+
+# Global properties
+separator_block_width=25
+markup=none
+
+[name]
+label="kamaji"
+
+[memory]
+label= 
+command=free -m | awk 'NR==2 {print $3 " Mo"}'
+interval=5
+
+[cpu]
+label= 
+command=top -b -d1 -n1 | grep -i "Cpu(s)" | awk -F'ni, | id' '{print 100 - $2 "%"}'
+interval=5
+
+#volume indicator 
+[volume]
+label= 
+command=bash ./volume
+interval=1
+
+# Battery indicator
+[battery]
+label= 
+command=acpi -b | sed 's/Discharging,//; s/Charging,//g; s/Not charging,//g' | awk '{print $3, $4}' | sed 's/,.*//'
+interval=5
+
+# Date Time
+[time]
+command=date +'%H:%M'
+interval=10

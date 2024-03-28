@@ -1,0 +1,10 @@
+#!usr/bin/env bash
+
+# Check if muted
+if [[ $(pamixer --get-mute) == "false" ]]; then
+    # If not muted, display volume
+    echo "$(pamixer --get-volume)"
+else
+    # If muted, display '✘'
+    echo "✘"
+fi

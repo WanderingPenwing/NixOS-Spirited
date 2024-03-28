@@ -4,14 +4,12 @@
   options,
   ...
 }: let
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-23.11.tar.gz";
   where-is-my-sddm-theme = pkgs.callPackage ./apps/sddm/where-is-my-sddm-theme.nix {};
   calcifer = pkgs.callPackage ./apps/calcifer/install.nix {};
   urxvtConfig = import ./apps/urxvt/config.nix;
 in {
   # Include the results of the hardware scan.
   imports = [
-    (import "${home-manager}/nixos")
     urxvtConfig
   ];
 
@@ -54,7 +52,6 @@ in {
     windowManager.i3 = {
       package = pkgs.i3-gaps;
       enable = true;
-
       configFile = ./apps/i3/config;
     };
 
@@ -146,21 +143,6 @@ in {
 
   environment.variables.EDITOR = "urxvt";
 
-  home-manager.users.penwing = {
-    home.stateVersion = "18.09";
-
-    programs.git = {
-      enable = true;
-      userName = "WanderingPenwing";
-      userEmail = "nicolas.pinson31@gmail.com";
-    };
-
-    #programs.picom.settings = builtins.readFile ./apps/picom.conf;
-
-    #home.file.".config/sakura/sakura.conf".source = ./apps/sakura.conf;
-    #home.file.".config/i3/config".source = ./apps/i3.conf;
-  };
-
   xdg.mime.defaultApplications = {
     "inode/directory" = "Thunar.desktop"; # This line sets Thunar as the default file manager
   };
@@ -197,6 +179,4 @@ in {
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
-
-  #nix.settings.experimental-features = ["nix-command" "flakes"];
 }

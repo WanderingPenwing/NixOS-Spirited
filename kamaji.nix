@@ -181,6 +181,16 @@ in {
     package = pkgs.picom-next;
   };
 
+  environment.interactiveShellInit = ''
+    alias m="micro"
+    alias c="clear"
+    alias rebuild="~/nixos/rebuild.sh"
+    alias edit="micro ~/nixos/kamaji.nix"
+    alias rust="cd ~/Documents/Projects/Rust/"
+    alias py="cd  ~/Documents/Projects/Python/"
+    alias lc="fc -nl -1 | xclip -selection clipboard"
+  '';
+
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?

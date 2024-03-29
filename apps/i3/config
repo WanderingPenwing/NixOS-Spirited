@@ -13,7 +13,7 @@ exec --no-startup-id dex --autostart --environment i3
 exec --no-startup-id nm-applet
 
 # start a terminal
-bindsym $mod+Return exec urxvt -fn "xft:Hurmit Nerd Font Mono:size=13"
+bindsym $mod+Return exec urxvt -fn "xft:FiraCode Nerd Font Mono:size=13:antialiasing=true" -fb "xft:FiraCode Nerd Font Mono:bold:size=13:antialiasing=true"
 
 # kill focused window
 bindsym $mod+Shift+a kill

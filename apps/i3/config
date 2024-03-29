@@ -180,7 +180,7 @@ bar {
     status_command i3blocks -c ~/nixos/apps/i3/blocks/config
 	i3bar_command i3bar --transparency
 	strip_workspace_numbers yes
-	font pango: FiraCode Nerd Font Mono 14
+	font pango: Hurmit Nerd Font Mono 14
 	colors {
                 background $in-bgcolor
                 separator $text

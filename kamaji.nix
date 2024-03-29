@@ -151,7 +151,7 @@ in {
     font-awesome
     powerline-fonts
     powerline-symbols
-    (nerdfonts.override {fonts = ["Hermit"];})
+    (nerdfonts.override {fonts = ["Hermit" "FiraCode"];})
   ];
 
   services.picom = {

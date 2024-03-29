@@ -135,7 +135,6 @@ in {
     feh
     yaru-theme
     papirus-icon-theme
-    nerdfonts
     lxappearance
     i3blocks
     xborders
@@ -152,7 +151,7 @@ in {
     font-awesome
     powerline-fonts
     powerline-symbols
-    (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
+    (nerdfonts.override {fonts = ["Hermit"];})
   ];
 
   services.picom = {

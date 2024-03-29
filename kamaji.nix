@@ -141,6 +141,8 @@ in {
     where-is-my-sddm-theme # custom import, coming from github
   ];
 
+  programs.steam.enable = true;
+
   environment.variables.EDITOR = "urxvt";
 
   xdg.mime.defaultApplications = {

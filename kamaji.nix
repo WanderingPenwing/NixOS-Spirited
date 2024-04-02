@@ -4,7 +4,7 @@
   options,
   ...
 }: let
-  where-is-my-sddm-theme = pkgs.callPackage ./apps/sddm/where-is-my-sddm-theme.nix {};
+  where-is-my-sddm-theme = pkgs.callPackage ./apps/sddm/login_theme.nix {};
   calcifer = pkgs.callPackage ./apps/calcifer/install.nix {};
   urxvtConfig = import ./apps/urxvt/config.nix;
 in {

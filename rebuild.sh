@@ -34,7 +34,7 @@ git add .
 git commit -m "NixOS rebuild: Generation $current"
 
 echo "Setting up..."
-betterlockscreen -u ~/nixos/wallpapers/main.png --fx
+betterlockscreen -u ~/nixos/wallpapers/main.png --fx > /dev/null 2>&1
 
 popd > /dev/null 2>&1
 

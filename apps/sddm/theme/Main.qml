@@ -46,6 +46,9 @@ Rectangle {
             case "fill":
                 return Image.Stretch;
 
+           	case "fit":
+           	    return Image.PreserveAspectFit
+
             case "tile":
                 return Image.Tile;
 

@@ -22,7 +22,7 @@ bindsym $mod+Shift+a kill
 bindsym $mod+d exec --no-startup-id dmenu_run
 
 # lock screen
-bindsym $mod+x exec "i3lock -e -u -i ~/nixos/wallpapers/main.png"
+bindsym $mod+x exec betterlockscreen -l
 
 # change sound
 bindsym $mod+F3 exec "pamixer -i 5 -u"
@@ -200,7 +200,6 @@ exec_always xborders --disable-version-warning -c ~/nixos/apps/xborders/config.j
 
 # Kill duplicate xborders
 exec_always ~/nixos/apps/xborders/clean.sh
-
 
 for_window [class="discord"] move to workspace $ws4
 

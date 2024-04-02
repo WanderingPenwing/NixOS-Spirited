@@ -33,6 +33,9 @@ git add .
 # Commit all changes with the generation metadata
 git commit -m "NixOS rebuild: Generation $current"
 
+echo "Setting up..."
+betterlockscreen -u ~/nixos/wallpapers/main.png --fx
+
 popd > /dev/null 2>&1
 
 echo "Rebuild Successful"

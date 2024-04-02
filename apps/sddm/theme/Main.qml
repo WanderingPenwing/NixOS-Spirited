@@ -47,7 +47,7 @@ Rectangle {
                 return Image.Stretch;
 
            	case "fit":
-           	    return Image.PreserveAspectFit
+           	    return Image.PreserveAspectFit;
 
             case "tile":
                 return Image.Tile;
@@ -178,7 +178,7 @@ Rectangle {
                 id: image
                 anchors.fill: parent
                 source: config.background
-                fillMode: bgFillMode()
+                fillMode: Image.PreserveAspectCrop
                 z: 2
             }
 

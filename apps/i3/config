@@ -34,7 +34,7 @@ bindsym $mod+F4 exec brightnessctl -d "amdgpu_bl0" set 10%-
 bindsym $mod+F5 exec brightnessctl -d "amdgpu_bl0" set +10%
 
 ## Screenshots
-bindsym Shift+Print exec maim --select "/home/penwing/Pictures/screenshots/$(date '+%H:%M:%S %d_%m_%Y').png"
+bindsym Shift+Print exec maim --select "/home/penwing/Pictures/screenshots/$(date '+%Y_%m_%d %H:%M:%S').png"
 
 # change focus
 bindsym $mod+j focus left

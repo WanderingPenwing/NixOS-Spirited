@@ -138,6 +138,7 @@ in {
     lxappearance
     i3blocks
     xborders
+    betterlockscreen
     where-is-my-sddm-theme # custom import, coming from github
   ];
 

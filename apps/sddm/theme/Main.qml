@@ -2,8 +2,6 @@ import QtQuick 2.15
 import QtQuick.Controls 2.0
 import SddmComponents 2.0
 
-import Qt5Compat.GraphicalEffects
-
 Rectangle {
     id: root
     width: 640
@@ -177,7 +175,6 @@ Rectangle {
                 id: image
                 anchors.fill: parent
                 source: config.background
-                smooth: true
                 fillMode: bgFillMode()
                 z: 2
             }
@@ -185,7 +182,7 @@ Rectangle {
             Rectangle {
                 id: backgroundBorder
                 anchors.fill: parent
-                z: 4
+                z: 3
                 border.color: "#ff3117"
                 border.width: 0
                 color: "transparent"
@@ -199,15 +196,6 @@ Rectangle {
                     }
                 }
             }
-
-            FastBlur {
-                id: fastBlur
-                z: 3
-                anchors.fill: image
-                source: image
-                radius: +config.blurRadius || 0
-            }
-
         }
 
         TextInput {
@@ -282,7 +270,7 @@ Rectangle {
         UsersChoose {
             id: username
             text: currentUsername
-            visible: config.showUsersByDefault == "true" ? true : false
+            visible: false
             width: mainFrame.width/2.5/48*usersFontSize
             anchors {
                 horizontalCenter: parent.horizontalCenter
@@ -300,7 +288,7 @@ Rectangle {
         SessionsChoose {
             id: sessionName
             text: currentSession
-            visible: config.showSessionsByDefault == "true" ? true : false
+            visible: false
             width: mainFrame.width/2.5/24*sessionsFontSize
             anchors {
                 horizontalCenter: parent.horizontalCenter

@@ -121,6 +121,7 @@ in {
     maim
     xdotool
     starship # shell more pretty
+    thefuck # correct mistakes
     # Apps
     vivaldi
     qutebrowser

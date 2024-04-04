@@ -46,8 +46,8 @@
       *.color15: nord15
 
       ! URxvt Settings DejaVu Sans Mono
-      URxvt.font:     xft:DejaVu Sans Mono:size=13:antialias=true
-      URxvt.boldFont: xft:DejaVu Sans Mono:bold:size=13:antialias=true
+      URxvt.font:     xft:Mononoki Nerd Font Mono:size=14:antialiasing=true
+      URxvt.boldFont: xft:Mononoki Nerd Font Mono:bold:size=14:antialiasing=true
       urxvt*scrollBar:                  false
       urxvt*mouseWheelScrollPage:       true
       urxvt*cursorBlink:                true

@@ -4,9 +4,9 @@
   options,
   ...
 }: let
-  where-is-my-sddm-theme = pkgs.callPackage ./apps/sddm/login_theme.nix {};
-  calcifer = pkgs.callPackage ./apps/calcifer/install.nix {};
-  urxvtConfig = import ./apps/urxvt/config.nix;
+  where-is-my-sddm-theme = pkgs.callPackage ../apps/sddm/login_theme.nix {};
+  calcifer = pkgs.callPackage ../apps/calcifer/install.nix {};
+  urxvtConfig = import ../apps/urxvt/config.nix;
 in {
   # Include the results of the hardware scan.
   imports = [
@@ -52,7 +52,7 @@ in {
     windowManager.i3 = {
       package = pkgs.i3-gaps;
       enable = true;
-      configFile = ./apps/i3/config;
+      configFile = ../apps/i3/config;
     };
 
     layout = "fr";
@@ -100,52 +100,53 @@ in {
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # Utilities
-    home-manager
-    xfce.thunar
+    #home-manager
+    xfce.thunar # gui file manager
     rxvt-unicode-unwrapped
     bluez
-    blueberry
+    blueberry # bluetooth gui
     # CLIs
-    git
-    btop
-    acpi
-    gawk
-    alejandra # format code
-    ffmpeg # convert multimedia
+    acpi # battery status
     pamixer # sound settings
     brightnessctl # brightness settings
-    micro
-    xclip
-    zip
-    unzip
-    maim
-    xdotool
+    maim # screenshot
+    gawk # to format bash output
     starship # shell more pretty
     thefuck # correct mistakes
+    git # code versioning
+    alejandra # format code
+    xclip # clipboard
+    zip # compress files
+    unzip # uncompress files
+    xdotool
+    btop # task manager
+    ani-cli # watch anime
+    micro # text editor
+    ffmpeg # convert multimedia
     # Apps
     vivaldi
     qutebrowser
-    discord
     gimp
     calcifer
-    epiphany
-    steam
-    mpv
+    discord
+    mpv # video player
     #arandr # check hdmi
     # Appearance
-    feh
+    feh # wallpaper
     yaru-theme
     papirus-icon-theme
     lxappearance
-    i3blocks
-    xborders
+    i3blocks # status bar
+    xborders # outline selected window
     betterlockscreen
-    where-is-my-sddm-theme # custom import, coming from github
+    where-is-my-sddm-theme # custom import
   ];
 
-  programs.steam.enable = true;
+  programs.noisetorch.enable = true;
 
-  environment.variables.EDITOR = "urxvt";
+  environment.variables = {
+    EDITOR = "micro";
+  };
 
   xdg.mime.defaultApplications = {
     "inode/directory" = "Thunar.desktop"; # This line sets Thunar as the default file manager
@@ -155,7 +156,7 @@ in {
     font-awesome
     powerline-fonts
     powerline-symbols
-    (nerdfonts.override {fonts = ["Hermit" "FiraCode"];})
+    (nerdfonts.override {fonts = ["Hermit" "FiraCode" "Mononoki" "ComicShannsMono"];})
   ];
 
   services.picom = {
@@ -169,11 +170,20 @@ in {
   environment.interactiveShellInit = ''
     alias m="micro"
     alias c="clear"
-    alias rebuild="~/nixos/rebuild.sh"
-    alias edit="micro ~/nixos/kamaji.nix"
+    alias plz="sudo"
+    alias moo="~/nixos/scripts/mount.sh"
+    alias nix-dust="~/nixos/scripts/dust.sh"
+    alias rebuild="~/nixos/scripts/rebuild.sh"
+    alias edit="micro ~/nixos/system/configuration.nix"
     alias rust="cd ~/Documents/Projects/Rust/"
-    alias py="cd  ~/Documents/Projects/Python/"
+    alias python="cd  ~/Documents/Projects/Python/"
     alias lc="fc -nl -1 | xclip -selection clipboard"
+    if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
+    fi
+    bind 'set show-all-if-ambiguous on'
+    bind 'TAB:menu-complete'
+    export STARSHIP_CONFIG=~/nixos/apps/urxvt/starship.toml
     eval "$(starship init bash)"
     eval "$(ssh-agent -s)"
     ssh-add ~/.ssh/github > /dev/null 2>&1

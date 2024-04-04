@@ -18,10 +18,14 @@ alejandra . &>/dev/null
 # Shows your changes
 git diff -U0
 
-echo "NixOS Rebuilding..."
+echo "Cleaning Garbage..."
+sudo nix-collect-garbage --delete-older-than 10d 2>/dev/null | grep "freed"
 
+echo "NixOS Rebuilding..."
 # Rebuild, output simplified errors, log trackebacks
-sudo sh -c "nixos-rebuild switch &>nixos-switch.log || (cat nixos-switch.log | grep --color error && false)"
+#sudo sh -c "nixos-rebuild switch &>nixos-switch.log || (cat nixos-switch.log | grep --color error && false)"
+sudo nixos-rebuild switch --flake '/home/penwing/nixos#kamaji'
+
 
 # Get current generation metadata
 echo "Getting generation..."

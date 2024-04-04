@@ -12,7 +12,6 @@ in {
   networking.hostName = hostname;
 
   imports = [
-    /etc/nixos/hardware-configuration.nix
-    (/home/penwing/dotfiles/nixos + "/${hostname}.nix")
+    ./hardware-configuration.nix
   ];
 }

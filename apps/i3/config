@@ -19,42 +19,48 @@ bindsym $mod+Return exec urxvt
 bindsym $mod+Shift+a kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+d exec --no-startup-id dmenu_run -fn 'Hack Regular-16' -nb "#222222" -nf "#CCCCCC" -sb "#3FB36D" -sf "#FFFFFF"
+
+# start chromium (no animations)
+bindsym $mod+i exec chromium --wm-window-animations-disabled --animation-duration-scale=0
+
+# susuwatari client
+bindsym $mod+j exec jellyfinmediaplayer
 
 # lock screen
 bindsym $mod+x exec betterlockscreen -l
 
 # change sound
-bindsym $mod+F3 exec "pamixer -i 5 -u"
-bindsym $mod+F2 exec "pamixer -d 5 -u"
 bindsym $mod+F1 exec "pamixer -t"
+bindsym $mod+F2 exec "pamixer -d 5 -u"
+bindsym $mod+F3 exec "pamixer -i 5 -u"
 
 # change brightness
-bindsym $mod+F4 exec brightnessctl -d "amdgpu_bl0" set 10%-
-bindsym $mod+F5 exec brightnessctl -d "amdgpu_bl0" set +10%
+bindsym $mod+F4 exec brightnessctl -d "amdgpu_bl0" set 10%- && notify-send -u normal -a "brightness" "set to $(brightnessctl -d "amdgpu_bl0" get)"
+bindsym $mod+F5 exec brightnessctl -d "amdgpu_bl0" set +10% && notify-send -u normal -a "brightness" "set to $(brightnessctl -d "amdgpu_bl0" get)"
+
+# mount/unmout usb
+bindsym $mod+F6 exec ~/nixos/scripts/usb_guest.sh
+
+# susuwatari client
+bindsym $mod+F7 exec ~/nixos/scripts/susuwatari/client.sh
+
+# use hdmi display
+bindsym $mod+F8 exec ~/nixos/scripts/hdmi_paint.sh
+
+# disable screen sleep
+bindsym $mod+F9 exec ~/nixos/scripts/screen_sleep.sh
 
 ## Screenshots
 bindsym Shift+Print exec maim --select "/home/penwing/Pictures/screenshots/$(date '+%Y_%m_%d %H:%M:%S').png"
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+m focus right
-
-# alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+m move right
-
-# alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
@@ -89,7 +95,7 @@ set $ws1 "1:    "
 set $ws2 "2:    "
 set $ws3 "3:    "
 set $ws4 "4:    "
-set $ws5 "  5  "
+set $ws5 "5:    "
 set $ws6 "  6  "
 set $ws7 "  7  "
 set $ws8 "  8  "
@@ -201,7 +207,16 @@ exec_always xborders --disable-version-warning -c ~/nixos/apps/xborders/config.j
 # Kill duplicate xborders
 exec_always ~/nixos/apps/xborders/clean.sh
 
+# restart dunst with config
+exec_always ~/nixos/scripts/notif_restart.sh
+
+# Start the susuwatari
+exec ~/nixos/scripts/susuwatari/launch.sh
+
+for_window [class="Chromium-browser"] move to workspace $ws2
+for_window [class="calcifer"] move to workspace $ws3
 for_window [class="discord"] move to workspace $ws4
+for_window [class="Jellyfin Media Player"] move to workspace $ws5
 
 gaps inner 20
 gaps outer 0

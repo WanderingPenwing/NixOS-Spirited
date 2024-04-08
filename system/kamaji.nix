@@ -12,6 +12,6 @@ in {
   networking.hostName = hostname;
 
   imports = [
-    ./hardware-configuration.nix
+    ./kamaji-hardware.nix
   ];
 }

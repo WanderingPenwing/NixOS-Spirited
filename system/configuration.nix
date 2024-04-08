@@ -26,6 +26,9 @@ in {
   # Set your time zone.
   time.timeZone = "Europe/Paris";
 
+  # ntfs support
+  boot.supportedFilesystems = ["ntfs"];
+
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
@@ -99,12 +102,9 @@ in {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # Utilities
-    #home-manager
-    xfce.thunar # gui file manager
-    rxvt-unicode-unwrapped
-    bluez
-    blueberry # bluetooth gui
+    # Libs
+    jdk21
+    libnotify
     # CLIs
     acpi # battery status
     pamixer # sound settings
@@ -112,25 +112,32 @@ in {
     maim # screenshot
     gawk # to format bash output
     starship # shell more pretty
-    thefuck # correct mistakes
     git # code versioning
     alejandra # format code
     xclip # clipboard
-    zip # compress files
-    unzip # uncompress files
-    xdotool
+    xdotool # fake keyboard/mouse
     btop # task manager
     ani-cli # watch anime
     micro # text editor
     ffmpeg # convert multimedia
+    nnn # file manager
+    dunst # send notifications
+    parted # handle usb partitions
+    ntfs3g # special partitions
+    jftui # jellyfin
     # Apps
-    vivaldi
+    rxvt-unicode-unwrapped # my terminal
+    ungoogled-chromium
     qutebrowser
+    luakit
     gimp
     calcifer
     discord
     mpv # video player
-    #arandr # check hdmi
+    prismlauncher
+    vmware-horizon-client
+    jellyfin-media-player
+    arduino
     # Appearance
     feh # wallpaper
     yaru-theme
@@ -144,12 +151,17 @@ in {
 
   programs.noisetorch.enable = true;
 
+  #   programs.steam = {
+  #     enable = true;
+  #     gamescopeSession.enable = true;
+  #     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+  #     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  #   };
+  #
+  #   programs.gamemode.enable = true;
+
   environment.variables = {
     EDITOR = "micro";
-  };
-
-  xdg.mime.defaultApplications = {
-    "inode/directory" = "Thunar.desktop"; # This line sets Thunar as the default file manager
   };
 
   fonts.packages = with pkgs; [
@@ -163,31 +175,18 @@ in {
     enable = true;
     package = pkgs.picom-next;
     settings = {
+      vsync = true;
+      backend = "glx";
       corner-radius = 20;
     };
   };
 
   environment.interactiveShellInit = ''
-    alias m="micro"
-    alias c="clear"
-    alias plz="sudo"
-    alias moo="~/nixos/scripts/mount.sh"
-    alias nix-dust="~/nixos/scripts/dust.sh"
-    alias rebuild="~/nixos/scripts/rebuild.sh"
-    alias edit="micro ~/nixos/system/configuration.nix"
-    alias rust="cd ~/Documents/Projects/Rust/"
-    alias python="cd  ~/Documents/Projects/Python/"
-    alias lc="fc -nl -1 | xclip -selection clipboard"
-    if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
+    if [ -f $HOME/nixos/scripts/.shell_config ]; then
+        . $HOME/nixos/scripts/.shell_config
+    else
+        echo "error shell loading config"
     fi
-    bind 'set show-all-if-ambiguous on'
-    bind 'TAB:menu-complete'
-    export STARSHIP_CONFIG=~/nixos/apps/urxvt/starship.toml
-    eval "$(starship init bash)"
-    eval "$(ssh-agent -s)"
-    ssh-add ~/.ssh/github > /dev/null 2>&1
-    trap 'ssh-agent -k' EXIT SIGHUP SIGINT SIGTERM
   '';
 
   nix.settings.experimental-features = ["nix-command" "flakes"];

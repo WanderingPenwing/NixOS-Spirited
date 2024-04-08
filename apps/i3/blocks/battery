@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+file=~/logs/battery.log
+
+battery=$(acpi -b | sed 's/[^,]*, //' | sed 's/%//' | cut -d',' -f1)
+
+last_battery=$(cat "$file")
+echo "$battery" > "$file"
+
+acpi -b | sed 's/Discharging,//; s/Charging,//g; s/Not charging,//g' | awk '{print $3, $4}' | sed 's/,.*//'
+
+if [ "$battery" -eq 10 ] && [ "$last_battery" -eq 11 ]; then
+	notify-send -u critical -a "Battery" "10%"
+fi

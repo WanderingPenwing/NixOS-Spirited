@@ -4,34 +4,51 @@
 separator_block_width=25
 markup=none
 
-[name]
-label=
-command=echo "kamaji"
-interval=once
+#[wifi]
+#label=  
+#command=bash ./wireless_strength
+#interval=2
+
+[minecraft]
+label=  
+command=bash ./minecraft
+interval=10
+
+[jellyfin]
+label=  
+command=bash ./jellyfin
+interval=10
+
+[inernet]
+label=  
+command=bash ./internet_speed
+interval=40
 
 [memory]
 label= 
-command=free -m | awk 'NR==2 {print $3 " Mo"}'
+command=bash ./mem_usage
 interval=5
 
 [cpu]
 label= 
-command=top -b -d1 -n1 | grep -i "Cpu(s)" | awk -F'ni, | id' '{print 100 - $2 "%"}'
+command=bash ./cpu_usage
 interval=5
 
-#volume indicator 
+[temp]
+label= 
+command=echo "$(($(cat /sys/class/thermal/thermal_zone0/temp) / 1000))°C"
+interval=5
+
 [volume]
 label= 
 command=bash ./volume
 interval=1
 
-# Battery indicator
 [battery]
 label= 
-command=acpi -b | sed 's/Discharging,//; s/Charging,//g; s/Not charging,//g' | awk '{print $3, $4}' | sed 's/,.*//'
+command=bash ./battery
 interval=5
 
-# Date Time
 [time]
 command=date +'%H:%M'
 interval=10

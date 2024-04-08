@@ -1,0 +1,48 @@
+alias m="micro"
+alias scrub="~/nixos/scripts/scrub.sh" #to clean the installation
+alias bathstorage="~/nixos/scripts/bathstorage.sh" #to move files to the bathhouse
+alias rebuild="~/nixos/scripts/rebuild.sh"
+alias edit="micro ~/nixos/system/configuration.nix"
+alias lc="fc -nl -1 | tr -d '[:cntrl:]' | sed -e 's/^[ \t]*//' |  xclip -selection clipboard"
+alias tunnel="ssh -i ~/.ssh/github -N -D 9090 -p 3972 bathhouse@penwing.org"
+
+n ()
+{
+    # Block nesting of nnn in subshells
+    [ "${NNNLVL:-0}" -eq 0 ] || {
+        echo "nnn is already running"
+        return
+    }
+
+    # The behaviour is set to cd on quit (nnn checks if NNN_TMPFILE is set)
+    # If NNN_TMPFILE is set to a custom path, it must be exported for nnn to
+    # see. To cd on quit only on ^G, remove the "export" and make sure not to
+    # use a custom path, i.e. set NNN_TMPFILE *exactly* as follows:
+    #      NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+
+    # Unmask ^Q (, ^V etc.) (if required, see `stty -a`) to Quit nnn
+    # stty start undef
+    # stty stop undef
+    # stty lwrap undef
+    # stty lnext undef
+
+    # The command builtin allows one to alias nnn to n, if desired, without
+    # making an infinitely recursive alias
+    command nnn "$@"
+
+    [ ! -f "$NNN_TMPFILE" ] || {
+        . "$NNN_TMPFILE"
+        rm -f -- "$NNN_TMPFILE" > /dev/null
+    }
+}
+
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+. /etc/bash_completion
+fi
+
+bind 'set show-all-if-ambiguous on'
+bind 'TAB:menu-complete'
+
+export STARSHIP_CONFIG=~/nixos/apps/urxvt/starship.toml
+eval "$(starship init bash)"

@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+
+# Define the URL of your Jellyfin server API
+JELLYFIN_API_URL="https://movie.penwing.org"
+
+# Define your API key
+API_KEY=$(cat ~/keys/jellyfin_api)
+
+# Make a GET request to the System Info endpoint with the API key included in the Authorization header
+SESSIONS=$(curl -s -H "X-MediaBrowser-Token: $API_KEY" "$JELLYFIN_API_URL/Sessions")
+
+if [ $# -eq 2 ]; then
+  echo "$SESSIONS"
+fi
+
+if [ "$SESSIONS" = "error code: 1033" ]; then
+	echo " ✘ "
+	exit 0
+fi
+
+# Extract usernames using awk and remove duplicates
+USERNAMES=$(echo "$SESSIONS" | awk -F'"UserName":"' '{for (i=2; i<=NF; i++) {print substr($i, 1, index($i, "\"")-1)}}' | awk '!seen[$0]++')
+
+if [ $# -eq 1 ]; then
+  echo "$USERNAMES"
+fi
+# Count the number of unique usernames
+if [ -z "$USERNAMES" ]; then
+  NUM_USERNAMES=0
+else
+  NUM_USERNAMES=$(echo "$USERNAMES" | wc -l)
+fi
+
+# Print the number of unique usernames
+echo "$NUM_USERNAMES "

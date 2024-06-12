@@ -7,11 +7,11 @@ fi
 if [[ -d "$PWD/$movie" ]]; then
 	for f in "$PWD/$movie"/*
 	do
-		scp -i ~/.ssh/github -P 3972 "$f" bathhouse@penwing.org:/home/bathhouse/downloads/
+		sudo scp -i ~/.ssh/github -P 3972 "$f" bathhouse@penwing.org:/home/bathhouse/downloads/
 	done
     
 elif [[ -f "$PWD/$movie" ]]; then
-	scp -i ~/.ssh/github -P 3972 "$PWD/$movie" bathhouse@penwing.org:/home/bathhouse/downloads/
+	sudo scp -i ~/.ssh/github -P 3972 "$PWD/$movie" bathhouse@penwing.org:/home/bathhouse/downloads/
 else
     echo "$PWD/$movie is not valid"
     exit 1

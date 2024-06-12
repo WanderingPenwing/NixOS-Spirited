@@ -44,5 +44,8 @@ fi
 bind 'set show-all-if-ambiguous on'
 bind 'TAB:menu-complete'
 
+
+export NNN_OPTS="H"
+
 export STARSHIP_CONFIG=~/nixos/apps/urxvt/starship.toml
 eval "$(starship init bash)"

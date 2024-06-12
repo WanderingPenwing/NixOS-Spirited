@@ -4,7 +4,7 @@
   options,
   ...
 }: let
-  where-is-my-sddm-theme = pkgs.callPackage ../apps/sddm/login_theme.nix {};
+  ghibli-sddm-theme = pkgs.libsForQt5.callPackage ../apps/sddm/login_theme.nix {};
   calcifer = pkgs.callPackage ../apps/calcifer/install.nix {};
   urxvtConfig = import ../apps/urxvt/config.nix;
 in {
@@ -43,14 +43,17 @@ in {
     LC_TIME = "fr_FR.UTF-8";
   };
 
-  # Configure keymap in X11
+  services.displayManager = {
+    defaultSession = "none+i3";
+    sddm.enable = true;
+    sddm.package = pkgs.libsForQt5.sddm;
+    sddm.theme = "ghibli-sddm-theme";
+  };
+
   services.xserver = {
     enable = true;
 
     desktopManager.xterm.enable = false;
-    displayManager.defaultSession = "none+i3";
-    displayManager.sddm.enable = true;
-    displayManager.sddm.theme = "where-is-my-sddm-theme";
 
     windowManager.i3 = {
       package = pkgs.i3-gaps;
@@ -58,8 +61,8 @@ in {
       configFile = ../apps/i3/config;
     };
 
-    layout = "fr";
-    xkbVariant = "";
+    xkb.layout = "fr";
+    xkb.variant = "";
   };
 
   # Configure console keymap
@@ -125,6 +128,9 @@ in {
     parted # handle usb partitions
     ntfs3g # special partitions
     jftui # jellyfin
+    zip
+    unzip
+    calc
     # Apps
     rxvt-unicode-unwrapped # my terminal
     ungoogled-chromium
@@ -138,6 +144,9 @@ in {
     vmware-horizon-client
     jellyfin-media-player
     arduino
+    pavucontrol
+    blockbench-electron
+    cinny-desktop # matrix client
     # Appearance
     feh # wallpaper
     yaru-theme
@@ -146,7 +155,7 @@ in {
     i3blocks # status bar
     xborders # outline selected window
     betterlockscreen
-    where-is-my-sddm-theme # custom import
+    ghibli-sddm-theme
   ];
 
   programs.noisetorch.enable = true;

@@ -36,8 +36,8 @@ bindsym $mod+F2 exec "pamixer -d 5 -u"
 bindsym $mod+F3 exec "pamixer -i 5 -u"
 
 # change brightness
-bindsym $mod+F4 exec brightnessctl -d "amdgpu_bl0" set 10%- && notify-send -u normal -a "brightness" "set to $(brightnessctl -d "amdgpu_bl0" get)"
-bindsym $mod+F5 exec brightnessctl -d "amdgpu_bl0" set +10% && notify-send -u normal -a "brightness" "set to $(brightnessctl -d "amdgpu_bl0" get)"
+bindsym $mod+F4 exec brightnessctl -d "amdgpu_bl1" set 10%- && notify-send -u normal -a "brightness" "set to $(brightnessctl -d "amdgpu_bl1" get)"
+bindsym $mod+F5 exec brightnessctl -d "amdgpu_bl1" set +10% && notify-send -u normal -a "brightness" "set to $(brightnessctl -d "amdgpu_bl1" get)"
 
 # mount/unmout usb
 bindsym $mod+F6 exec ~/nixos/scripts/usb_guest.sh
@@ -215,6 +215,7 @@ exec ~/nixos/scripts/susuwatari/launch.sh
 
 for_window [class="Chromium-browser"] move to workspace $ws2
 for_window [class="calcifer"] move to workspace $ws3
+for_window [class="jiji"] move to workspace $ws4
 for_window [class="discord"] move to workspace $ws4
 for_window [class="Jellyfin Media Player"] move to workspace $ws5
 

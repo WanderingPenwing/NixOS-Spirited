@@ -5,6 +5,7 @@ alias rebuild="~/nixos/scripts/rebuild.sh"
 alias edit="micro ~/nixos/system/configuration.nix"
 alias lc="fc -nl -1 | tr -d '[:cntrl:]' | sed -e 's/^[ \t]*//' |  xclip -selection clipboard"
 alias tunnel="ssh -i ~/.ssh/github -N -D 9090 -p 3972 bathhouse@penwing.org"
+alias zipres="~/nixos/scripts/zip_resource_pack.sh"
 
 n ()
 {
@@ -44,8 +45,8 @@ fi
 bind 'set show-all-if-ambiguous on'
 bind 'TAB:menu-complete'
 
-
-export NNN_OPTS="H"
+# for calcifer clipboard
+export RUSTFLAGS=--cfg=web_sys_unstable_apis
 
 export STARSHIP_CONFIG=~/nixos/apps/urxvt/starship.toml
 eval "$(starship init bash)"

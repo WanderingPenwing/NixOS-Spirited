@@ -6,6 +6,7 @@
 }: let
   ghibli-sddm-theme = pkgs.libsForQt5.callPackage ../apps/sddm/login_theme.nix {};
   calcifer = pkgs.callPackage ../apps/calcifer/install.nix {};
+  jiji = pkgs.callPackage ../apps/jiji/install.nix {};
   urxvtConfig = import ../apps/urxvt/config.nix;
 in {
   # Include the results of the hardware scan.
@@ -65,6 +66,9 @@ in {
     xkb.variant = "";
   };
 
+  # vpn
+  services.mullvad-vpn.enable = true;
+
   # Configure console keymap
   console.keyMap = "fr";
 
@@ -122,12 +126,10 @@ in {
     btop # task manager
     ani-cli # watch anime
     micro # text editor
-    ffmpeg # convert multimedia
+    # ffmpeg # convert multimedia
     nnn # file manager
     dunst # send notifications
-    parted # handle usb partitions
-    ntfs3g # special partitions
-    jftui # jellyfin
+    # parted # handle usb partitions
     zip
     unzip
     calc
@@ -138,15 +140,14 @@ in {
     luakit
     gimp
     calcifer
+    jiji
     discord
     mpv # video player
     prismlauncher
-    vmware-horizon-client
     jellyfin-media-player
-    arduino
     pavucontrol
     blockbench-electron
-    cinny-desktop # matrix client
+    torrential
     # Appearance
     feh # wallpaper
     yaru-theme

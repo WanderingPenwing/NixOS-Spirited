@@ -126,7 +126,7 @@ in {
     btop # task manager
     ani-cli # watch anime
     micro # text editor
-    # ffmpeg # convert multimedia
+    ffmpeg # convert multimedia necessary for jellyfin
     nnn # file manager
     dunst # send notifications
     # parted # handle usb partitions

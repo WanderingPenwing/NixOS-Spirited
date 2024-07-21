@@ -54,11 +54,12 @@ read_only = " ro"
 truncation_length = 3
 truncation_symbol = "…/"
 
-# Here is how you can shorten some long paths by text replacement
+# Here is how you can shorten some long paths by text replacement 󰈙/
 [directory.substitutions]
-"Documents" = "󰈙"
-"Downloads" = ""
-"Pictures" = ""
+"Documents" = " 🕮  " 
+"Downloads" = "   "
+"Pictures" = "   "
+"nixos" = " ❆ "
 
 [docker_context]
 symbol = " "

@@ -15,11 +15,11 @@
 }:
 stdenv.mkDerivation rec {
   pname = "jiji";
-  version = "v1.0.1";
+  version = "1.1.0";
 
   src = fetchurl {
-    url = "https://github.com/WanderingPenwing/Jiji/releases/download/${version}/jiji-${version}.tar.gz";
-    hash = "sha256-xng7MDH4uI6hbvvkgzgQHQwiFCiph/NjvkKBhFwQvC8=";
+    url = "https://github.com/WanderingPenwing/Jiji/releases/download/${version}/jiji_v${version}.tar.gz";
+    hash = "sha256-Gjp5kVe8mpNF9KVkEuPItVB8xobb/H1n0G6Uk2mM4dk=";
   };
 
   nativeBuildInputs = [

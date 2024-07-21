@@ -14,12 +14,12 @@
   gtk3-x11,
 }:
 stdenv.mkDerivation rec {
-  pname = "calcifer";
-  version = "1.3";
+  pname = "Calcifer";
+  version = "1.4.1";
 
   src = fetchurl {
-    url = "https://github.com/WanderingPenwing/Calcifer/releases/download/${version}/calcifer-v${version}.tar.gz";
-    hash = "sha256-sgE0TSws3F1V3jhaL/XIjzdsWNMNzZ2dIW1Fmj2ChoY=";
+    url = "https://github.com/WanderingPenwing/Calcifer/releases/download/${version}/calcifer_v${version}.tar.gz";
+    hash = "sha256-27svjp/ju5uF4wNx9HmnTSjAxt6dF/TxjZDGMHwY9xw=";
   };
 
   nativeBuildInputs = [
@@ -54,7 +54,7 @@ stdenv.mkDerivation rec {
   '';
 
   meta = with lib; {
-    description = "My Fiery IDE";
-    homepage = "https://github.com/WanderingPenwing/Calcifer";
+    description = "workflow test";
+    homepage = "https://github.com/WanderingPenwing/flow";
   };
 }

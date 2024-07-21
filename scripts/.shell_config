@@ -4,8 +4,8 @@ alias bathstorage="~/nixos/scripts/bathstorage.sh" #to move files to the bathhou
 alias rebuild="~/nixos/scripts/rebuild.sh"
 alias edit="micro ~/nixos/system/configuration.nix"
 alias lc="fc -nl -1 | tr -d '[:cntrl:]' | sed -e 's/^[ \t]*//' |  xclip -selection clipboard"
-alias tunnel="ssh -i ~/.ssh/github -N -D 9090 -p 3972 bathhouse@penwing.org"
 alias zipres="~/nixos/scripts/zip_resource_pack.sh"
+alias clear="echo -e '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n' && clear"
 
 n ()
 {
@@ -15,21 +15,8 @@ n ()
         return
     }
 
-    # The behaviour is set to cd on quit (nnn checks if NNN_TMPFILE is set)
-    # If NNN_TMPFILE is set to a custom path, it must be exported for nnn to
-    # see. To cd on quit only on ^G, remove the "export" and make sure not to
-    # use a custom path, i.e. set NNN_TMPFILE *exactly* as follows:
-    #      NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
     export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
 
-    # Unmask ^Q (, ^V etc.) (if required, see `stty -a`) to Quit nnn
-    # stty start undef
-    # stty stop undef
-    # stty lwrap undef
-    # stty lnext undef
-
-    # The command builtin allows one to alias nnn to n, if desired, without
-    # making an infinitely recursive alias
     command nnn "$@"
 
     [ ! -f "$NNN_TMPFILE" ] || {
@@ -46,7 +33,7 @@ bind 'set show-all-if-ambiguous on'
 bind 'TAB:menu-complete'
 
 # for calcifer clipboard
-export RUSTFLAGS=--cfg=web_sys_unstable_apis
+# export RUSTFLAGS=--cfg=web_sys_unstable_apis
 
-export STARSHIP_CONFIG=~/nixos/apps/urxvt/starship.toml
+export STARSHIP_CONFIG=~/nixos/apps/starship/config.toml
 eval "$(starship init bash)"

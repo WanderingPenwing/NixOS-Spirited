@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-usage=$(top -b -d1 -n1 | grep -i "Cpu(s)" | awk -F'ni, | id' '{print 100 - $2}')
-
-if [ "$usage" -lt 10 ]; then
-  echo " $usage%"
-else
-  echo "$usage%"
-fi

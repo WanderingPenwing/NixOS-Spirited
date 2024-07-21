@@ -7,13 +7,10 @@
   ghibli-sddm-theme = pkgs.libsForQt5.callPackage ../apps/sddm/login_theme.nix {};
   calcifer = pkgs.callPackage ../apps/calcifer/install.nix {};
   jiji = pkgs.callPackage ../apps/jiji/install.nix {};
-  urxvtConfig = import ../apps/urxvt/config.nix;
+  kodama = pkgs.callPackage ../apps/kodama/install.nix {};
+  pendragon = pkgs.callPackage ../apps/pendragon/install.nix {};
+  turnip = pkgs.callPackage ../apps/turnip/install.nix {};
 in {
-  # Include the results of the hardware scan.
-  imports = [
-    urxvtConfig
-  ];
-
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -45,7 +42,7 @@ in {
   };
 
   services.displayManager = {
-    defaultSession = "none+i3";
+    defaultSession = "none+dwm";
     sddm.enable = true;
     sddm.package = pkgs.libsForQt5.sddm;
     sddm.theme = "ghibli-sddm-theme";
@@ -53,17 +50,24 @@ in {
 
   services.xserver = {
     enable = true;
-
+	
     desktopManager.xterm.enable = false;
 
-    windowManager.i3 = {
-      package = pkgs.i3-gaps;
+    windowManager.dwm = {
+      package = pendragon;
       enable = true;
-      configFile = ../apps/i3/config;
     };
 
     xkb.layout = "fr";
     xkb.variant = "";
+
+    displayManager.sessionCommands = ''
+      # Set wallpaper
+      feh --bg-scale ~/nixos/wallpapers/main.png
+      # start dunst with config
+      ~/nixos/scripts/notif_restart.sh &
+      turnip &
+    '';
   };
 
   # vpn
@@ -120,41 +124,36 @@ in {
     gawk # to format bash output
     starship # shell more pretty
     git # code versioning
-    alejandra # format code
     xclip # clipboard
     xdotool # fake keyboard/mouse
     btop # task manager
-    ani-cli # watch anime
     micro # text editor
     ffmpeg # convert multimedia necessary for jellyfin
     nnn # file manager
     dunst # send notifications
-    # parted # handle usb partitions
     zip
     unzip
-    calc
+    bc # calculator
     # Apps
-    rxvt-unicode-unwrapped # my terminal
+    calcifer # code editor
+    jiji # discord lite
+    kodama # terminal
+    pendragon # windows manager
+    turnip # status bar
     ungoogled-chromium
-    qutebrowser
-    luakit
-    gimp
-    calcifer
-    jiji
+    dmenu
     discord
     mpv # video player
     prismlauncher
     jellyfin-media-player
     pavucontrol
-    blockbench-electron
     torrential
+    seafile-client
     # Appearance
     feh # wallpaper
     yaru-theme
     papirus-icon-theme
     lxappearance
-    i3blocks # status bar
-    xborders # outline selected window
     betterlockscreen
     ghibli-sddm-theme
   ];
@@ -188,6 +187,11 @@ in {
       vsync = true;
       backend = "glx";
       corner-radius = 20;
+      rounded-corners-exclude = [
+        "window_type = 'dock'"  # Exclude windows of type 'dock'
+        "class_g = 'dwm'"       # Or exclude windows with class 'dwm'
+        "class_g = 'dmenu'"      # Exclude windows with class 'dmenu'
+      ];
     };
   };
 

@@ -8,13 +8,12 @@ set -e
 pushd /home/penwing/nixos/ > /dev/null 2>&1
 
 # Early return if no changes were detected
-if git diff --quiet; then
+if git diff --quiet && [ $# -eq 0 ]; then
     echo "No changes detected, exiting."
     popd
     exit 0
 fi
 
-alejandra . &>/dev/null
 # Shows your changes
 git diff -U0
 

@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-usage=$(free -m | awk 'NR==2 {print $3}')
-
-if [ "$usage" -lt 1000 ]; then
-  echo " $usage Mo"
-else
-  echo "$usage Mo"
-fi

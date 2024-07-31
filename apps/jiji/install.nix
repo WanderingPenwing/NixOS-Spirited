@@ -1,50 +1,44 @@
-{
-  stdenv,
-  lib,
-  fetchurl,
-  libxkbcommon,
-  patchelf,
-  autoPatchelfHook,
-  glib,
-  libGL,
-  libGLU,
-  atk,
-  gdk-pixbuf,
-  webkitgtk,
-  gtk3-x11,
-}:
-stdenv.mkDerivation rec {
-  pname = "jiji";
-  version = "1.1.0";
+{ stdenv, lib, fetchFromGitHub, autoPatchelfHook, rustc,
+  libxkbcommon, libGL, libGLU, atk, gdk-pixbuf, webkitgtk, gtk3-x11, glib,
+  libxcb, libXcursor, libXrandr, libXi, pkg-config, xorg, gnome, cargo, rustPlatform }:
 
-  src = fetchurl {
-    url = "https://github.com/WanderingPenwing/Jiji/releases/download/${version}/jiji_v${version}.tar.gz";
-    hash = "sha256-Gjp5kVe8mpNF9KVkEuPItVB8xobb/H1n0G6Uk2mM4dk=";
+rustPlatform.buildRustPackage rec {
+  pname = "jiji";
+  version = "1.1.1";
+
+  src = fetchFromGitHub {
+    owner = "WanderingPenwing";
+    repo = "Jiji";
+    rev = "${version}";
+    sha256 = "sha256-ml7jYqdPvnUlSFBoB2KUi37CHXIZCLnHk5ofYslqAKk=";
+  };
+
+  cargoLock = {
+    lockFile = "${src}/Cargo.lock"; 
   };
 
   nativeBuildInputs = [
     autoPatchelfHook
-    glib
-    libGL
-    libGLU
-    atk
-    gdk-pixbuf
-    webkitgtk
-    gtk3-x11
+    pkg-config
   ];
 
   buildInputs = [
+    libxcb
+    libXcursor
+    libXrandr
+    libXi
+    rustc
+    cargo
+    atk
+    gdk-pixbuf
+    webkitgtk
+    glib
+    libGL
+    libGLU
     libxkbcommon
-    patchelf
+    gtk3-x11
+    xorg.libX11
   ];
-
-  sourceRoot = ".";
-
-  installPhase = ''
-    runHook preInstall
-    install -m755 -D jiji $out/bin/jiji
-    runHook postInstall
-  '';
 
   # lib.optionalString (!stdenv.isDarwin)
   postFixup = ''
@@ -54,7 +48,9 @@ stdenv.mkDerivation rec {
   '';
 
   meta = with lib; {
-    description = "My Light Messenger";
+    description = "light discord alternative";
     homepage = "https://github.com/WanderingPenwing/Jiji";
+    license = licenses.mit;
+    platforms = platforms.linux;
   };
 }

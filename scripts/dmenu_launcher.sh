@@ -1,12 +1,22 @@
 #!/usr/bin/env bash
 
-APPS=("cancel" "seafile-applet" "discord" "prismlauncher" "noisetorch" "pavucontrol" "jiji" "calcifer" "gimp" "blockbench-electron" "jellyfinmediaplayer" "poweroff" "reboot")
+APPS=("" "update" "seafile-applet" "seafile-kill" "savoia" "discord" "noisetorch" "pavucontrol" "jiji" "calcifer" "pinta" "torrential" "poweroff" "reboot")
 
 # Join the array elements with newlines
 APPS_STRING=$(printf "%s\n" "${APPS[@]}")
 
 # Pass the filtered list to dmenu
-SELECTED_APP=$(echo -e "$APPS_STRING" | dmenu -i -fn 'Mononoki Nerd Font:size=16' -nb "#222222" -nf "#CCCCCC" -sb "#3fb36d" -sf "#eeeeee")
+SELECTED_APP=$(echo -e "$APPS_STRING" | marukuru )
+
+if [ "$SELECTED_APP" == "seafile-kill" ]; then
+	 ~/nixos/scripts/seafile_kill.sh &
+	 exit 0
+fi
+
+if [ "$SELECTED_APP" == "update" ]; then
+	 ~/nixos/scripts/update.sh &
+	 exit 0
+fi
 
 # Run the selected application
 if [ "$SELECTED_APP" != "cancel" ] && [ -n "$SELECTED_APP" ]; then

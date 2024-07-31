@@ -4,12 +4,16 @@
   options,
   ...
 }: let
-  ghibli-sddm-theme = pkgs.libsForQt5.callPackage ../apps/sddm/login_theme.nix {};
   calcifer = pkgs.callPackage ../apps/calcifer/install.nix {};
+  ingary = pkgs.libsForQt5.callPackage ../apps/ingary/install.nix {};
   jiji = pkgs.callPackage ../apps/jiji/install.nix {};
   kodama = pkgs.callPackage ../apps/kodama/install.nix {};
+  marukuru = pkgs.callPackage ../apps/marukuru/install.nix {};
   pendragon = pkgs.callPackage ../apps/pendragon/install.nix {};
+  savoia = pkgs.callPackage ../apps/savoia/install.nix {};
+  susuwatari = pkgs.libsForQt5.callPackage ../apps/susuwatari/install.nix {};
   turnip = pkgs.callPackage ../apps/turnip/install.nix {};
+  zeniba = pkgs.callPackage ../apps/zeniba/install.nix {};
 in {
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -18,9 +22,8 @@ in {
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Enable network manager applet
-  programs.nm-applet.enable = true;
-
+  networking.nameservers = ["192.168.1.42" "8.8.8.8" "8.8.4.4" ];
+  
   # Set your time zone.
   time.timeZone = "Europe/Paris";
 
@@ -45,7 +48,7 @@ in {
     defaultSession = "none+dwm";
     sddm.enable = true;
     sddm.package = pkgs.libsForQt5.sddm;
-    sddm.theme = "ghibli-sddm-theme";
+    sddm.theme = "ingary";
   };
 
   services.xserver = {
@@ -66,7 +69,10 @@ in {
       feh --bg-scale ~/nixos/wallpapers/main.png
       # start dunst with config
       ~/nixos/scripts/notif_restart.sh &
+      # start status bar
       turnip &
+      # start clipboard
+      susuwatari &
     '';
   };
 
@@ -104,7 +110,7 @@ in {
   users.users.penwing = {
     isNormalUser = true;
     description = "Penwing";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "input" "plugdev"];
   };
 
   # Allow unfree packages
@@ -114,51 +120,56 @@ in {
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     # Libs
-    jdk21
     libnotify
     # CLIs
-    acpi # battery status
     pamixer # sound settings
     brightnessctl # brightness settings
     maim # screenshot
-    gawk # to format bash output
     starship # shell more pretty
     git # code versioning
     xclip # clipboard
-    xdotool # fake keyboard/mouse
-    btop # task manager
+    gotop # task manager
     micro # text editor
-    ffmpeg # convert multimedia necessary for jellyfin
     nnn # file manager
     dunst # send notifications
-    zip
-    unzip
     bc # calculator
-    # Apps
+    # Custom Apps
     calcifer # code editor
+    ingary # sddm theme
     jiji # discord lite
     kodama # terminal
+    marukuru # app menu
     pendragon # windows manager
-    turnip # status bar
+    savoia # browser
+   	susuwatari # clipboard
+   	turnip # status bar
+   	zeniba # image viewer
+   	# Other Apps
+   	quickemu
     ungoogled-chromium
-    dmenu
+    surf
     discord
     mpv # video player
-    prismlauncher
-    jellyfin-media-player
-    pavucontrol
     torrential
+    pinta
     seafile-client
     # Appearance
     feh # wallpaper
     yaru-theme
     papirus-icon-theme
     lxappearance
-    betterlockscreen
-    ghibli-sddm-theme
   ];
 
   programs.noisetorch.enable = true;
+
+  xdg.mime.defaultApplications = {
+  	"image/png" = "zeniba.desktop";
+  	"image/jpeg" = "zeniba.desktop";
+  	"image/jpg" = "zeniba.desktop";
+  	"image/webp" = "zeniba.desktop";
+  	"image/gif" = "zeniba.desktop";
+  	"image/svg+xml" = "zeniba.desktop";
+  };
 
   #   programs.steam = {
   #     enable = true;
@@ -177,8 +188,9 @@ in {
     font-awesome
     powerline-fonts
     powerline-symbols
-    (nerdfonts.override {fonts = ["Hermit" "FiraCode" "Mononoki" "ComicShannsMono"];})
+    (nerdfonts.override {fonts = ["Hermit" "FiraCode" "Mononoki"];})
   ];
+
 
   services.picom = {
     enable = true;
@@ -189,15 +201,15 @@ in {
       corner-radius = 20;
       rounded-corners-exclude = [
         "window_type = 'dock'"  # Exclude windows of type 'dock'
-        "class_g = 'dwm'"       # Or exclude windows with class 'dwm'
-        "class_g = 'dmenu'"      # Exclude windows with class 'dmenu'
+        "class_g = 'dwm'"       # Or exclude windows with class 'dwm' 
+        "class_g = 'dmenu'"
       ];
     };
   };
 
   environment.interactiveShellInit = ''
-    if [ -f $HOME/nixos/scripts/.shell_config ]; then
-        . $HOME/nixos/scripts/.shell_config
+    if [ -f $HOME/nixos/scripts/shell_config ]; then
+        . $HOME/nixos/scripts/shell_config
     else
         echo "error shell loading config"
     fi

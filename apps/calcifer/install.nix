@@ -1,60 +1,53 @@
-{
-  stdenv,
-  lib,
-  fetchurl,
-  libxkbcommon,
-  patchelf,
-  autoPatchelfHook,
-  glib,
-  libGL,
-  libGLU,
-  atk,
-  gdk-pixbuf,
-  webkitgtk,
-  gtk3-x11,
-}:
-stdenv.mkDerivation rec {
-  pname = "Calcifer";
-  version = "1.4.1";
+{ stdenv, lib, fetchFromGitHub, autoPatchelfHook,
+  libxkbcommon, libGL, libGLU, atk, gdk-pixbuf, webkitgtk, gtk3-x11, glib,
+  libxcb, libXcursor, libXrandr, libXi, pkg-config, xorg, rustPlatform }:
 
-  src = fetchurl {
-    url = "https://github.com/WanderingPenwing/Calcifer/releases/download/${version}/calcifer_v${version}.tar.gz";
-    hash = "sha256-27svjp/ju5uF4wNx9HmnTSjAxt6dF/TxjZDGMHwY9xw=";
+rustPlatform.buildRustPackage rec {
+  pname = "calcifer";
+  version = "1.4.2";
+
+  src = fetchFromGitHub {
+    owner = "WanderingPenwing";
+    repo = "Calcifer";
+    rev = "${version}";
+    sha256 = "sha256-PFyu+8+GceoxB8VvdvImw6IbkaTUshCpcp04ABTgE1g=";
+  };
+
+  cargoLock = {
+    lockFile = "${src}/Cargo.lock"; 
   };
 
   nativeBuildInputs = [
     autoPatchelfHook
-    glib
-    libGL
-    libGLU
-    atk
-    gdk-pixbuf
-    webkitgtk
-    gtk3-x11
+    pkg-config
   ];
 
   buildInputs = [
+    libxcb
+    libXcursor
+    libXrandr
+    libXi
+    atk
+    gdk-pixbuf
+    webkitgtk
+    glib
+    libGL
+    libGLU
     libxkbcommon
-    patchelf
+    gtk3-x11
+    xorg.libX11
   ];
 
-  sourceRoot = ".";
-
-  installPhase = ''
-    runHook preInstall
-    install -m755 -D calcifer $out/bin/calcifer
-    runHook postInstall
-  '';
-
-  # lib.optionalString (!stdenv.isDarwin)
   postFixup = ''
-    patchelf --add-needed ${libxkbcommon}/lib/libxkbcommon-x11.so  $out/bin/calcifer
-    patchelf --add-needed ${libGL}/lib/libGL.so  $out/bin/calcifer
-    patchelf --add-needed ${libGLU}/lib/libGLU.so  $out/bin/calcifer
+    patchelf --add-needed ${libxkbcommon}/lib/libxkbcommon-x11.so $out/bin/calcifer
+    patchelf --add-needed ${libGL}/lib/libGL.so $out/bin/calcifer
+    patchelf --add-needed ${libGLU}/lib/libGLU.so $out/bin/calcifer
   '';
 
   meta = with lib; {
-    description = "workflow test";
-    homepage = "https://github.com/WanderingPenwing/flow";
+    description = "code editor";
+    homepage = "https://github.com/WanderingPenwing/Calcifer";
+    license = licenses.mit;
+    platforms = platforms.linux;
   };
 }

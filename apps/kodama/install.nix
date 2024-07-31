@@ -1,12 +1,14 @@
-{ stdenv, lib, fetchurl, autoPatchelfHook, patchelf, xorg, gcc, gnumake, pkg-config }:
+{ stdenv, lib, fetchFromGitHub, autoPatchelfHook, xorg, gcc, gnumake, pkg-config }:
 
 stdenv.mkDerivation rec {
   pname = "kodama";
-  version = "1.1.1";
+  version = "1.1.2";
 
-  src = fetchurl {
-    url = "https://github.com/WanderingPenwing/Kodama/archive/refs/tags/${version}.tar.gz";
-    hash = "sha256-y6xyR6rkCl3WieKCgkys99AEdDW0LQvkbN8XK6T4HXQ="; # Replace with the correct hash for the version
+  src = fetchFromGitHub {
+    owner = "WanderingPenwing";
+    repo = "Kodama";
+    rev = "${version}";
+    sha256 = "sha256-TOcoyb7n7MI/+oalNkcrUVPLJlrtvCh7e34Pv0KltBs=";
   };
 
   nativeBuildInputs = [
@@ -27,7 +29,7 @@ stdenv.mkDerivation rec {
     xorg.libXmu
   ];
 
-  sourceRoot = "Kodama-${version}";
+  sourceRoot = "source";
   
   buildPhase = ''
     make

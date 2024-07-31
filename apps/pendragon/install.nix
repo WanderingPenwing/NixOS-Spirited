@@ -1,12 +1,14 @@
-{ stdenv, lib, fetchurl, autoPatchelfHook, patchelf, xorg, gcc, gnumake, pkg-config }:
+{ stdenv, lib, fetchFromGitHub, autoPatchelfHook, patchelf, xorg, gcc, gnumake, pkg-config }:
 
 stdenv.mkDerivation rec {
   pname = "dwm";
-  version = "1.6.1";
+  version = "1.9.2";
 
-  src = fetchurl {
-    url = "https://github.com/WanderingPenwing/Pendragon/archive/refs/tags/${version}.tar.gz";
-    hash = "sha256-HvnlaoNPmJ24pKaZgu+CvlKmBXBQBEgo2UP6d8hRfD4="; # Replace with the correct hash for the version
+  src = fetchFromGitHub {
+    owner = "WanderingPenwing";
+    repo = "Pendragon";
+    rev = "${version}";
+    sha256 = "sha256-M6y0CXRI6RdlSDcKXRbUOGN+XIjo+rADHG9hFwQIcO0=";
   };
 
   nativeBuildInputs = [
@@ -27,7 +29,7 @@ stdenv.mkDerivation rec {
     xorg.libXmu
   ];
 
-  sourceRoot = "Pendragon-${version}";
+  sourceRoot = "source";
 
   buildPhase = ''
     make
@@ -36,16 +38,6 @@ stdenv.mkDerivation rec {
   installPhase = ''
     mkdir -p $out/bin
     cp dwm $out/bin/dwm
-
-    # Create the session file
-    mkdir -p $out/share/xsessions
-    cat > $out/share/xsessions/dwm.desktop << EOF
-    [Desktop Entry]
-    Name=Pendragon
-    Comment=Pendragon Window Manager
-    Exec=$out/bin/dwm
-    Type=Application
-    EOF
   '';
 
   postFixup = ''
@@ -54,7 +46,7 @@ stdenv.mkDerivation rec {
   '';
 
   meta = with lib; {
-    description = "pendragon - dynamic windows manager";
+    description = "dynamic windows manager";
     homepage = "https://dwm.suckless.org/";
     license = licenses.mit;
     platforms = platforms.linux;

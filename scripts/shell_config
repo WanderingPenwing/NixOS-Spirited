@@ -1,0 +1,41 @@
+alias m="micro"
+alias scrub="~/nixos/scripts/scrub.sh" #to clean the installation
+alias bathstorage="~/nixos/scripts/bathstorage.sh" #to move files to the bathhouse
+alias rebuild="~/nixos/scripts/rebuild.sh"
+alias edit="micro ~/nixos/system/configuration.nix"
+alias lc="fc -nl -1 | tr -d '[:cntrl:]' | sed -e 's/^[ \t]*//' |  xclip -selection clipboard"
+alias zipres="~/nixos/scripts/zip_resource_pack.sh"
+alias clear="echo -e '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n' && clear"
+alias ct="~/nixos/scripts/clone_terminal.sh"
+alias seafile="~/nixos/scripts/launch_seafile.sh"
+
+n ()
+{
+    # Block nesting of nnn in subshells
+    [ "${NNNLVL:-0}" -eq 0 ] || {
+        echo "nnn is already running"
+        return
+    }
+
+    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+
+    command nnn "$@"
+
+    [ ! -f "$NNN_TMPFILE" ] || {
+        . "$NNN_TMPFILE"
+        rm -f -- "$NNN_TMPFILE" > /dev/null
+    }
+}
+
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+. /etc/bash_completion
+fi
+
+bind 'set show-all-if-ambiguous on'
+bind 'TAB:menu-complete'
+
+# for calcifer clipboard
+# export RUSTFLAGS=--cfg=web_sys_unstable_apis
+
+export STARSHIP_CONFIG=~/nixos/apps/starship/config.toml
+eval "$(starship init bash)"

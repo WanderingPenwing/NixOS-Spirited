@@ -1,34 +1,28 @@
-{
-  stdenv,
-  lib,
-  fetchurl,
-  autoPatchelfHook,
-  glib,
-}:
-stdenv.mkDerivation rec {
-  pname = "Turnip";
+{ stdenv, lib, fetchFromGitHub, glib, rustPlatform }:
+
+rustPlatform.buildRustPackage rec {
+  pname = "turnip";
   version = "1.1";
 
-  src = fetchurl {
-    url = "https://github.com/WanderingPenwing/Turnip/releases/download/${version}/turnip_v${version}.tar.gz";
-    hash = "sha256-RpdI3WvhU3KrHqXqZQOCXui9wQpDZFEEMLNQu2UX+yc=";
+  src = fetchFromGitHub {
+    owner = "WanderingPenwing";
+    repo = "Turnip";
+    rev = "${version}";
+    sha256 = "sha256-Dg+RZXkcgvH4txcWOW6e7Kdb5VJgwZhWil0a3Z7HhCM=";
+  };
+
+  cargoLock = {
+    lockFile = "${src}/Cargo.lock"; 
   };
 
   nativeBuildInputs = [
-    autoPatchelfHook
     glib
   ];
-
-  sourceRoot = ".";
-
-  installPhase = ''
-    runHook preInstall
-    install -m755 -D turnip $out/bin/turnip
-    runHook postInstall
-  '';
 
   meta = with lib; {
     description = "my status bar";
     homepage = "https://github.com/WanderingPenwing/Turnip";
+    license = licenses.mit;
+    platforms = platforms.linux;
   };
 }

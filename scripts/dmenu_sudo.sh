@@ -4,7 +4,7 @@ msg="pwd"
 
 while true; do
     # Prompt for the password using dmenu
-    password=$(echo "" | dmenu -p "$msg :" -fn 'Hack Regular-16' -nb "#222222" -nf "#222222" -sb "#3FB36D" -sf "#FFFFFF")
+    password=$(marukuru -P -p "$msg :")
     # Check if the password is empty
     if [ -z "$password" ]; then
         echo "No password provided."

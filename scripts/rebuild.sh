@@ -7,15 +7,23 @@ set -e
 # cd to your config dir
 pushd /home/penwing/nixos/ > /dev/null 2>&1
 
-# Early return if no changes were detected
-if git diff --quiet && [ $# -eq 0 ]; then
-    echo "No changes detected, exiting."
-    popd
-    exit 0
+if [ ! $# -eq 0 ]; then
+	echo "# Kamaji *" > README.md
+
+	git add .
+	git commit -m "NixOS rebuild: forced try"
+
+	echo "# Kamaji" > README.md
+else
+	git diff -U0
+	
+	echo "# Kamaji" > README.md
+
+	git add .
+	git commit -m "NixOS rebuild: try"
 fi
 
-# Shows your changes
-git diff -U0
+
 
 echo ""
 computer_name=$(cat /home/penwing/nixos/computer_name)
@@ -32,7 +40,21 @@ echo ""
 echo "Getting generation..."
 current=$(nixos-rebuild list-generations 2>/dev/null | grep current | awk '{print $1}')
 
-# Add all changes
+cat <<EOF > README.md
+# Kamaji
+
+This is my config for nix os, written in the kamaji.nix (name of my computer)
+
+# Usage
+
+copy (and modify if needed) the etc-configuration.nix to /etc/nixos/configuration.nix
+
+then use the rebuild script to rebuild the nixos, and if successful it will commit,
+with the number of the generation.
+  
+Generation: $current
+EOF
+
 git add .
 
 # Commit all changes with the generation metadata

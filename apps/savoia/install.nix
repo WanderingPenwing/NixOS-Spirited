@@ -1,41 +1,34 @@
-{ stdenv, lib, fetchFromGitHub, autoPatchelfHook, patchelf, xorg, gcc, glib, gnumake, pkg-config, gst_all_1, libxcrypt, fontconfig, freetype, imlib2, webkitgtk, glib-networking }:
-
+{ lib, stdenv, fetchFromGitHub
+, pkg-config, wrapGAppsHook3
+, glib, gcr, glib-networking, gsettings-desktop-schemas, gtk3, libsoup, webkitgtk
+, xorg, findutils, gnused, coreutils, gst_all_1
+}:
 stdenv.mkDerivation rec {
   pname = "savoia";
-  version = "1.1.0";
+  version = "1.3.0";
 
   src = fetchFromGitHub {
     owner = "WanderingPenwing";
     repo = "Savoia";
     rev = "${version}";
-    sha256 = "sha256-974TViU+Wso8KaI4RuoFzqaIoZ9pCfhPt1CPy27nyRY=";
+    sha256 = "sha256-Fl4BisYLyHhwBimreTCA+gGwNgsY5/auOIN78uzRGRQ=";
   };
 
-  nativeBuildInputs = [
-    autoPatchelfHook
-    gnumake
-    gcc
-    pkg-config
-  ];
-
+  nativeBuildInputs = [ pkg-config wrapGAppsHook3 ];
   buildInputs = [
     glib
-    xorg.libX11
-    xorg.libXft
-    xorg.libXrandr
-    xorg.libXinerama
-    xorg.libXext
-    libxcrypt
-    fontconfig
-    freetype
-    imlib2
-    webkitgtk
     glib-networking
-    gst_all_1.gstreamer
-    gst_all_1.gst-plugins-base
-    gst_all_1.gst-plugins-good
-    gst_all_1.gst-plugins-bad
-  ];
+    gsettings-desktop-schemas
+    gtk3
+    libsoup
+    webkitgtk
+  ] ++ (with gst_all_1; [
+    # Audio & video support for webkitgtk WebView
+    gstreamer
+    gst-plugins-base
+    gst-plugins-good
+    gst-plugins-bad
+  ]);
 
   sourceRoot = "source";
 
@@ -45,20 +38,23 @@ stdenv.mkDerivation rec {
 
   installPhase = ''
     mkdir -p $out/bin
-    cp surf $out/bin/savoia-core
-    # Create a wrapper script
-    cat > $out/bin/savoia <<EOF
-    #!/usr/bin/env bash
-    export GIO_EXTRA_MODULES=${glib-networking}/lib/gio/modules
-    exec $out/bin/savoia-core "\$@"
-    EOF
-    chmod +x $out/bin/savoia
+    cp surf $out/bin/savoia
+  '';
+  
+    # Add run-time dependencies to PATH. Append them to PATH so the user can
+    # override the dependencies with their own PATH.
+  preFixup = let
+    depsPath = lib.makeBinPath [ xorg.xprop findutils gnused coreutils ];
+  in ''
+    gappsWrapperArgs+=(
+      --suffix PATH : ${depsPath}
+    )
   '';
 
-  postFixup = ''
-    patchelf --add-needed ${xorg.libX11}/lib/libX11.so $out/bin/savoia-core
-    patchelf --add-needed ${xorg.libXft}/lib/libXft.so $out/bin/savoia-core
-  '';
+  # postFixup = ''
+  #   patchelf --add-needed ${xorg.libX11}/lib/libX11.so $out/bin/savoia
+  #   patchelf --add-needed ${xorg.libXft}/lib/libXft.so $out/bin/savoia
+  # '';
 
   meta = with lib; {
     description = "Savoia - browser";

@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-kodama -e gotop 
+kodama -e sh -c "btm -C $HOME/nixos/apps/bottom/full.toml" &

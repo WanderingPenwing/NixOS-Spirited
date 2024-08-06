@@ -1,0 +1,12 @@
+https://github.com/WanderingPenwing?tab=repositories
+https://search.nixos.org/packages?channel=24.05
+https://fmhy.pages.dev/videopiracyguide
+https://browserbench.org/Speedometer3.0
+
+
+sudo parted /dev/sda mkpart primary ntfs 2048s 100%                                                     # format usb
+quickemu --vm debian-12.6.0-xfce.conf --display spice                                                   # virual linux
+nmcli device wifi connect Le\ Ninternet password XcTsS9mnz2ePwE7dps
+sudo quark -p 80 -d ~/repos/igloo                                                                       # http server
+rsync -rvP /media/storage/ admin@192.168.1.28:/var/services/homes/admin                                 # rsync example
+xset dpms force off                                                                                     # screen off

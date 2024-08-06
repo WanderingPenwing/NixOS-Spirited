@@ -1,14 +1,14 @@
-{ stdenv, lib, fetchFromGitHub, autoPatchelfHook, patchelf, xorg, gcc, gnumake, pkg-config }:
+{ stdenv, lib, fetchFromGitHub, autoPatchelfHook, patchelf, xorg, gcc, gnumake, pkg-config, fontconfig, freetype, imlib2, libexif }:
 
 stdenv.mkDerivation rec {
   pname = "dwm";
-  version = "1.9.2";
+  version = "1.9.4a";
 
   src = fetchFromGitHub {
     owner = "WanderingPenwing";
     repo = "Pendragon";
     rev = "${version}";
-    sha256 = "sha256-M6y0CXRI6RdlSDcKXRbUOGN+XIjo+rADHG9hFwQIcO0=";
+    sha256 = "sha256-Eab18WsY6xjcT+41/SkqKEV+yAqBSXDUrUpeBBeHOT0=";
   };
 
   nativeBuildInputs = [
@@ -21,12 +21,12 @@ stdenv.mkDerivation rec {
   buildInputs = [
     xorg.libX11
     xorg.libXft
-    xorg.libXcursor
-    xorg.libXrandr
     xorg.libXinerama
     xorg.libXext
-    xorg.libXpm
-    xorg.libXmu
+    fontconfig
+    freetype
+    imlib2
+    libexif
   ];
 
   sourceRoot = "source";

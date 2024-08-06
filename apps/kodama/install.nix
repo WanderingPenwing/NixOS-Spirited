@@ -2,13 +2,13 @@
 
 stdenv.mkDerivation rec {
   pname = "kodama";
-  version = "1.1.2";
+  version = "1.2.0";
 
   src = fetchFromGitHub {
     owner = "WanderingPenwing";
     repo = "Kodama";
     rev = "${version}";
-    sha256 = "sha256-TOcoyb7n7MI/+oalNkcrUVPLJlrtvCh7e34Pv0KltBs=";
+    sha256 = "sha256-Gb8T3+zRQrqpWvuRCD1e9wcG6YzXzghQzPR5IuKhcgg=";
   };
 
   nativeBuildInputs = [

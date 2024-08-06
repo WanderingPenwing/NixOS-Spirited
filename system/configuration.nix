@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  pkgs-unstable,
   options,
   ...
 }: let
@@ -23,6 +24,7 @@ in {
   networking.networkmanager.enable = true;
 
   networking.nameservers = ["192.168.1.42" "8.8.8.8" "8.8.4.4" ];
+  
   
   # Set your time zone.
   time.timeZone = "Europe/Paris";
@@ -76,8 +78,9 @@ in {
     '';
   };
 
-  # vpn
-  services.mullvad-vpn.enable = true;
+  
+
+  #services.mullvad-vpn.enable = true;
 
   # Configure console keymap
   console.keyMap = "fr";
@@ -118,7 +121,7 @@ in {
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = (with pkgs; [
     # Libs
     libnotify
     # CLIs
@@ -128,9 +131,9 @@ in {
     starship # shell more pretty
     git # code versioning
     xclip # clipboard
-    gotop # task manager
+    xdotool # add keyboard automation
+    bottom # task manager
     micro # text editor
-    nnn # file manager
     dunst # send notifications
     bc # calculator
     # Custom Apps
@@ -145,20 +148,23 @@ in {
    	turnip # status bar
    	zeniba # image viewer
    	# Other Apps
+   	discord
    	quickemu
-    ungoogled-chromium
     surf
-    discord
     mpv # video player
     torrential
-    pinta
+	gimp
     seafile-client
+    zathura
     # Appearance
     feh # wallpaper
     yaru-theme
     papirus-icon-theme
     lxappearance
-  ];
+  ]) ++ (with pkgs-unstable; [
+    yazi
+    ungoogled-chromium
+  ]);
 
   programs.noisetorch.enable = true;
 

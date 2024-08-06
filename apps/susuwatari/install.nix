@@ -2,13 +2,13 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "susuwatari";
-  version = "1.1.0";
+  version = "1.2.1";
 
   src = fetchFromGitHub {
     owner = "WanderingPenwing";
     repo = "Susuwatari";
     rev = "${version}";
-    sha256 = "sha256-4Z41ogZlasw4LkZmWxdcNwcloyDaMo+To+VTYdyaCLw=";
+    sha256 = "sha256-9z6pG/leUAqzTpsNjT+b1ZfW5cAjYouRtqlZI+EognE=";
   };
 
   cargoLock = {

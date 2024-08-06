@@ -2,24 +2,31 @@
   description = "My Ghibli themed nixos config";
 
   inputs = {
-    # NixOS official package source, using the nixos-23.11 branch here
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
-  outputs = {
+  outputs = inputs@{
     self,
     nixpkgs,
+    nixpkgs-unstable,
   }: {
     nixosConfigurations = {
       kamaji = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        
+        specialArgs = {
+		  pkgs-unstable = import nixpkgs-unstable {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
+        };
+        
         modules = [
           ./system/kamaji.nix
           ./system/configuration.nix
         ];
       };
-
-      # add othe config here
     };
   };
 }

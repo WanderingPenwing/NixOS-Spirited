@@ -1,30 +1,37 @@
+scripts="$HOME/nixos/scripts"
+
+alias scrub="$scripts/scrub.sh" #to clean the installation
+alias bath="$scripts/bathstorage.sh" #to move files to the bathhouse
+alias zipres="$scripts/zip_resource_pack.sh"
+alias ct="$scripts/clone_terminal.sh"
+alias seafil="$scripts/launch_seafile.sh"
+alias nsp="nix-shell -p"
+alias rebuild="$scripts/rebuild.sh"
+alias copy="xclip -i -selection clipboard"
+
 alias m="micro"
-alias scrub="~/nixos/scripts/scrub.sh" #to clean the installation
-alias bathstorage="~/nixos/scripts/bathstorage.sh" #to move files to the bathhouse
-alias rebuild="~/nixos/scripts/rebuild.sh"
-alias edit="micro ~/nixos/system/configuration.nix"
+alias edit="micro $HOME/nixos/system/configuration.nix"
 alias lc="fc -nl -1 | tr -d '[:cntrl:]' | sed -e 's/^[ \t]*//' |  xclip -selection clipboard"
-alias zipres="~/nixos/scripts/zip_resource_pack.sh"
 alias clear="echo -e '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n' && clear"
-alias ct="~/nixos/scripts/clone_terminal.sh"
-alias seafile="~/nixos/scripts/launch_seafile.sh"
 
-n ()
-{
-    # Block nesting of nnn in subshells
-    [ "${NNNLVL:-0}" -eq 0 ] || {
-        echo "nnn is already running"
-        return
-    }
+alias bd="btm -C $HOME/nixos/apps/bottom/debug.toml"
+alias bf="btm -C $HOME/nixos/apps/bottom/full.toml"
 
-    export NNN_TMPFILE="${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.lastd"
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
 
-    command nnn "$@"
-
-    [ ! -f "$NNN_TMPFILE" ] || {
-        . "$NNN_TMPFILE"
-        rm -f -- "$NNN_TMPFILE" > /dev/null
-    }
+nspr() {
+    if [ -z "$1" ]; then
+        echo "Usage: nspr <package> [command]"
+        return 1
+    fi
+    nix-shell -p "$1" --run "$1"
 }
 
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
@@ -36,6 +43,7 @@ bind 'TAB:menu-complete'
 
 # for calcifer clipboard
 # export RUSTFLAGS=--cfg=web_sys_unstable_apis
+export YAZI_CONFIG_HOME=$HOME/nixos/apps/yazi
 
-export STARSHIP_CONFIG=~/nixos/apps/starship/config.toml
+export STARSHIP_CONFIG=$HOME/nixos/apps/starship/config.toml
 eval "$(starship init bash)"

@@ -23,6 +23,10 @@ in {
   imports = [
     ./kamaji-hardware.nix
   ];
+  
+  # Bootloader.
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = hostname;
   networking.nameservers = ["192.168.1.42" "8.8.8.8" "8.8.4.4" ];

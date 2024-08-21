@@ -23,8 +23,24 @@
         };
         
         modules = [
-          ./system/kamaji.nix
           ./system/configuration.nix
+          ./system/kamaji.nix
+        ];
+      };
+      
+      boiler = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";      
+        modules = [
+          ./system/configuration.nix
+          ./system/boiler.nix
+        ];
+      };
+      
+      bathhouse = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";      
+        modules = [
+          ./system/configuration.nix
+          ./system/bathhouse.nix
         ];
       };
     };

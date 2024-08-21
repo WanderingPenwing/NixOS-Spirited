@@ -8,10 +8,10 @@
   options,
   ...
 }: let
-  hostname = "boiler"; # to alllow per-machine config
+  hostname = "bathhouse"; # to alllow per-machine config
 in {
   imports = [
-    ./boiler-hardware.nix
+    ./bathhouse-hardware.nix
   ];
 
   networking.hostName = hostname;

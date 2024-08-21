@@ -23,6 +23,16 @@ in {
 
   services.openssh.enable = true;
   services.openssh.settings.PasswordAuthentication = true;
+
+  systemd.services.custom-acpi-unbind = {
+    description = "Unbind ACPI button driver at startup";
+    after = [ "network-online.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.bash}/bin/bash -c 'echo PNP0C0D:00 > /sys/bus/acpi/drivers/button/unbind'";
+      RemainAfterExit = true;
+    };
+  };
   
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

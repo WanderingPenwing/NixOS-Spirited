@@ -16,6 +16,9 @@ in {
 
   networking.hostName = hostname;
 
+  services.openssh.enable = true;
+  services.openssh.passwordAuthentication = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 

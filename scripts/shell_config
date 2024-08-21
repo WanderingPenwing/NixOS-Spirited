@@ -5,6 +5,7 @@ alias bath="$scripts/bathstorage.sh" #to move files to the bathhouse
 alias zipres="$scripts/zip_resource_pack.sh"
 alias ct="$scripts/clone_terminal.sh"
 alias seafil="$scripts/launch_seafile.sh"
+alias fetch="$scripts/fetch_config.sh"
 alias nsp="nix-shell -p"
 alias rebuild="$scripts/rebuild.sh"
 alias copy="xclip -i -selection clipboard"

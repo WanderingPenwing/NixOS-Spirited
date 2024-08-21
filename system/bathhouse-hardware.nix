@@ -17,6 +17,11 @@
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
+  boot.loader.grub.enable = true;
+  boot.loader.grub.version = 2;
+  boot.loader.grub.device = "/dev/sda"; # Adjust this to match your boot disk
+  boot.loader.grub.useOSProber = true; # If you have multiple operating systems
+  
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/2c6c0a4a-4caa-49fe-b70f-4aa5b7fef24f";
     fsType = "ext4";

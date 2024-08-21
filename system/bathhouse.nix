@@ -29,12 +29,17 @@ in {
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  virtualisation.docker.enable = true;
+
+  services.nginx.enable = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = (with pkgs; [
   
     # CLIs
     bc # calculator
+    
   ]);
 
   # Before changing this value read the documentation for this option

@@ -1,17 +1,13 @@
 scripts="$HOME/nixos/scripts"
 
 alias scrub="$scripts/scrub.sh" #to clean the installation
-alias bath="$scripts/bathstorage.sh" #to move files to the bathhouse
-alias zipres="$scripts/zip_resource_pack.sh"
 alias ct="$scripts/clone_terminal.sh"
-alias seafil="$scripts/launch_seafile.sh"
-alias fetch="$scripts/fetch_config.sh"
 alias nsp="nix-shell -p"
 alias rebuild="$scripts/rebuild.sh"
+alias edit="$scripts/edit.sh"
 alias copy="xclip -i -selection clipboard"
 
 alias m="micro"
-alias edit="micro $HOME/nixos/system/configuration.nix"
 alias lc="fc -nl -1 | tr -d '[:cntrl:]' | sed -e 's/^[ \t]*//' |  xclip -selection clipboard"
 alias clear="echo -e '\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n' && clear"
 

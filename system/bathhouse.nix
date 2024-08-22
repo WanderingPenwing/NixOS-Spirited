@@ -28,7 +28,6 @@ in {
    	openssh.authorizedKeys.keys = [
    	  "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN/SQbXjL6O2zjKFdybiMLu7Imc10IGrTMUnRtIxf0jJ nicolas.pinson31@gmail.com"
    	];
-   	extraGroups = ["docker"];
   };
 
   services.logind.lidSwitch = "ignore";

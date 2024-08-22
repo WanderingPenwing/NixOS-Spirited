@@ -24,6 +24,12 @@ in {
   services.openssh.enable = true;
   services.openssh.settings.PasswordAuthentication = true;
 
+  users.users.penwing = {
+   	openssh.authorizedKeys.keys = [
+   	  "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN/SQbXjL6O2zjKFdybiMLu7Imc10IGrTMUnRtIxf0jJ nicolas.pinson31@gmail.com"
+   	]
+  }
+
   services.logind.lidSwitch = "ignore";
   
   # Allow unfree packages
@@ -36,10 +42,7 @@ in {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = (with pkgs; [
-  
-    # CLIs
-    bc # calculator
-    
+    fastfetch
   ]);
 
   # Before changing this value read the documentation for this option

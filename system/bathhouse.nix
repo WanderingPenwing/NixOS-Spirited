@@ -22,7 +22,7 @@ in {
   networking.hostName = hostname;
 
   services.openssh.enable = true;
-  services.openssh.settings.PasswordAuthentication = true;
+  services.openssh.settings.PasswordAuthentication = false;
 
   users.users.penwing = {
    	openssh.authorizedKeys.keys = [

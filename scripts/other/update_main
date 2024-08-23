@@ -1,0 +1,14 @@
+git checkout kamaji-config
+git pull origin kamaji-config
+
+git checkout boiler-config
+git pull origin boiler-config
+
+git checkout bathhouse-config
+git pull origin bathhouse-config
+
+git checkout main
+
+git merge kamaji-config
+git merge boiler-config
+git merge bathhouse-config

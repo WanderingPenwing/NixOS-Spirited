@@ -2,13 +2,13 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "turnip";
-  version = "1.1";
+  version = "1.2";
 
   src = fetchFromGitHub {
     owner = "WanderingPenwing";
     repo = "Turnip";
     rev = "${version}";
-    sha256 = "sha256-Dg+RZXkcgvH4txcWOW6e7Kdb5VJgwZhWil0a3Z7HhCM=";
+    sha256 = "sha256-UVF+KR1NCJQU3Pj1MwnTw6U0T9bQk20FkQK4fZAI1To=";
   };
 
   cargoLock = {

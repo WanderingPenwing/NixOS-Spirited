@@ -15,10 +15,10 @@
   kodama = pkgs.callPackage ../apps/kodama/install.nix {};
   marukuru = pkgs.callPackage ../apps/marukuru/install.nix {};
   pendragon = pkgs.callPackage ../apps/pendragon/install.nix {};
-  savoia = pkgs.callPackage ../apps/savoia/install.nix {};
+  #savoia = pkgs.callPackage ../apps/savoia/install.nix {};
   susuwatari = pkgs.libsForQt5.callPackage ../apps/susuwatari/install.nix {};
   turnip = pkgs.callPackage ../apps/turnip/install.nix {};
-  zeniba = pkgs.callPackage ../apps/zeniba/install.nix {};
+  #zeniba = pkgs.callPackage ../apps/zeniba/install.nix {};
 in {
   imports = [
     ./kamaji-hardware.nix
@@ -29,7 +29,7 @@ in {
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = hostname;
-  networking.nameservers = ["192.168.1.42" "8.8.8.8" "8.8.4.4" ];
+  networking.nameservers = [ "8.8.8.8" "8.8.4.4" ];
 
   services.displayManager = {
     defaultSession = "none+dwm";
@@ -63,76 +63,7 @@ in {
     '';
   };
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = (with pkgs; [
-  
-    # Libs
-    libnotify
-    
-    # CLIs
-    pamixer # sound settings
-    brightnessctl # brightness settings
-    maim # screenshot
-    xclip # clipboard
-    xdotool # add keyboard automation
-    dunst # send notifications
-    bc # calculator
-    
-    # Custom Apps
-    calcifer # code editor
-    ingary # sddm theme
-    jiji # discord lite
-    kodama # terminal
-    marukuru # app menu
-    pendragon # windows manager
-    savoia # browser
-   	susuwatari # clipboard
-   	turnip # status bar
-   	zeniba # image viewer
-   	
-   	# Other Apps
-   	discord
-   	quickemu
-    surf
-    mpv # video player
-    torrential
-	gimp
-    seafile-client
-    zathura
-    
-    # Appearance
-    feh # wallpaper
-    yaru-theme
-    papirus-icon-theme
-    lxappearance
-  ]) ++ (with pkgs-unstable; [
-    ungoogled-chromium
-  ]);
-
-  programs.noisetorch.enable = true;
-
-  xdg.mime.defaultApplications = {
-  	"image/png" = "zeniba.desktop";
-  	"image/jpeg" = "zeniba.desktop";
-  	"image/jpg" = "zeniba.desktop";
-  	"image/webp" = "zeniba.desktop";
-  	"image/gif" = "zeniba.desktop";
-  	"image/svg+xml" = "zeniba.desktop";
-  };
-
-  #   programs.steam = {
-  #     enable = true;
-  #     gamescopeSession.enable = true;
-  #     remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-  #     dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-  #   };
-  #
-  #   programs.gamemode.enable = true;
-
+  # Round corners
   services.picom = {
     enable = true;
     package = pkgs.picom-next;
@@ -147,6 +78,87 @@ in {
       ];
     };
   };
+
+  nixpkgs.config.allowUnfree = true;
+
+  environment.systemPackages = (with pkgs; [
+    # Libs
+    libnotify
+    jdk21
+    
+    # CLIs
+    pamixer # sound settings
+    brightnessctl # brightness settings
+    maim # screenshot
+    xclip # clipboard
+    xdotool # add keyboard automation
+    dunst # send notifications
+    inotify-tools # file events
+    texlive.combined.scheme-full #tex
+    
+    # Custom Apps
+    calcifer # code editor
+    ingary # sddm theme
+    jiji # discord lite
+    kodama # terminal
+    marukuru # app menu
+    pendragon # windows manager
+   	susuwatari # clipboard
+   	turnip # status bar
+   	
+   	# Other Apps
+   	discord
+    mpv # video player
+    torrential
+    zathura
+    hmcl # minecraft
+    obsidian 
+    
+    # Appearance
+    feh # wallpaper
+    yaru-theme
+    papirus-icon-theme
+    lxappearance
+  ]) ++ (with pkgs-unstable; [
+    ungoogled-chromium
+  ]);
+
+  programs.noisetorch.enable = true;
+
+  # Enable sound with pipewire.
+  sound.enable = true;
+  hardware.pulseaudio.enable = false;
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+  };
+
+  xdg.mime.defaultApplications = {
+  	"image/png" = "zeniba.desktop";
+  	"image/jpeg" = "zeniba.desktop";
+  	"image/jpg" = "zeniba.desktop";
+  	"image/webp" = "zeniba.desktop";
+  	"image/gif" = "zeniba.desktop";
+  	"image/svg+xml" = "zeniba.desktop";
+  	"application/pdf" = "zathura.desktop";
+  };
+
+  # Gaming setup
+  programs.steam = {
+    enable = true;
+    gamescopeSession.enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  };
+  programs.gamemode.enable = true;
+
+  services.mullvad-vpn.enable = true;
+
+  virtualisation.docker.enable = true;
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ]; #to compile raspberry pi
 
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).

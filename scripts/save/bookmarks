@@ -10,3 +10,10 @@ nmcli device wifi connect Le\ Ninternet password XcTsS9mnz2ePwE7dps
 sudo quark -p 80 -d ~/repos/igloo                                                                       # http server
 rsync -rvP /media/storage/ admin@192.168.1.28:/var/services/homes/admin                                 # rsync example
 xset dpms force off                                                                                     # screen off
+nmcli con mod Le\ Ninternet\ 1 ipv4.dns "192.168.1.40 8.8.8.8"
+wakeonlan c0:7c:d1:fb:c9:86
+sudo docker exec -i mc rcon-cli                                                                         # minecraft console
+sudo lpadmin -p epson -E -v ipp://192.168.1.15/ipp/print -m everywhere                                  # add printer
+lp -d epson document.pdf                                                                                # print document
+sudo nmcli device connect eno1
+dd if=image.iso of=/dev/sdx bs=4M status=progress && sync

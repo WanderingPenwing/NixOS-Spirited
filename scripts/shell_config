@@ -6,6 +6,7 @@ alias nsp="nix-shell -p"
 alias rebuild="$scripts/rebuild.sh"
 alias edit="$scripts/edit.sh"
 alias copy="xclip -i -selection clipboard"
+alias chromevpn='ssh -ND 1080 bathhouse & chromium --proxy-server="socks5://localhost:1080"'
 
 alias m="micro"
 alias lc="fc -nl -1 | tr -d '[:cntrl:]' | sed -e 's/^[ \t]*//' |  xclip -selection clipboard"
@@ -44,3 +45,9 @@ export YAZI_CONFIG_HOME=$HOME/nixos/apps/yazi
 
 export STARSHIP_CONFIG=$HOME/nixos/apps/starship/config.toml
 eval "$(starship init bash)"
+
+clear
+
+if git rev-parse --is-inside-work-tree &> /dev/null; then
+    onefetch
+fi

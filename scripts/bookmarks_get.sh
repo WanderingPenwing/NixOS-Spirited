@@ -3,4 +3,4 @@
 item=$(grep "\S" ~/nixos/scripts/save/bookmarks | marukuru -i -l 15)
 
 setxkbmap fr
-xdotool type "${item% #*}"
+xdotool type "$(echo "${item%#*}" | sed 's/[[:space:]]*$//')"

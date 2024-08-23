@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-APPS=("" "update" "seafile-applet" "seafile-kill" "savoia" "discord" "noisetorch" "pavucontrol" "jiji" "calcifer" "pinta" "torrential" "poweroff" "reboot")
+APPS=("" "steam" "update" "hmcl" "obsidian" "discord" "noisetorch" "pavucontrol" "jiji" "calcifer" "com.github.davidmhewitt.torrential" "poweroff" "reboot")
 
 # Join the array elements with newlines
 APPS_STRING=$(printf "%s\n" "${APPS[@]}")

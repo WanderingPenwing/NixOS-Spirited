@@ -33,7 +33,7 @@ in {
   fileSystems."/media/storage" = {
     device = "/dev/disk/by-uuid/505e9428-2d47-4e58-ad2e-8feb0cfdd459";
     fsType = "ext4"; # or the type of your filesystem
-    options = [ "defaults" "umask=0000" ];
+    options = [ "defaults" ];
   };
 
 

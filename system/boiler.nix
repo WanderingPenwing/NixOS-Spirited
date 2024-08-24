@@ -39,11 +39,14 @@ in {
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  
+  virtualisation.docker.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = (with pkgs; [
     fastfetch
+    docker-compose
   ]);
 
   # Before changing this value read the documentation for this option

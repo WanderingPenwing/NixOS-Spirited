@@ -70,6 +70,7 @@ in {
   environment.systemPackages = (with pkgs; [
     fastfetch
     docker-compose
+    powertop
   ]);
 
   # Before changing this value read the documentation for this option

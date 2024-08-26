@@ -46,11 +46,19 @@ in {
   
     virtualHosts = {
       "pi.penwing.org" = {
-        locations."/".proxyPass = "http://192.168.1.40:1080";
+        locations."/".proxyPass = "http://localhost:1080";
       };
   
       "port.penwing.org" = {
-        locations."/".proxyPass = "http://192.168.1.40:9000";     
+        locations."/".proxyPass = "http://localhost:9000";     
+      };
+
+      "mov.penwing.org" = {
+        locations."/".proxyPass = "http://192.168.1.42:8096";     
+      };
+
+      "search.penwing.org" = {
+        locations."/".proxyPass = "http://localhost:32768";     
       };
     };
   };

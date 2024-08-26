@@ -37,7 +37,24 @@ in {
 
   virtualisation.docker.enable = true;
 
-  services.nginx.enable = true;
+  services.nginx = {
+    enable = true;
+    recommendedTlsSettings = true;
+    recommendedOptimisation = true;
+    recommendedGzipSettings = true;
+    recommendedProxySettings = true;
+  
+    virtualHosts = {
+      "pi.penwing.org" = {
+        locations."/".proxyPass = "http://localhost:1080";
+      };
+  
+      "port.penwing.org" = {
+        locations."/".proxyPass = "http://localhost:9000";     
+      };
+    };
+  };
+  
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget

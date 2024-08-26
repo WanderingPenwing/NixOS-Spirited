@@ -64,7 +64,6 @@ in {
       "www.penwing.org" = {
         root = "${config.users.users.yourusername.home}/website"; # Serve from the home directory
         locations."/".root = "${config.users.users.yourusername.home}/website";  # Use the directory for the location
-        index = "index.html";  # Ensure that Nginx serves index.html by default
       };
     };
   };

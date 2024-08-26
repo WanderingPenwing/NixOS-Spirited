@@ -63,7 +63,7 @@ in {
 
       "www.penwing.org" = {
         root = "/home/penwing/website"; # Serve from the home directory
-        locations."/".root = "$/home/penwing/website";  # Use the directory for the location
+        #locations."/".root = "$/home/penwing/website";  # Use the directory for the location
       };
     };
   };

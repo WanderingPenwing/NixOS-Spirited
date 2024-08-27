@@ -59,7 +59,7 @@ in {
 
       "file.penwing.org" = {
       	locations."/".proxyPass = "http://192.168.1.42:7780";
-      }
+      };
 
       "search.penwing.org" = {
         locations."/".proxyPass = "http://localhost:32768";     

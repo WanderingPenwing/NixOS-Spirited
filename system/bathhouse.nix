@@ -65,6 +65,10 @@ in {
         locations."/".proxyPass = "http://localhost:32768";     
       };
 
+      "git.penwing.org" = {
+        locations."/".proxyPass = "http://localhost:3000";     
+      };
+      
       "www.penwing.org" = {
         root = "/website"; # Serve from the home directory
         #locations."/".root = "$/home/penwing/website";  # Use the directory for the location

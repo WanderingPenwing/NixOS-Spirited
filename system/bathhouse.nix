@@ -53,8 +53,11 @@ in {
         locations."/".proxyPass = "http://localhost:9000";     
       };
 
-      "mov.penwing.org" = {
-        locations."/".proxyPass = "http://192.168.1.42:8096";     
+      "movie.penwing.org" = {
+        locations."/".proxyPass = "http://192.168.1.42:8096";   
+        errorPages = {
+          502 = "/home/penwing/error.html";
+        };  
       };
 
       "search.penwing.org" = {

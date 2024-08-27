@@ -54,10 +54,7 @@ in {
       };
 
       "movie.penwing.org" = {
-        locations."/".proxyPass = "http://192.168.1.42:8096";   
-        errorPages = {
-          502 = "/home/penwing/error.html";
-        };  
+        locations."/".proxyPass = "http://192.168.1.42:8096"; 
       };
 
       "search.penwing.org" = {

@@ -71,7 +71,13 @@ in {
       
       "www.penwing.org" = {
         root = "/website"; # Serve from the home directory
-        #locations."/".root = "$/home/penwing/website";  # Use the directory for the location
+        # Add headers for Cross-Origin Isolation and SharedArrayBuffer
+        locations."/games/" = {
+          addHeader = [
+            "Cross-Origin-Opener-Policy same-origin"
+            "Cross-Origin-Embedder-Policy require-corp"
+          ];
+        };
       };
     };
   };

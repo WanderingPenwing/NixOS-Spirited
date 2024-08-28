@@ -73,10 +73,10 @@ in {
         root = "/website"; # Serve from the home directory
         # Add headers for Cross-Origin Isolation and SharedArrayBuffer
         locations."/games/" = {
-          addHeader = [
-            "Cross-Origin-Opener-Policy same-origin"
-            "Cross-Origin-Embedder-Policy require-corp"
-          ];
+          extraConfig = ''
+            add_header Cross-Origin-Opener-Policy "same-origin";
+            add_header Cross-Origin-Embedder-Policy "require-corp";
+          '';
         };
       };
     };

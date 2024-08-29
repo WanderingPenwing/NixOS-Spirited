@@ -90,6 +90,7 @@ in {
     fastfetch
     docker-compose
     powertop
+    qrencode
   ]);
 
   # Before changing this value read the documentation for this option

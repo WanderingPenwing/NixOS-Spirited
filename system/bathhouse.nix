@@ -44,18 +44,16 @@ in {
     recommendedGzipSettings = true;
     recommendedProxySettings = true;
   
-    virtualHosts = {
-    
-      "movie.penwing.org" = {
-        locations."/".proxyPass = "http://192.168.1.42:8096"; 
-      };
-
-      "file.penwing.org" = {
-      	locations."/".proxyPass = "http://192.168.1.42:7780";
-      };
-      
-      "paper.penwing.org" = {
-        locations."/".proxyPass = "http://192.1681.42:1180";     
+    virtualHosts = {      
+      "www.penwing.org" = {
+        root = "/website"; # Serve from the home directory
+        # Add headers for Cross-Origin Isolation and SharedArrayBuffer
+        locations."/games/" = {
+          extraConfig = ''
+            add_header Cross-Origin-Opener-Policy "same-origin";
+            add_header Cross-Origin-Embedder-Policy "require-corp";
+          '';
+        };
       };
       
       "pi.penwing.org" = {
@@ -74,15 +72,16 @@ in {
         locations."/".proxyPass = "http://localhost:3000";     
       };
       
-      "www.penwing.org" = {
-        root = "/website"; # Serve from the home directory
-        # Add headers for Cross-Origin Isolation and SharedArrayBuffer
-        locations."/games/" = {
-          extraConfig = ''
-            add_header Cross-Origin-Opener-Policy "same-origin";
-            add_header Cross-Origin-Embedder-Policy "require-corp";
-          '';
-        };
+      "movie.penwing.org" = {
+        locations."/".proxyPass = "http://192.168.1.42:8096"; 
+      };
+
+      "file.penwing.org" = {
+      	locations."/".proxyPass = "http://192.168.1.42:7780";
+      };
+      
+      "paper.penwing.org" = {
+        locations."/".proxyPass = "http://192.1681.42:1180";     
       };
     };
   };

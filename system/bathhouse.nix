@@ -45,20 +45,24 @@ in {
     recommendedProxySettings = true;
   
     virtualHosts = {
-      "pi.penwing.org" = {
-        locations."/".proxyPass = "http://localhost:1080";
-      };
-  
-      "port.penwing.org" = {
-        locations."/".proxyPass = "http://localhost:9000";     
-      };
-
       "movie.penwing.org" = {
         locations."/".proxyPass = "http://192.168.1.42:8096"; 
       };
 
       "file.penwing.org" = {
       	locations."/".proxyPass = "http://192.168.1.42:7780";
+      };
+      
+      "paper.penwing.org" = {
+        locations."/".proxyPass = "http://192.1681.42:1180";     
+      };
+      
+      "pi.penwing.org" = {
+        locations."/".proxyPass = "http://localhost:1080";
+      };
+  
+      "port.penwing.org" = {
+        locations."/".proxyPass = "http://localhost:9000";     
       };
 
       "search.penwing.org" = {

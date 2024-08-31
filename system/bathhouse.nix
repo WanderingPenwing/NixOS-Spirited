@@ -45,6 +45,7 @@ in {
     recommendedProxySettings = true;
   
     virtualHosts = {
+    
       "movie.penwing.org" = {
         locations."/".proxyPass = "http://192.168.1.42:8096"; 
       };

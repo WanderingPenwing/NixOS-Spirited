@@ -20,6 +20,7 @@ in {
   boot.loader.grub.useOSProber = true;
 
   networking.hostName = hostname;
+  networking.interfaces.enp3s0.wakeOnLan.enable = true;
 
   services.openssh.enable = true;
   services.openssh.settings.PasswordAuthentication = false;

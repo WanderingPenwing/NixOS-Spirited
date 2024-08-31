@@ -47,6 +47,7 @@ in {
   environment.systemPackages = (with pkgs; [
     fastfetch
     docker-compose
+    ethtool
   ]);
 
   # Before changing this value read the documentation for this option

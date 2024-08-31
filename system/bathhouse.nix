@@ -83,6 +83,10 @@ in {
       "paper.penwing.org" = {
         locations."/".proxyPass = "http://192.168.1.42:1180";     
       };
+
+      "pdf.penwing.org" = {
+      	locations."/".proxyPass = "http://192.168.1.42:1280";
+      };
     };
   };
   

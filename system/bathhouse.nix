@@ -99,6 +99,7 @@ in {
     docker-compose
     powertop
     qrencode
+    wakeonlan
   ]);
 
   # Before changing this value read the documentation for this option

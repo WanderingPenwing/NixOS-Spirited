@@ -62,7 +62,7 @@ in {
           '';
         };
 
-        locations."/wake".proxyPass = "http://localhost:1780"
+        locations."/wake".proxyPass = "http://localhost:1780";
       };
 
       "www.penwing.org/wake" = {

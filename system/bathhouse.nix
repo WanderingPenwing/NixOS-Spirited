@@ -61,6 +61,8 @@ in {
             add_header Cross-Origin-Embedder-Policy "require-corp";
           '';
         };
+
+        locations."/wake".proxyPass = "http://localhost:1780"
       };
 
       "www.penwing.org/wake" = {

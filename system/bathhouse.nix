@@ -37,17 +37,6 @@ in {
 
   virtualisation.docker.enable = true;
   
-  services.cron = {
-    enable = true;
-    systemCronJobs = [
-      "* * * * *      root    /website/check_remote.sh"
-    ];
-  };
-
-  services.fcgiwrap = {
-    enable = true;
-  };
-  
   services.nginx = {
     enable = true;
     recommendedTlsSettings = true;
@@ -65,17 +54,6 @@ in {
             add_header Cross-Origin-Embedder-Policy "require-corp";
           '';
         };
-        
-		locations."/status.cgi" = {
-		  extraConfig = ''
-	        fastcgi_pass unix:/run/fcgiwrap.socket;
-	      '';
-		};
-		locations."/wake.cgi" = {
-		  extraConfig = ''
-	        fastcgi_pass unix:/run/fcgiwrap.socket;
-	      '';
-		};
       };
       
       "pi.penwing.org" = {
@@ -120,7 +98,6 @@ in {
     fastfetch
     docker-compose
     wakeonlan
-    cron
   ]);
 
   # Before changing this value read the documentation for this option

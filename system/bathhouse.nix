@@ -54,16 +54,17 @@ in {
             add_header Cross-Origin-Embedder-Policy "require-corp";
           '';
         };
-      };
 
-      "www.penwing.org/wake" = {
-        locations."/".extraConfig = ''
-          if ($request_method = GET) {
-            exec /website/wakeonlan.sh;
+        locations."/wake".extraConfig = ''
+          if $(wakeonlan c0:7c:d1:fb:c9:86) {
             return 200;
           }
           return 403;
         '';
+      };
+
+      "www.penwing.org/wake" = {
+        
       };
       
       "pi.penwing.org" = {

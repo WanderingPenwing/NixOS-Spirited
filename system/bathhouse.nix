@@ -55,6 +55,16 @@ in {
           '';
         };
       };
+
+      "www.penwing.org/wake" = {
+        locations."/".extraConfig = ''
+          if ($request_method = GET) {
+            exec /website/wakeonlan.sh;
+            return 200;
+          }
+          return 403;
+        '';
+      };
       
       "pi.penwing.org" = {
         locations."/".proxyPass = "http://localhost:1080";
@@ -87,6 +97,8 @@ in {
       "pdf.penwing.org" = {
       	locations."/".proxyPass = "http://192.168.1.42:1280";
       };
+
+      
     };
   };
   

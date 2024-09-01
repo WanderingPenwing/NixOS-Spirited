@@ -104,6 +104,7 @@ in {
     fastfetch
     docker-compose
     wakeonlan
+    socat
   ]);
 
   # Before changing this value read the documentation for this option

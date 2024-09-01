@@ -36,7 +36,18 @@ in {
   nixpkgs.config.allowUnfree = true;
 
   virtualisation.docker.enable = true;
+  
+  services.cron = {
+    enable = true;
+    systemCronJobs = [
+      "* * * * *      root    /website/check_remote.sh"
+    ];
+  };
 
+  services.fcgiwrap = {
+    enable = true;
+  };
+  
   services.nginx = {
     enable = true;
     recommendedTlsSettings = true;
@@ -54,6 +65,19 @@ in {
             add_header Cross-Origin-Embedder-Policy "require-corp";
           '';
         };
+        
+		locations."/status.cgi" = {
+		  extraConfig = ''
+	        include /etc/nginx/fastcgi.conf;
+	        fastcgi_pass unix:/run/fcgiwrap.socket;
+	      '';
+		};
+		locations."/wake.cgi" = {
+		  extraConfig = ''
+	        include /etc/nginx/fastcgi.conf;
+	        fastcgi_pass unix:/run/fcgiwrap.socket;
+	      '';
+		};
       };
       
       "pi.penwing.org" = {

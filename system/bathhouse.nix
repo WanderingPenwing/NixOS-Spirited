@@ -97,9 +97,8 @@ in {
   environment.systemPackages = (with pkgs; [
     fastfetch
     docker-compose
-    powertop
-    qrencode
     wakeonlan
+    cron
   ]);
 
   # Before changing this value read the documentation for this option

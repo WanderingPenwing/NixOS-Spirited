@@ -68,13 +68,11 @@ in {
         
 		locations."/status.cgi" = {
 		  extraConfig = ''
-	        include /etc/nginx/fastcgi.conf;
 	        fastcgi_pass unix:/run/fcgiwrap.socket;
 	      '';
 		};
 		locations."/wake.cgi" = {
 		  extraConfig = ''
-	        include /etc/nginx/fastcgi.conf;
 	        fastcgi_pass unix:/run/fcgiwrap.socket;
 	      '';
 		};

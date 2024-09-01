@@ -54,13 +54,6 @@ in {
             add_header Cross-Origin-Embedder-Policy "require-corp";
           '';
         };
-
-        locations."/wake".extraConfig = ''
-          if $(wakeonlan c0:7c:d1:fb:c9:86) {
-            return 200;
-          }
-          return 403;
-        '';
       };
 
       "www.penwing.org/wake" = {

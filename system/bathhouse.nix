@@ -21,6 +21,15 @@ in {
 
   networking.hostName = hostname;
 
+  systemd.user.services.startup_socat = {
+    description = "...";
+    serviceConfig.PassEnvironment = "DISPLAY";
+    script = ''
+      $HOME/nixos/scripts/startup_socat.sh
+    '';
+    wantedBy = [ "multi-user.target" ]; # starts after login
+  }
+
   services.openssh.enable = true;
   services.openssh.settings.PasswordAuthentication = false;
 

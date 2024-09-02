@@ -105,7 +105,7 @@ in {
     };
   };
   
-  networking.firewall.allowedTCPPorts = [ 80 443 1780];
+  networking.firewall.allowedTCPPorts = [ 80 443 1780 2180];
   
   # List packages installed in system profile. To search, run:
   # $ nix search wget

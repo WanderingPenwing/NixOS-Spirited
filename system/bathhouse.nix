@@ -53,7 +53,8 @@ in {
   
     virtualHosts = {      
       "www.penwing.org" = {
-        root = "/website"; # Serve from the home directory
+        locations."/".proxyPass = "http://localhost:2180";
+        
         # Add headers for Cross-Origin Isolation and SharedArrayBuffer
         locations."/games/" = {
           extraConfig = ''
@@ -61,12 +62,6 @@ in {
             add_header Cross-Origin-Embedder-Policy "require-corp";
           '';
         };
-
-        locations."/wake".proxyPass = "http://localhost:1780";
-      };
-
-      "www.penwing.org/wake" = {
-        
       };
       
       "pi.penwing.org" = {
@@ -105,7 +100,7 @@ in {
     };
   };
   
-  networking.firewall.allowedTCPPorts = [ 80 443 1780 2180 8080];
+  networking.firewall.allowedTCPPorts = [ 80 443 1780 2180];
   
   # List packages installed in system profile. To search, run:
   # $ nix search wget

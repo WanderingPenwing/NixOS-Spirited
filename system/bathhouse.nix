@@ -85,6 +85,10 @@ in {
         locations."/".proxyPass = "http://192.168.1.42:1180";     
       };
 
+      "key.penwing.org" = {
+        locations."/".proxyPass = "http://192.168.1.42:8080";     
+      };
+
       "pdf.penwing.org" = {
       	locations."/".proxyPass = "http://192.168.1.42:1280";
       };

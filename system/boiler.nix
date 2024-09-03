@@ -37,6 +37,8 @@ in {
     options = [ "defaults" ];
   };
 
+  networking.firewall.allowedTCPPorts = [ 1180 ]
+
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

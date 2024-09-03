@@ -37,7 +37,7 @@ in {
     options = [ "defaults" ];
   };
 
-  networking.firewall.allowedTCPPorts = [ 1180 ]
+  networking.firewall.allowedTCPPorts = [ 1180 ];
 
 
   # Allow unfree packages

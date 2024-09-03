@@ -21,13 +21,6 @@ in {
 
   networking.hostName = hostname;
 
-  systemd.user.services.startup_socat = {
-    script = ''
-      $HOME/nixos/scripts/startup_socat.sh
-    '';
-    wantedBy = [ "multi-user.target" ]; # starts after login
-  };
-
   services.openssh.enable = true;
   services.openssh.settings.PasswordAuthentication = false;
 
@@ -56,7 +49,7 @@ in {
         locations."/".proxyPass = "http://localhost:2180";
         
         # Add headers for Cross-Origin Isolation and SharedArrayBuffer
-        locations."/games/" = {
+        locations."/assets/games/" = {
           extraConfig = ''
             add_header Cross-Origin-Opener-Policy "same-origin";
             add_header Cross-Origin-Embedder-Policy "require-corp";

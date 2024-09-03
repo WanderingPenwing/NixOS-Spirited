@@ -53,10 +53,10 @@ in {
           proxyPass = "http://localhost:2180/assets/games/";
 
           # Add headers for Cross-Origin Isolation
-          addHeader = {
-            "Cross-Origin-Opener-Policy" = "same-origin";
-            "Cross-Origin-Embedder-Policy" = "require-corp";
-          };
+          extraConfig = ''
+            add_header Cross-Origin-Opener-Policy "same-origin";
+            add_header Cross-Origin-Embedder-Policy "require-corp";
+          '';
         };
       };
       

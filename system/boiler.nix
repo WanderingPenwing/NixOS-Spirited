@@ -49,6 +49,7 @@ in {
     fastfetch
     docker-compose
     ethtool
+    cron
   ]);
 
   # Before changing this value read the documentation for this option

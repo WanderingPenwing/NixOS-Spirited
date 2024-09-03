@@ -47,14 +47,6 @@ in {
     virtualHosts = {      
       "www.penwing.org" = {
         locations."/".proxyPass = "http://localhost:2180";
-        
-        # Add headers for Cross-Origin Isolation and SharedArrayBuffer
-        locations."/assets/games/" = {
-          extraConfig = ''
-            add_header Cross-Origin-Opener-Policy "same-origin";
-            add_header Cross-Origin-Embedder-Policy "require-corp";
-          '';
-        };
       };
       
       "pi.penwing.org" = {

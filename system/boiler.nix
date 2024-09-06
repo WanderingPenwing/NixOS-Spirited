@@ -39,6 +39,24 @@ in {
 
   networking.firewall.allowedTCPPorts = [ 80 1180 ];
 
+  systemd.timers."poweroff" = {
+    wantedBy = [ "timers.target" ];
+      timerConfig = {
+        OnCalendar = "*-*-* 1:00:00";
+        Unit = "poweroff.service";
+      };
+  };
+  
+  systemd.services."poweroff" = {
+    script = ''
+      ${pkgs.coreutils}/bin/shutdown -h now >> /var/log/poweroff.log 2>&1
+    '';
+    serviceConfig = {
+      Type = "oneshot";
+      User = "root";
+    };
+  };
+
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

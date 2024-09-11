@@ -70,6 +70,7 @@ in {
     docker-compose
     ethtool
     cron
+    zip
   ]);
 
   # Before changing this value read the documentation for this option

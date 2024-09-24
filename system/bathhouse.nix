@@ -77,10 +77,21 @@ in {
         locations."/".proxyPass = "http://localhost:3000";     
       };
 
+      "editicam.penwing.org" = {
+      	locations."/".proxyPass = "http://192.168.1.40:8003";
+      }
+
       "codicam.penwing.org" = {
       	locations."/".proxyPass = "http://192.168.1.40:8001";
-      	locations."/codicam/edit/".proxyPass = "http://192.168.1.40:8002";
-      	locations."/roboticam/edit/".proxyPass = "http://192.168.1.40:8003";
+      	locations."/codicam/edit/" = {
+      		proxyPass = "http://192.168.1.40:8002";
+      		extraConfig = ''
+      		      proxy_set_header Host $host;
+      		      proxy_set_header X-Real-IP $remote_addr;
+      		      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+      		      proxy_set_header X-Forwarded-Proto $scheme;
+      		    '';
+      	};
       	locations."/fabricam/edit/".proxyPass = "http://192.168.1.40:8004";
       };
       

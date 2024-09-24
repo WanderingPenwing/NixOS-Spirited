@@ -79,7 +79,7 @@ in {
 
 	  "editicam.penwing.org" = {
 	  	locations."/".proxyPass = "http://192.168.1.40:8002";
-	  }
+	  };
 
       "codicam.penwing.org" = {
       	locations."/".proxyPass = "http://192.168.1.40:8001";

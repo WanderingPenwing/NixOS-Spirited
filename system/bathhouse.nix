@@ -77,7 +77,7 @@ in {
         locations."/".proxyPass = "http://localhost:3000";     
       };
 
-      "icam.penwing.org" = {
+      "codicam.penwing.org" = {
       	locations."/".proxyPass = "http://192.168.1.42:8001";
       };
       

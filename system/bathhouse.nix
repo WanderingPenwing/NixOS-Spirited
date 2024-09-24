@@ -78,7 +78,7 @@ in {
       };
 
       "codicam.penwing.org" = {
-      	locations."/".proxyPass = "http://192.168.1.42:8001";
+      	locations."/".proxyPass = "http://192.168.1.40:8001";
       };
       
       "movie.penwing.org" = {

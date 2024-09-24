@@ -82,9 +82,9 @@ in {
       };
 
       "editicam.penwing.org" = {
-      	locations."/codicam".proxyPass = "http://192.168.1.40:8002";
-      	locations."/roboticam".proxyPass = "http://192.168.1.40:8003";
-      	locations."/fabricam".proxyPass = "http://192.168.1.40:8004";
+      	locations."/codicam/".proxyPass = "http://192.168.1.40:8002";
+      	locations."/roboticam/".proxyPass = "http://192.168.1.40:8003";
+      	locations."/fabricam/".proxyPass = "http://192.168.1.40:8004";
       };
       
       "movie.penwing.org" = {

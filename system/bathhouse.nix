@@ -77,13 +77,12 @@ in {
         locations."/".proxyPass = "http://localhost:3000";     
       };
 
+	  "editicam.penwing.org" = {
+	  	locations."/".proxyPass = "http://192.168.1.40:8002";
+	  }
+
       "codicam.penwing.org" = {
-      	locations = {
-      		"/".proxyPass = "http://192.168.1.40:8001";
-      		"/codicam/edit/".proxyPass = "http://192.168.1.40:8002";
-      		"/roboticam/edit/".proxyPass = "http://192.168.1.40:8003";
-      		"/fabricam/edit/".proxyPass = "http://192.168.1.40:8004";
-      	};
+      	locations."/".proxyPass = "http://192.168.1.40:8001";
       };
       
       "movie.penwing.org" = {

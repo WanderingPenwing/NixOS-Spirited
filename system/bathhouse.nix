@@ -20,6 +20,7 @@ in {
   boot.loader.grub.useOSProber = true; 
 
   networking.hostName = hostname;
+  networking.wireless.enable = false;
 
   services.openssh.enable = true;
   services.openssh.settings.PasswordAuthentication = false;

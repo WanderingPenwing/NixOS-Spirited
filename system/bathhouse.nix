@@ -77,6 +77,10 @@ in {
         locations."/".proxyPass = "http://localhost:3000";     
       };
 
+      "smms.penwing.org" = {
+        locations."/".proxyPass = "http://localhost:4080";     
+      };
+      
 	  "editicam.penwing.org" = {
 	  	locations."/".proxyPass = "http://192.168.1.40:8002";
 	  };

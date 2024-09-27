@@ -60,10 +60,6 @@ in {
           '';
         };
       };
-      
-      "pi.penwing.org" = {
-        locations."/".proxyPass = "http://localhost:1080";
-      };
   
       "port.penwing.org" = {
         locations."/".proxyPass = "http://localhost:9000";     
@@ -71,6 +67,10 @@ in {
 
       "search.penwing.org" = {
         locations."/".proxyPass = "http://localhost:32768";     
+      };
+
+      "sci-search.penwing.org" = {
+        locations."/".proxyPass = "http://localhost:32769";     
       };
 
       "git.penwing.org" = {

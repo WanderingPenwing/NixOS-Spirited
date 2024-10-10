@@ -52,8 +52,8 @@ in {
         locations."~* \\.pdf$" = {
           proxyPass = "http://localhost:2180";
           extraConfig = ''
-            add_header Content-Disposition "inline";
-            add_header Content-Type "application/pdf";
+            add_header Content-Disposition "inline" always;
+            add_header Content-Type "application/pdf" always;
           '';
         };
 

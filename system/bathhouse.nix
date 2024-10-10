@@ -49,6 +49,14 @@ in {
       "www.penwing.org" = {
         locations."/".proxyPass = "http://localhost:2180";
 
+        locations."~* \\.pdf$" = {
+          proxyPass = "http://localhost:2180";
+          extraConfig = ''
+            add_header Content-Disposition "inline";
+            add_header Content-Type "application/pdf";
+          '';
+        };
+
         # Additional configuration for /assets/games
         locations."/assets/games/" = {
           proxyPass = "http://localhost:2180/assets/games/";

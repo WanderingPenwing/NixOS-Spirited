@@ -49,6 +49,14 @@ in {
       "www.penwing.org" = {
         locations."/".proxyPass = "http://localhost:2180";
 
+        locations."/assets/vault/" = {
+            proxyPass = "/home/penwing/docker/red-gate/red-gate-rs/assets/vault/";  # Ensure this matches your file structure
+            extraConfig = ''
+                add_header Content-Disposition "inline" always;
+                add_header Content-Type "application/pdf" always;
+            '';
+        };
+
         locations."~* \\.pdf$" = {
           proxyPass = "http://localhost:2180";
           extraConfig = ''

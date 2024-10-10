@@ -52,6 +52,7 @@ in {
         locations."/assets/vault/" = {
             proxyPass = "http://localhost:2180/assets/vault/";  # Ensure this matches your file structure
             extraConfig = ''
+            	proxy_hide_header Content-Disposition;
                 add_header Content-Disposition "inline" always;
                 add_header Content-Type "application/pdf" always;
             '';

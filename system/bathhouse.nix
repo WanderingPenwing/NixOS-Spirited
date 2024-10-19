@@ -49,23 +49,6 @@ in {
       "www.penwing.org" = {
         locations."/".proxyPass = "http://localhost:2180";
 
-        locations."/assets/vault/" = {
-            proxyPass = "http://localhost:2180/assets/vault/";  # Ensure this matches your file structure
-            extraConfig = ''
-            	proxy_hide_header Content-Disposition;
-                add_header Content-Disposition "inline" always;
-                add_header Content-Type "application/pdf" always;
-            '';
-        };
-
-        locations."~* \\.pdf$" = {
-          proxyPass = "http://localhost:2180";
-          extraConfig = ''
-            add_header Content-Disposition "inline" always;
-            add_header Content-Type "application/pdf" always;
-          '';
-        };
-
         # Additional configuration for /assets/games
         locations."/assets/games/" = {
           proxyPass = "http://localhost:2180/assets/games/";
@@ -85,11 +68,7 @@ in {
       "search.penwing.org" = {
         locations."/".proxyPass = "http://localhost:32768";     
       };
-
-      "sci-search.penwing.org" = {
-        locations."/".proxyPass = "http://localhost:32769";     
-      };
-
+      
       "git.penwing.org" = {
         locations."/".proxyPass = "http://localhost:3000";     
       };
@@ -98,20 +77,8 @@ in {
         locations."/".proxyPass = "http://localhost:4080";     
       };
       
-	  "editicam.penwing.org" = {
-	  	locations."/".proxyPass = "http://192.168.1.40:8002";
-	  };
-
-      "codicam.penwing.org" = {
-      	locations."/".proxyPass = "http://192.168.1.40:8001";
-      };
-      
       "movie.penwing.org" = {
         locations."/".proxyPass = "http://192.168.1.42:8096"; 
-      };
-      
-      "paper.penwing.org" = {
-        locations."/".proxyPass = "http://192.168.1.42:80";     
       };
 
       "pdf.penwing.org" = {

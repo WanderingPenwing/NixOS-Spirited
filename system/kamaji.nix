@@ -113,6 +113,7 @@ in {
     zathura
     hmcl # minecraft
     obsidian 
+    godot_4
     
     # Appearance
     feh # wallpaper

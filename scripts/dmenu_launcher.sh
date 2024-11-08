@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-APPS=("" "steam" "update" "hmcl" "obsidian" "discord" "noisetorch" "pavucontrol" "jiji" "calcifer" "com.github.davidmhewitt.torrential" "poweroff" "reboot")
+APPS=("" "steam" "update" "hmcl" "obsidian" "discord" "noisetorch" "calcifer" "com.github.davidmhewitt.torrential" "wifi" "poweroff" "reboot")
 
 # Join the array elements with newlines
 APPS_STRING=$(printf "%s\n" "${APPS[@]}")
@@ -15,6 +15,11 @@ fi
 
 if [ "$SELECTED_APP" == "update" ]; then
 	 ~/nixos/scripts/update.sh &
+	 exit 0
+fi
+
+if [ "$SELECTED_APP" == "wifi" ]; then
+	 ~/nixos/scripts/wifi_connect.sh &
 	 exit 0
 fi
 

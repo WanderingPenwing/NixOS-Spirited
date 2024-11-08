@@ -17,4 +17,4 @@ sudo lpadmin -p epson -E -v ipp://192.168.1.15/ipp/print -m everywhere          
 lp -d epson document.pdf                                                                                # print document
 sudo nmcli device connect eno1
 dd if=image.iso of=/dev/sdx bs=4M status=progress && sync
-nmcli device wifi connect "ICAM" \; identity "your_username" \; password "your_password" \; 802-1x.eap peap \; 802-1x.phase2-auth mschapv2;
+nmcli device wifi connect "ICAM" identity "user" password "pass" 802-1x.eap peap 802-1x.phase2-auth mschapv2

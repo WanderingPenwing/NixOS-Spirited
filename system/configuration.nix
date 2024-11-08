@@ -75,13 +75,5 @@
     (nerdfonts.override {fonts = ["Hermit" "FiraCode" "Mononoki"];})
   ];
 
-  environment.interactiveShellInit = ''
-    if [ -f $HOME/nixos/scripts/shell_config ]; then
-        . $HOME/nixos/scripts/shell_config
-    else
-        echo "error shell loading config"
-    fi
-  '';
-
   nix.settings.experimental-features = ["nix-command" "flakes"];
 }

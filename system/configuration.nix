@@ -44,7 +44,7 @@
     isNormalUser = true;
     description = "Penwing";
     extraGroups = ["networkmanager" "wheel" "disk"];
-    #shell = pkgs.nushell;
+    shell = pkgs.nushell;
   };
 
   # Allow unfree packages

@@ -69,6 +69,13 @@
     EDITOR = "micro";
   };
 
+  environment.etc."config/nushell/config.nu".text = ''
+      # Set up aliases
+      alias m = "micro"
+      alias y = "yazi"
+      alias rebuild = "~/nixos/scripts/rebuild.sh"
+  '';
+
   fonts.packages = with pkgs; [
     font-awesome
     powerline-fonts

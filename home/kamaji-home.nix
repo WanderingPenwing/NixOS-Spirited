@@ -75,7 +75,15 @@ starship = {
       };
     };
     
-    
+    nushell = {
+      enable = true;
+      
+      shellAliases = {
+        m = "micro";
+        y = "yazi";
+        rebuild = "~/nixos/scripts/rebuild.sh";
+      };
+    };
      
     #carapace.enable = true;
     #carapace.enableNushellIntegration = true;

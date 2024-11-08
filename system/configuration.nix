@@ -55,6 +55,7 @@
     # CLIs
     starship # shell more pretty
     git # code versioning
+    carapace # shell completion
     bottom # task manager
     micro # text editor
     calc # calculator

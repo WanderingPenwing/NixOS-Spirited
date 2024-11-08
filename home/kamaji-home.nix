@@ -79,8 +79,7 @@
     nushell = {
       enable = true;
       extraConfig = ''
-        let carapace_completer = {|spans| carapace $spans.0 nushell $spans | from json }
-        $env.config = {
+       $env.config = {
           show_banner: false,
           completions: {
             case_sensitive: false,
@@ -90,7 +89,6 @@
             external: {
               enable: true,
               max_results: 100,
-              completer: $carapace_completer
             }
           }
         }
@@ -103,8 +101,8 @@
       };
     };
      
-    carapace.enable = true;
-    carapace.enableNushellIntegration = true;
+    #carapace.enable = true;
+    #carapace.enableNushellIntegration = true;
   };
   
   home.stateVersion = "24.05";

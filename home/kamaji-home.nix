@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
+  home.packages = with pkgs; [ nushell ];
+  
   programs = {
   	git = {
       enable = true;

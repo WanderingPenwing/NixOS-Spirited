@@ -83,6 +83,8 @@
     #carapace.enable = true;
     #carapace.enableNushellIntegration = true;
   };
+
+  home.sessionVariables.SHELL = "${pkgs.nushell}/bin/nu";
   
   home.stateVersion = "24.05";
 }

@@ -44,8 +44,13 @@
     isNormalUser = true;
     description = "Penwing";
     extraGroups = ["networkmanager" "wheel" "disk"];
-    shell = pkgs.nushell;
+    #shell = pkgs.nushell;
   };
+
+  programs.nushell.enable = true;
+  programs.defaultShell = pkgs.nushell;
+
+  #environment.shells = [ pkgs.nu ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

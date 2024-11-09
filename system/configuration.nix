@@ -44,13 +44,8 @@
     isNormalUser = true;
     description = "Penwing";
     extraGroups = ["networkmanager" "wheel" "disk"];
-    #shell = pkgs.nushell;
+    shell = pkgs.nushell;
   };
-
-  programs.nushell.enable = true;
-  programs.defaultShell = pkgs.nushell;
-
-  #environment.shells = [ pkgs.nu ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -73,13 +68,6 @@
   environment.variables = {
     EDITOR = "micro";
   };
-
-  environment.etc."config/nushell/config.nu".text = ''
-      # Set up aliases
-      alias m = "micro"
-      alias y = "yazi"
-      alias rebuild = "~/nixos/scripts/rebuild.sh"
-  '';
 
   fonts.packages = with pkgs; [
     font-awesome

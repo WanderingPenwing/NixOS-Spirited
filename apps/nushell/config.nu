@@ -11,19 +11,19 @@ alias ca = clear --all
 alias rebuild = sh -c ($env.HOME + "/nixos/scripts/rebuild.sh")
 alias edit = sh -c ($env.HOME + "/nixos/scripts/edit.sh")
 alias ct = sh -c ($env.HOME + "/nixos/scripts/clone_terminal.sh")
-#alias y = sh -c ($env.HOME + "/nixos/scripts/yazi.sh")
+alias y = sh -c ($env.HOME + "/nixos/scripts/yazi.sh")
 
-def y [...args] {
-    let tmp = mktemp
-    yazi ...$args --cwd-file $tmp
-
-    let cwd = (open $tmp | str trim)
-    rm $tmp
-
-    if $cwd != $env.PWD and $cwd != '' {
-        cd $cwd
-    }
-}
+# def y [...args] {
+#     let tmp = mktemp
+#     yazi ...$args --cwd-file $tmp
+# 
+#     let cwd = (open $tmp | str trim)
+#     rm $tmp
+# 
+#     if $cwd != $env.PWD and $cwd != '' {
+#         cd $cwd
+#     }
+# }
 
 # For more information on defining custom themes, see
 # https://www.nushell.sh/book/coloring_and_theming.html

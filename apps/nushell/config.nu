@@ -10,6 +10,7 @@ alias nsp = nix-shell -p
 alias rebuild = sh -c ($env.HOME + "/nixos/scripts/rebuild.sh")
 alias edit = sh -c ($env.HOME + "/nixos/scripts/edit.sh")
 alias ct = sh -c ($env.HOME + "/nixos/scripts/clone_terminal.sh")
+alias ca = clear --all
 
 def y [...args] {
     let tmp = mktemp
@@ -888,6 +889,6 @@ $env.config = {
 
 #use ~/.cache/starship/init.nu
 
-if (git rev-parse --is-inside-work-tree | ignore) == 0 {
+if (git rev-parse --is-inside-work-tree | save -f --raw /dev/null) == 0 {
     onefetch
 }

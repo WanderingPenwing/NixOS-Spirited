@@ -12,7 +12,7 @@ alias edit = sh -c ($env.HOME + "/nixos/scripts/edit.sh")
 alias ct = sh -c ($env.HOME + "/nixos/scripts/clone_terminal.sh")
 
 def y [...args] {
-    let tmp = (mktemp | get path)
+    let tmp = mktemp
     yazi $args --cwd-file $tmp
 
     let cwd = (open $tmp | str trim)

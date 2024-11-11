@@ -13,7 +13,7 @@ alias ct = sh -c ($env.HOME + "/nixos/scripts/clone_terminal.sh")
 
 def y [...args] {
     let tmp = mktemp
-    yazi $args --cwd-file $tmp
+    yazi ...$args --cwd-file $tmp
 
     let cwd = (open $tmp | str trim)
     rm $tmp
@@ -887,3 +887,7 @@ $env.config = {
 }
 
 #use ~/.cache/starship/init.nu
+
+if (git rev-parse --is-inside-work-tree | ignore) == 0 {
+    onefetch
+}

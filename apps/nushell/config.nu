@@ -11,7 +11,7 @@ alias ca = clear --all
 alias rebuild = sh -c ($env.HOME + "/nixos/scripts/rebuild.sh")
 alias edit = sh -c ($env.HOME + "/nixos/scripts/edit.sh")
 alias ct = sh -c ($env.HOME + "/nixos/scripts/clone_terminal.sh")
-alias y = sh -c ($env.HOME + "/nixos/scripts/yazi.sh")
+#alias y = sh -c ($env.HOME + "/nixos/scripts/yazi.sh")
 
 def y [...args] {
     let tmp = mktemp

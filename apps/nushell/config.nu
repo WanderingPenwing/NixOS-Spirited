@@ -3,7 +3,7 @@
 # version = "0.93.0"
 
 alias m = micro 
-alias y = yazi
+#alias y = yazi
 alias bd = btm -C ($env.HOME + "/nixos/apps/bottom/debug.toml")
 alias bf = btm -C ($env.HOME + "/nixos/apps/bottom/full.toml")
 alias nsp = nix-shell --run "nu" -p 

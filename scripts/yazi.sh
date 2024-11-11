@@ -2,7 +2,11 @@
 
 local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
 
-yazi "$@" --cwd-file="$tmp"
+#yazi "$@" --cwd-file="$tmp"
+
+echo "test"
+
+echo "$(cat -- "$tmp")"
 
 if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
 	builtin cd -- "$cwd"

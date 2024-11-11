@@ -18,7 +18,7 @@ def y [...args] {
     let cwd = (open $tmp | str trim)
     rm $tmp
 
-    if $cwd != $PWD and $cwd != '' {
+    if $cwd != $env.PWD and $cwd != '' {
         cd $cwd
     }
 }

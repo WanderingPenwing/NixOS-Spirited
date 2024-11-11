@@ -6,7 +6,22 @@ alias m = micro
 alias y = yazi
 alias bd = btm -C ($env.HOME + "/nixos/apps/bottom/debug.toml")
 alias bf = btm -C ($env.HOME + "/nixos/apps/bottom/full.toml")
-alias t = echo "test"
+alias nsp = nix-shell -p
+alias rebuild = ($env.HOME + "/nixos/scripts/rebuild.sh")
+alias edit = ($env.HOME + "/nixos/scripts/edit.sh")
+alias ct = ($env.HOME + "/nixos/scripts/clone_terminal.sh")
+
+def y [args: rest] {
+    let tmp = (mktemp | get path)
+    yazi $args --cwd-file $tmp
+
+    let cwd = (open $tmp | str trim)
+    rm $tmp
+
+    if $cwd != $PWD && $cwd != '' {
+        cd $cwd
+    }
+}
 
 # For more information on defining custom themes, see
 # https://www.nushell.sh/book/coloring_and_theming.html

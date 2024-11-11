@@ -82,6 +82,10 @@
           configFile.source = ../apps/nushell/config.nu;
     };
   };
+
+  environment.variables = {
+    YAZI_CONFIG_HOME = "${config.home.homeDirectory}/nixos/apps/yazi";
+  };
   
   home.stateVersion = "24.05";
 }

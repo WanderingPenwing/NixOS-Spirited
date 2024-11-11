@@ -6,11 +6,12 @@ alias m = micro
 alias y = yazi
 alias bd = btm -C ($env.HOME + "/nixos/apps/bottom/debug.toml")
 alias bf = btm -C ($env.HOME + "/nixos/apps/bottom/full.toml")
-alias nsp = nix-shell -p
+alias nsp = nix-shell --run "nu" -p 
+alias ca = clear --all
 alias rebuild = sh -c ($env.HOME + "/nixos/scripts/rebuild.sh")
 alias edit = sh -c ($env.HOME + "/nixos/scripts/edit.sh")
 alias ct = sh -c ($env.HOME + "/nixos/scripts/clone_terminal.sh")
-alias ca = clear --all
+alias y = sh -c ($env.HOME + "/nixos/scripts/yazi.sh")
 
 def y [...args] {
     let tmp = mktemp

@@ -67,7 +67,7 @@
 
   environment.variables = {
     EDITOR = "micro";
-    YAZI_CONFIG_HOME = "${config.home.homeDirectory}/nixos/apps/yazi";
+    YAZI_CONFIG_HOME = "$HOME/nixos/apps/yazi";
   };
 
   fonts.packages = with pkgs; [

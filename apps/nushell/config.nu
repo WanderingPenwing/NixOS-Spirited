@@ -889,6 +889,6 @@ $env.config = {
 
 #use ~/.cache/starship/init.nu
 
-if (git rev-parse --is-inside-work-tree err> /dev/null) {
+if (git rev-parse --is-inside-work-tree err> /dev/null) == "true" {
     onefetch
 }

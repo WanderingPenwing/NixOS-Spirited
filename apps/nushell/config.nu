@@ -11,9 +11,9 @@ alias rebuild = sh -c ($env.HOME + "/nixos/scripts/rebuild.sh")
 alias edit = sh -c ($env.HOME + "/nixos/scripts/edit.sh")
 alias ct = sh -c ($env.HOME + "/nixos/scripts/clone_terminal.sh")
 
-def y [args: rest] {
+def y {
     let tmp = (mktemp | get path)
-    yazi $args --cwd-file $tmp
+    yazi --cwd-file $tmp
 
     let cwd = (open $tmp | str trim)
     rm $tmp

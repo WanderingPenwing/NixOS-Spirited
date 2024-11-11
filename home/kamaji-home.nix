@@ -76,6 +76,11 @@
         zig = { symbol = "zig "; };
       };
     };
+
+    nushell = { enable = true;
+          # The config.nu can be anywhere you want if you like to edit your Nushell with Nu
+          configFile.source = ../apps/nushell/config.nu;
+    };
   };
   
   home.stateVersion = "24.05";

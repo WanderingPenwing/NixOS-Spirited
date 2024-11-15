@@ -114,6 +114,7 @@ in {
     hmcl # minecraft
     obsidian 
     godot_4
+    playonlinux
     
     # Appearance
     feh # wallpaper

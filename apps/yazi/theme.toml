@@ -52,9 +52,9 @@ mode_select = { fg = "#bbbbbb", bg = "#318d56", bold = true }
 mode_unset  = { fg = "#bbbbbb", bg = "#8d3156", bold = true }
 
 # Progress
-progress_label  = { fg = "#ff0000", bold = true }
-progress_normal = { fg = "#ff0000", bg = "#ff0000" }
-progress_error  = { fg = "#ff0000", bg = "#ff0000" }
+progress_label  = { fg = "#bbbbbb", bold = true }
+progress_normal = { fg = "#3f6db3", bg = "#111111" }
+progress_error  = { fg = "#3fb36d", bg = "#111111" }
 
 # Permissions
 permissions_t = { fg = "#aaaaaa" }
@@ -90,7 +90,7 @@ inactive = {}
 # : Tasks {{{
 
 [tasks]
-border  = { fg = "#ff0000" }
+border  = { fg = "#3f6db3" }
 title   = {}
 hovered = { underline = true }
 

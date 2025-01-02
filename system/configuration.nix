@@ -66,7 +66,7 @@
   environment.variables = {
     EDITOR = "micro";
     YAZI_CONFIG_HOME = "$HOME/nixos/apps/yazi";
-    SHELL = "mksh";
+    #SHELL = "mksh";
   };
 
   fonts.packages = with pkgs; [

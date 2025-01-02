@@ -18,3 +18,59 @@ lp -d epson document.pdf                                                        
 sudo nmcli device connect eno1
 dd if=image.iso of=/dev/sdx bs=4M status=progress && sync
 nmcli device wifi connect "ICAM" identity "user" password "pass" 802-1x.eap peap 802-1x.phase2-auth mschapv2
+ls ~/docs/MSR/search_vault/ressources/**/*.pdf | get name | each { |e| echo $e | split column '/' | first | values | last | str replace -a "-" " " | str substring 0..50} | sort   # msr papers
+
+
+α # alpha
+β # beta
+γ # gamma
+δ # delta
+ε # epsilon
+ζ # zeta
+η # eta
+θ # theta
+ι # iota
+κ # kappa
+λ # lambda
+μ # mu
+ν # nu
+ξ # ksi
+ο # omikron
+π # pi
+ρ # rho
+σ # sigma
+τ # tau
+υ # ypsilon
+φ # phi
+χ # khi
+ψ # psi
+ω # omega
+
+
+Α # alpha maj
+Β # beta maj
+Γ # gamma maj
+Δ # delta maj
+Ε # epsilon maj
+Ζ # zeta maj
+Η # eta maj
+Θ # theta maj
+Ι # iota maj
+Κ # kappa maj
+Λ # lambda maj
+Μ # mu maj
+Ν # nu maj
+Ξ # ksi maj
+Ο # omikron maj
+Π # pi maj
+Ρ # rho maj
+Σ # sigma maj
+Τ # tau maj
+Υ # ypsilon maj
+Φ # phi maj
+Χ # khi maj
+Ψ # psi maj
+Ω # omega maj
+
+
+ls ~/docs/MSR/search_vault/ressources/**/*.pdf | get name | each { |e|;echo $e | split column '/' | first | values | last | str replace -a "-" " " | str replace -r "^.*[0-9] " "" | str substring 0..50} | sort

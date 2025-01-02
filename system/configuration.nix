@@ -44,7 +44,7 @@
     isNormalUser = true;
     description = "Penwing";
     extraGroups = ["networkmanager" "wheel" "disk"];
-    #shell = pkgs.mksh;
+    shell = pkgs.mksh;
   };
 
   # Allow unfree packages

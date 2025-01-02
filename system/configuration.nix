@@ -44,18 +44,16 @@
     isNormalUser = true;
     description = "Penwing";
     extraGroups = ["networkmanager" "wheel" "disk"];
-    shell = pkgs.nushell;
+    shell = pkgs.mksh;
   };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = (with pkgs; [
-
     # CLIs
     starship # shell more pretty
     git # code versioning
-    carapace # shell completion
     bottom # task manager
     micro # text editor
     calc # calculator
@@ -68,6 +66,7 @@
   environment.variables = {
     EDITOR = "micro";
     YAZI_CONFIG_HOME = "$HOME/nixos/apps/yazi";
+    SHELL = "mksh";
   };
 
   fonts.packages = with pkgs; [

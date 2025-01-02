@@ -52,7 +52,6 @@
 
   environment.systemPackages = (with pkgs; [
     # CLIs
-    starship # shell more pretty
     git # code versioning
     bottom # task manager
     micro # text editor

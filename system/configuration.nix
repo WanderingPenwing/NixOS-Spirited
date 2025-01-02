@@ -44,7 +44,7 @@
     isNormalUser = true;
     description = "Penwing";
     extraGroups = ["networkmanager" "wheel" "disk"];
-    shell = pkgs.mksh;
+    #shell = pkgs.mksh;
   };
 
   # Allow unfree packages
@@ -65,7 +65,7 @@
   environment.variables = {
     EDITOR = "micro";
     YAZI_CONFIG_HOME = "$HOME/nixos/apps/yazi";
-    #SHELL = "mksh";
+    SHELL = "mksh";
   };
 
   fonts.packages = with pkgs; [

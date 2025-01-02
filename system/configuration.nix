@@ -65,6 +65,7 @@
   environment.variables = {
     EDITOR = "micro";
     YAZI_CONFIG_HOME = "$HOME/nixos/apps/yazi";
+    ENV = "$HOME/nixos/scipts/mkshrc";
     #SHELL = "mksh";
   };
 

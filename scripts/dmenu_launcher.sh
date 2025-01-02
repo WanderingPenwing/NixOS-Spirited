@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-APPS=("" "steam" "update" "hmcl" "obsidian" "discord" "noisetorch" "calcifer" "com.github.davidmhewitt.torrential" "wifi" "poweroff" "reboot")
+APPS=("" "steam" "update" "hmcl" "obsidian" "discord" "noisetorch" "calcifer" "com.github.davidmhewitt.torrential" "wifi" "poweroff" "reboot" "kodama")
 
 # Join the array elements with newlines
 APPS_STRING=$(printf "%s\n" "${APPS[@]}")
@@ -21,6 +21,11 @@ fi
 if [ "$SELECTED_APP" == "wifi" ]; then
 	 ~/nixos/scripts/wifi_connect.sh &
 	 exit 0
+fi
+
+if [ "$SELECTED_APP" == "wifi" ]; then
+	kodama -e mksh &
+	exit 0
 fi
 
 # Run the selected application

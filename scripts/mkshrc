@@ -1,0 +1,19 @@
+PS1=$'\n\e[34m`hostname` \e[35m$(if [ -n "$IN_NIX_SHELL" ]; then echo "(nix) "; else echo ""; fi)\e[36m\$(pwd | sed "s|^$HOME|~|; s|\(.*\)/[^/]*$|\1/.../|")\n\e[32m>\e[0m '
+
+alias y="yazi"
+alias m="micro"
+alias nsp="nix-shell -p --command 'mksh'"
+alias rebuild="sh -c '$HOME/nixos/scripts/rebuild.sh'"
+alias edit="sh -c '$HOME/nixos/scripts/edit.sh'"
+alias ct="sh -c '$HOME/nixos/scripts/clone_terminal.sh'"
+alias bd="btm -C '$HOME/nixos/apps/bottom/debug.toml'"
+alias bf="btm -C '$HOME/nixos/apps/bottom/full.toml'"
+
+HISTFILE="$HOME/.ksh_history"
+HISTSIZE=5000
+
+echo ah
+
+if [ -d .git ]; then
+    onefetch
+fi

@@ -2,6 +2,7 @@ PS1=$'\n\e[34m`hostname` \e[35m$(if [ -n "$IN_NIX_SHELL" ]; then echo "(nix) "; 
 
 alias y="yazi"
 alias m="micro"
+alias c="clear"
 alias nsp="nix-shell -p --command 'mksh'"
 alias rebuild="sh -c '$HOME/nixos/scripts/rebuild.sh'"
 alias edit="sh -c '$HOME/nixos/scripts/edit.sh'"
@@ -11,8 +12,6 @@ alias bf="btm -C '$HOME/nixos/apps/bottom/full.toml'"
 
 HISTFILE="$HOME/.ksh_history"
 HISTSIZE=5000
-
-echo ah
 
 if [ -d .git ]; then
     onefetch

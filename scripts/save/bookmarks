@@ -74,3 +74,4 @@ ls ~/docs/MSR/search_vault/ressources/**/*.pdf | get name | each { |e| echo $e |
 
 
 ls ~/docs/MSR/search_vault/ressources/**/*.pdf | get name | each { |e|;echo $e | split column '/' | first | values | last | str replace -a "-" " " | str replace -r "^.*[0-9] " "" | str substring 0..50} | sort
+sudo nixos-rebuild switch --flake "/home/penwing/nixos#kamaji"

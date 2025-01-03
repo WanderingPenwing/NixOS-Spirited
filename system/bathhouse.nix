@@ -20,6 +20,7 @@ in {
   boot.loader.grub.useOSProber = true; 
 
   networking.hostName = hostname;
+  networking.wireless.enable = false;
 
   services.openssh.enable = true;
   services.openssh.settings.PasswordAuthentication = false;
@@ -36,13 +37,66 @@ in {
   nixpkgs.config.allowUnfree = true;
 
   virtualisation.docker.enable = true;
+  
+  services.nginx = {
+    enable = true;
+    recommendedTlsSettings = true;
+    recommendedOptimisation = true;
+    recommendedGzipSettings = true;
+    recommendedProxySettings = true;
+  
+    virtualHosts = {      
+      "www.penwing.org" = {
+        locations."/".proxyPass = "http://localhost:2180";
 
-  services.nginx.enable = true;
+        # Additional configuration for /assets/games
+        locations."/assets/games/" = {
+          proxyPass = "http://localhost:2180/assets/games/";
 
+          # Add headers for Cross-Origin Isolation
+          extraConfig = ''
+            add_header Cross-Origin-Opener-Policy "same-origin";
+            add_header Cross-Origin-Embedder-Policy "require-corp";
+          '';
+        };
+      };
+  
+      "port.penwing.org" = {
+        locations."/".proxyPass = "http://localhost:9000";     
+      };
+
+      "search.penwing.org" = {
+        locations."/".proxyPass = "http://localhost:32768";     
+      };
+      
+      "git.penwing.org" = {
+        locations."/".proxyPass = "http://localhost:3000";     
+      };
+
+      "smms.penwing.org" = {
+        locations."/".proxyPass = "http://localhost:4080";     
+      };
+      
+      "movie.penwing.org" = {
+        locations."/".proxyPass = "http://192.168.1.42:8096"; 
+      };
+
+      "pdf.penwing.org" = {
+      	locations."/".proxyPass = "http://192.168.1.42:1280";
+      };
+      
+    };
+  };
+  
+  networking.firewall.allowedTCPPorts = [ 80 443 1780 2180 4080];
+  
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = (with pkgs; [
     fastfetch
+    docker-compose
+    wakeonlan
+    socat
   ]);
 
   # Before changing this value read the documentation for this option

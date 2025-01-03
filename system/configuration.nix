@@ -66,7 +66,6 @@
     EDITOR = "micro";
     YAZI_CONFIG_HOME = "$HOME/nixos/apps/yazi";
     ENV = "$HOME/nixos/scripts/mkshrc";
-    NIX_BUILD_SHELL = "${pkgs.mksh}/bin/mksh";
   };
 
   fonts.packages = with pkgs; [

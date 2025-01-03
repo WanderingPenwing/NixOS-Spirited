@@ -1,6 +1,6 @@
-# A TOML linter such as https://taplo.tamasfe.dev/ can use this schema to validate your config.
+#A TOML linter such as https://taplo.tamasfe.dev/ can use this schema to validate your config.
 [manager]
-ratio          = [ 2, 3, 2 ]
+ratio          = [ 1, 2, 1 ]
 linemode       = "fullsize"
 
 [plugin]

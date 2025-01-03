@@ -1,5 +1,6 @@
-local function entry(state, args)
-	if #args < 0 then
+--- @sync entry
+local function entry(state, job)
+	if #job.args < 0 then
 	   ya.err("no argument")
 	   return
 	end
@@ -12,7 +13,7 @@ local function entry(state, args)
 		local current_size = 0
 		local preview_size = 0
 		
-		if args[1] == "current" then
+		if job.args[1] == "current" then
 			current_size = 100
 		else
 			preview_size = 100

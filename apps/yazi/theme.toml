@@ -3,10 +3,10 @@
 # : Manager {{{
 
 [manager]
-cwd = { fg = "#3f6db3" }
+cwd = { fg = "#5bc5b0" } ##3f6db3
 
 # Hovered
-hovered         = { reversed=true } #fg = "#444444"
+hovered         = { reversed = true } #fg = "#444444"
 preview_hovered = { underline = false }
 
 # Find
@@ -100,12 +100,12 @@ hovered = { underline = true }
 # : Which {{{
 
 [which]
-mask            = { bg = "#0000ff" }
-cand            = { fg = "#0000ff" }
+mask            = { bg = "#222222" }
+cand            = { fg = "#aaaaaa" }
 rest            = { fg = "#0000ff" }
-desc            = { fg = "#0000ff" }
+desc            = { fg = "#3f6db3" }
 separator       = "  "
-separator_style = { fg = "#0000ff" }
+separator_style = { fg = "#318d56" }
 
 # : }}}
 

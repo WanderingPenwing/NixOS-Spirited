@@ -57,6 +57,8 @@
     micro # text editor
     calc # calculator
     onefetch # code fetch
+    nix-search-cli # search packages
+    fzf # fuzzy search
     
   ]) ++ (with pkgs-unstable; [
     yazi

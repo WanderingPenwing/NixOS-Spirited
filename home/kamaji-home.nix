@@ -11,6 +11,12 @@
       };
     };
   };
-  
+  # gtk = {
+  #   enable = true;
+  #   theme = {
+  #     name = "Breeze-Dark";
+  #     package = pkgs.libsForQt5.breeze-gtk;
+  #   };
+  # };
   home.stateVersion = "24.05";
 }

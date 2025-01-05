@@ -8,7 +8,5 @@ copy (and modify if needed) the etc-configuration.nix to /etc/nixos/configuratio
 
 then use the rebuild script to rebuild the nixos, and if successful it will commit,
 with the number of the generation.
-
-
-Generation: 566
-
+  
+Generation: 575

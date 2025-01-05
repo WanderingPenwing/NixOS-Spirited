@@ -1,17 +1,12 @@
 #!/usr/bin/env bash
 
-APPS=("" "steam" "update" "hmcl" "obsidian" "discord" "noisetorch" "calcifer" "com.github.davidmhewitt.torrential" "wifi" "poweroff" "reboot" "kodama")
+APPS=("" "steam" "pinta" "hmcl" "obsidian" "discord" "noisetorch" "calcifer" "jiji" "godot4" "torrential" "wifi" "poweroff" "reboot" "update" )
 
 # Join the array elements with newlines
 APPS_STRING=$(printf "%s\n" "${APPS[@]}")
 
 # Pass the filtered list to dmenu
 SELECTED_APP=$(echo -e "$APPS_STRING" | marukuru )
-
-if [ "$SELECTED_APP" == "seafile-kill" ]; then
-	 ~/nixos/scripts/seafile_kill.sh &
-	 exit 0
-fi
 
 if [ "$SELECTED_APP" == "update" ]; then
 	 ~/nixos/scripts/update.sh &
@@ -23,8 +18,8 @@ if [ "$SELECTED_APP" == "wifi" ]; then
 	 exit 0
 fi
 
-if [ "$SELECTED_APP" == "wifi" ]; then
-	kodama -e mksh &
+if [ "$SELECTED_APP" == "torrential" ]; then
+	"com.github.davidmhewitt.torrential" &
 	exit 0
 fi
 

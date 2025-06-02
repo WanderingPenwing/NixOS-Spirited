@@ -2,9 +2,9 @@
   description = "My Ghibli themed nixos config";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager/release-24.11";
+    home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
@@ -49,7 +49,12 @@
         modules = [
           ./system/configuration.nix
           ./system/boiler.nix
-        ];
+	  home-manager.nixosModules.home-manager {
+		home-manager.useGlobalPkgs = true;
+		home-manager.useUserPackages = true;
+        	home-manager.users.penwing = import ./home/boiler-home.nix;
+	  }
+		       ];
       };
       
       bathhouse = nixpkgs.lib.nixosSystem {

@@ -14,7 +14,7 @@ pushd "$nixos_dir" > /dev/null || { echo "Error: Could not navigate to $nixos_di
 git checkout "${host_name}-config" || { echo "Error: Failed to check out branch ${host_name}-config"; popd > /dev/null; return 1; }
 
 # Open the specific system configuration file with micro editor
-micro "$system_file" || { echo "Error: Failed to open $system_file"; popd > /dev/null; return 1; }
+$EDITOR "$system_file" || { echo "Error: Failed to open $system_file"; popd > /dev/null; return 1; }
 
 # Return to the previous directory
 popd > /dev/null 2>&1

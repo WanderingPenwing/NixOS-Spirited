@@ -3,6 +3,20 @@
 ratio          = [ 1, 2, 1 ]
 linemode       = "fullsize"
 
+[open]
+prepend_rules = [
+	{ mime = "image/*", use = "show" },
+	{ name = "*.pdf", use = "pdf" },
+]
+
+[opener]
+show = [
+  { run = 'zeniba "$@"', orphan = true},
+]
+pdf = [
+  { run = 'zathura "$@"', orphan = true},
+]
+
 [plugin]
 
 fetchers = [

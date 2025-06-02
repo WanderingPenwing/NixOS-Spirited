@@ -1,36 +1,36 @@
 [[manager.prepend_keymap]]
-on = ["<Right>"]
+on = ["<l>"]
 run = "plugin open_force"
 desc = "open force"
 
 [[manager.prepend_keymap]]
-on = ["<S-Right>"]
+on = ["<S-l>"]
 run = "plugin open_force --args='detatch'"
 desc = "open detatch"
 
 [[manager.prepend_keymap]]
-on  = ["<Up>"]
+on  = ["<k>"]
 run = "plugin wrap --args=-1"
 
 [[manager.prepend_keymap]]
-on  = ["<Down>"]
+on  = ["<j>"]
 run = "plugin wrap --args=1"
 
 [[manager.prepend_keymap]]
-on  = ["<S-Up>"]
+on  = ["<S-k>"]
 run = "plugin wrap --args=-5"
 
 [[manager.prepend_keymap]]
-on  = ["<S-Down>"]
+on  = ["<S-j>"]
 run = "plugin wrap --args=5"
 
 [[manager.prepend_keymap]]
-on = ["<l>"]
+on = ["<m>"]
 run = "plugin toggle_layout --args='current'"
 desc = "change layout"
 
 [[manager.prepend_keymap]]
-on = ["<m>"]
+on = ["<p>"]
 run = "plugin toggle_layout --args='preview'"
 desc = "change layout"
 

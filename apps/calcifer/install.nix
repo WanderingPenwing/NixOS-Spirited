@@ -4,13 +4,13 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "calcifer";
-  version = "1.4.2";
+  version = "1.4.3";
 
   src = fetchFromGitHub {
     owner = "WanderingPenwing";
     repo = "Calcifer";
     rev = "${version}";
-    sha256 = "sha256-PFyu+8+GceoxB8VvdvImw6IbkaTUshCpcp04ABTgE1g=";
+    sha256 = "sha256-SsXXwfenkbG0pePKfGWkrxAbsPX3/LYfXSVFFUVbE7o=";
   };
 
   cargoLock = {

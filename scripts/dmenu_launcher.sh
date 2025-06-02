@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-APPS=("" "steam" "pinta" "hmcl" "obsidian" "discord" "noisetorch" "calcifer" "jiji" "godot4" "torrential" "wifi" "poweroff" "reboot" "update" )
+APPS=("" "steam" "gimp" "hmcl" "discord" "noisetorch" "calcifer" "jiji" "godot4" "torrential" "wifi" "poweroff" "reboot" "update" "blender" "ModrinthApp" "kill")
 
 # Join the array elements with newlines
 APPS_STRING=$(printf "%s\n" "${APPS[@]}")
@@ -23,7 +23,12 @@ if [ "$SELECTED_APP" == "torrential" ]; then
 	exit 0
 fi
 
+if [ "$SELECTED_APP" == "discord" ]; then
+	 ~/nixos/scripts/discord.sh &
+	 exit 0
+fi
+
 # Run the selected application
-if [ "$SELECTED_APP" != "cancel" ] && [ -n "$SELECTED_APP" ]; then
+if [ "$SELECTED_APP" != "" ] && [ -n "$SELECTED_APP" ]; then
     "$SELECTED_APP" &
 fi

@@ -2,7 +2,11 @@ https://github.com/WanderingPenwing?tab=repositories
 https://search.nixos.org/packages?channel=24.05
 https://fmhy.pages.dev/videopiracyguide
 https://browserbench.org/Speedometer3.0
+https://github.com/dylanaraps/pure-bash-bible   # bash wiki
+https://amiaopensource.github.io/ffmprovisr/    # ffmpeg wiki
 
+
+yt-dlp --ignore-errors --format bestaudio --extract-audio --audio-format mp3 --audio-quality 160K --output "%(title)s.%(ext)s" --yes-playlist '<YouTube playlist URL>'   # download youtube music playlist
 
 sudo parted /dev/sda mkpart primary ntfs 2048s 100%                                                     # format usb
 quickemu --vm debian-12.6.0-xfce.conf --display spice                                                   # virual linux
@@ -11,15 +15,19 @@ sudo quark -p 80 -d ~/repos/igloo                                               
 rsync -rvP /media/storage/ admin@192.168.1.28:/var/services/homes/admin                                 # rsync example
 xset dpms force off                                                                                     # screen off
 nmcli con mod Le\ Ninternet\ 1 ipv4.dns "192.168.1.40 8.8.8.8"
-wakeonlan c0:7c:d1:fb:c9:86
 sudo docker exec -i mc rcon-cli                                                                         # minecraft console
 sudo lpadmin -p epson -E -v ipp://192.168.1.15/ipp/print -m everywhere                                  # add printer
 lp -d epson document.pdf                                                                                # print document
 sudo nmcli device connect eno1
 dd if=image.iso of=/dev/sdx bs=4M status=progress && sync
 nmcli device wifi connect "ICAM" identity "user" password "pass" 802-1x.eap peap 802-1x.phase2-auth mschapv2
-ls ~/docs/MSR/search_vault/ressources/**/*.pdf | get name | each { |e| echo $e | split column '/' | first | values | last | str replace -a "-" " " | str substring 0..50} | sort   # msr papers
 
+sudo nixos-rebuild switch --flake "/home/penwing/nixos#kamaji"
+
+nmap -T4 -sP 192.168.1.0/24																				# scan for devices
+ffmpeg -f x11grab -video_size 1920x1080 -i :0.0+0,0 -f pulse -i default -c:v libx264 -preset ultrafast -crf 18 -c:a aac -b:a 128k output_with_audio.mp4 # need ffmpeg-full
+
+setxkbmap -layout us 																					# set qwerty keyboard layout
 
 α # alpha
 β # beta
@@ -46,7 +54,6 @@ ls ~/docs/MSR/search_vault/ressources/**/*.pdf | get name | each { |e| echo $e |
 ψ # psi
 ω # omega
 
-
 Α # alpha maj
 Β # beta maj
 Γ # gamma maj
@@ -72,6 +79,3 @@ ls ~/docs/MSR/search_vault/ressources/**/*.pdf | get name | each { |e| echo $e |
 Ψ # psi maj
 Ω # omega maj
 
-
-ls ~/docs/MSR/search_vault/ressources/**/*.pdf | get name | each { |e|;echo $e | split column '/' | first | values | last | str replace -a "-" " " | str replace -r "^.*[0-9] " "" | str substring 0..50} | sort
-sudo nixos-rebuild switch --flake "/home/penwing/nixos#kamaji"

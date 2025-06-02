@@ -1,8 +1,0 @@
-Host bath
-    HostName penwing.org
-    User bathhouse
-	IdentityFile ~/.ssh/github
-
-Host github.com
-	HostName github.com
-	IdentityFile ~/.ssh/github

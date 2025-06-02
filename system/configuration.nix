@@ -1,81 +1,86 @@
 {
-  config,
-  pkgs,
-  pkgs-unstable,
-  options,
-  ...
+config,
+pkgs,
+pkgs-unstable,
+options,
+...
 }: {
 
-  # Enable networking
-  networking.networkmanager.enable = true;
-  
-  # Set your time zone.
-  time.timeZone = "Europe/Paris";
+	# Enable networking
+	networking.networkmanager.enable = true;
 
-  # ntfs support
-  boot.supportedFilesystems = ["ntfs"];
+	# Set your time zone.
+	time.timeZone = "Europe/Paris";
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "fr_FR.UTF-8";
-    LC_IDENTIFICATION = "fr_FR.UTF-8";
-    LC_MEASUREMENT = "fr_FR.UTF-8";
-    LC_MONETARY = "fr_FR.UTF-8";
-    LC_NAME = "fr_FR.UTF-8";
-    LC_NUMERIC = "fr_FR.UTF-8";
-    LC_PAPER = "fr_FR.UTF-8";
-    LC_TELEPHONE = "fr_FR.UTF-8";
-    LC_TIME = "fr_FR.UTF-8";
-  };
-  
-  # Configure console keymap
-  console.keyMap = "fr";
+	# ntfs support
+	boot.supportedFilesystems = ["ntfs"];
 
-  # Enable Bluetooth
-  hardware.bluetooth.enable = true; # enables support for Bluetooth
-  hardware.bluetooth.powerOnBoot = true;
+	# Select internationalisation properties.
+	i18n.defaultLocale = "en_US.UTF-8";
+	i18n.extraLocaleSettings = {
+		LC_ADDRESS = "fr_FR.UTF-8";
+		LC_IDENTIFICATION = "fr_FR.UTF-8";
+		LC_MEASUREMENT = "fr_FR.UTF-8";
+		LC_MONETARY = "fr_FR.UTF-8";
+		LC_NAME = "fr_FR.UTF-8";
+		LC_NUMERIC = "fr_FR.UTF-8";
+		LC_PAPER = "fr_FR.UTF-8";
+		LC_TELEPHONE = "fr_FR.UTF-8";
+		LC_TIME = "fr_FR.UTF-8";
+	};
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
+	# Configure console keymap
+	console.keyMap = "us";
 
-  # Define a user account. Don t forget to set a password with ‘passwd’.
-  users.users.penwing = {
-    isNormalUser = true;
-    description = "Penwing";
-    extraGroups = ["networkmanager" "wheel" "disk"];
-    shell = pkgs.mksh;
-  };
+	# Enable Bluetooth
+	hardware.bluetooth.enable = true; # enables support for Bluetooth
+	hardware.bluetooth.powerOnBoot = true;
 
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
+	# Enable CUPS to print documents.
+	services.printing.enable = true;
 
-  environment.systemPackages = (with pkgs; [
-    # CLIs
-    git # code versioning
-    bottom # task manager
-    micro # text editor
-    calc # calculator
-    onefetch # code fetch
-    nix-search-cli # search packages
-    fzf # fuzzy search
-    
-  ]) ++ (with pkgs-unstable; [
-    yazi
-  ]);
+	# Define a user account. Don t forget to set a password with ‘passwd’.
+	users.users.penwing = {
+		isNormalUser = true;
+		description = "Penwing";
+		extraGroups = ["networkmanager" "wheel" "disk"];
+		shell = pkgs.mksh;
+	};
 
-  environment.variables = {
-    EDITOR = "micro";
-    YAZI_CONFIG_HOME = "$HOME/nixos/apps/yazi";
-    ENV = "$HOME/nixos/scripts/mkshrc";
-  };
+	# Allow unfree packages
+	nixpkgs.config.allowUnfree = true;
 
-  fonts.packages = with pkgs; [
-    font-awesome
-    powerline-fonts
-    powerline-symbols
-    (nerdfonts.override {fonts = ["Hermit" "FiraCode" "Mononoki"];})
-  ];
+	environment.systemPackages = (with pkgs; [
+		# CLIs
+		git # code versioning
+		bottom # task manager
+		micro # text editor
+		calc # calculator
+		onefetch # code fetch
+		nix-search-cli # search packages
+		fzf # fuzzy search
+		man-pages
+		ripgrep
+		dust # du replacement
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+	]) ++ (with pkgs-unstable; [
+			yazi
+		]);
+
+	environment.variables = {
+		EDITOR = "nvim";
+		YAZI_CONFIG_HOME = "$HOME/nixos/apps/yazi";
+		ENV = "$HOME/nixos/scripts/mkshrc.sh";
+	};
+
+	fonts.packages = with pkgs; [
+		font-awesome
+		powerline-fonts
+		powerline-symbols
+		nerd-fonts.hurmit
+		nerd-fonts.fira-code
+		nerd-fonts.mononoki
+	];
+
+	nix.settings.experimental-features = ["nix-command" "flakes"];
 }

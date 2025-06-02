@@ -7,6 +7,10 @@ set -e
 # cd to your config dir
 pushd /home/penwing/nixos/ > /dev/null 2>&1
 
+computer_name=$(cat /home/penwing/nixos/computer_name)
+
+git checkout "$computer_name-config" 
+
 if [ ! $# -eq 0 ]; then
 	echo "# Kamaji *" > README.md
 
@@ -26,7 +30,6 @@ fi
 
 
 echo ""
-computer_name=$(cat /home/penwing/nixos/computer_name)
 echo "NixOS Rebuilding $computer_name ..."
 # Rebuild, output simplified errors, log trackebacks
 #sudo sh -c "nixos-rebuild switch &>nixos-switch.log || (cat nixos-switch.log | grep --color error && false)"

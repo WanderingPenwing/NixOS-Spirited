@@ -37,8 +37,6 @@ in {
     options = [ "defaults" ];
   };
 
-  networking.firewall.allowedTCPPorts = [ 80 1180 ];
-
   systemd.timers."poweroff" = {
     wantedBy = [ "timers.target" ];
       timerConfig = {
@@ -46,22 +44,70 @@ in {
         Unit = "poweroff.service";
       };
   };
-  
-  systemd.services."poweroff" = {
-    script = ''
-      ${pkgs.coreutils}/bin/shutdown -h now >> /var/log/poweroff.log 2>&1
-    '';
-    serviceConfig = {
-      Type = "oneshot";
-      User = "root";
-    };
-  };
-
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   
   virtualisation.docker.enable = true;
+
+  services.nginx = {
+    enable = true;
+    recommendedTlsSettings = true;
+    recommendedOptimisation = true;
+    recommendedGzipSettings = true;
+    recommendedProxySettings = true;
+
+    virtualHosts = {
+      "storage.penwing.org" = {
+        locations."/".proxyPass = "http://localhost:1380";
+		locations."/Games/" = {
+			proxyPass = "http://localhost:1380/Games/";
+	        extraConfig = ''
+	          add_header Cross-Origin-Opener-Policy "same-origin";
+	          add_header Cross-Origin-Embedder-Policy "require-corp";
+	        '';
+	      };
+      };
+      
+      "www.penwing.org" = {
+        locations."/".proxyPass = "http://localhost:2180";
+      };
+      
+      "port.penwing.org" = {
+        locations."/".proxyPass = "http://localhost:9000";
+      };
+
+      "search.penwing.org" = {
+        locations."/".proxyPass = "http://localhost:32768";
+      };
+
+      "git.penwing.org" = {
+        locations."/".proxyPass = "http://localhost:3000";
+      };
+
+      "smms.penwing.org" = {
+        locations."/".proxyPass = "http://localhost:4080";
+      };
+
+      "movie.penwing.org" = {
+        locations."/".proxyPass = "http://localhost:8096";
+      };
+
+      "pdf.penwing.org" = {
+        locations."/".proxyPass = "http://localhost:1280";
+      };
+
+      "book.penwing.org" = {
+        locations."/".proxyPass = "http://localhost:5000";
+      };
+
+      "doc.penwing.org" = {
+         locations."/".proxyPass = "http://localhost:5680";
+       };
+    };
+  };
+
+  networking.firewall.allowedTCPPorts = [ 80 443 2180 4080];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -71,6 +117,7 @@ in {
     ethtool
     cron
     zip
+	dust
   ]);
 
   # Before changing this value read the documentation for this option

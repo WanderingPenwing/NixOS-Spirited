@@ -43,6 +43,7 @@ in {
 		videoDrivers = [ "amdgpu" ];
 		deviceSection = ''
 			Option "DRI" "3"
+			Option "PixmapCacheSize" "512"
 		'';
 		desktopManager.xterm.enable = false;
 

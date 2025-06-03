@@ -11,7 +11,7 @@ local on_attach = function(_, bufnr)
 	end
 
 	bufmap('<leader>lr', vim.lsp.buf.rename, '[L]sp [R]ename' )
-	bufmap('<leader>la', vim.lsp.buf.code_action, '[L]sp [A]ction') 
+	bufmap('<leader>la', vim.lsp.buf.code_action, '[L]sp [A]ction')
 
 	bufmap('gd', vim.lsp.buf.definition, '[G]o to [D]efinition')
 	bufmap('gD', vim.lsp.buf.declaration, '[G]o to [D]eclaration')
@@ -28,11 +28,6 @@ local on_attach = function(_, bufnr)
 
 	-- Show diagnostics in a floating window
 	bufmap('<leader>d', vim.diagnostic.open_float, '[D]iagnostic')
-
-	-- Go to next/previous diagnostic
-	bufmap('[d', vim.diagnostic.goto_prev, 'Previous Diagnostic')
-	bufmap(']d', vim.diagnostic.goto_next, 'Next Diagnostic')
-
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

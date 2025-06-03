@@ -40,6 +40,10 @@ in {
 	services.xserver = {
 		enable = true;
 
+		videoDrivers = [ "amdgpu" ];
+		deviceSection = ''
+			Option "DRI" "3"
+		'';
 		desktopManager.xterm.enable = false;
 
 		windowManager.dwm = {

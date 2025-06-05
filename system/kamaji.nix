@@ -83,7 +83,27 @@ in {
 				"class_g = 'dwm'"       # Or exclude windows with class 'dwm' 
 				"class_g = 'dmenu'"
 			];
-			# fade = true;
+			# Animations
+			animations = true;
+			animation-stiffness = 350;
+			animation-window-mass = 1.0;
+			animation-dampening = 15;
+			animation-clamping = true;
+			animation-for-open-window = "fly-in 120";
+			animation-for-unmap-window = "zoom-out 150";
+			animation-for-transient-window = "slide-down 150";		# fade = true;
+			# Animate move/resize
+			animation-for-move = "slide 150";         # Animate window movement
+			animation-for-resize = "scale 120";       # Animate resizing
+			# Optional: fade options
+			fade = true;
+			fade-in-step = 0.03;
+			fade-out-step = 0.03;
+			fade-exclude = [
+				"class_g = 'dmenu'"
+				"class_g = 'slop'"
+				"class_g = 'Xfce4-notifyd'"
+			];
 		};
 	};
 

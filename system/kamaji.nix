@@ -73,7 +73,7 @@ in {
 	# Round corners
 	services.picom = {
 		enable = true;
-		package = pkgs.picom-next;
+		package = pkgs.picom-next; #picom-pijulius
 		settings = {
 			vsync = true;
 			backend = "glx";

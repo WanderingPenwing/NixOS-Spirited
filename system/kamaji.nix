@@ -209,88 +209,89 @@ in {
 			# animation-for-resize = "scale 120";       # Animate resizing
 			# };
 		};
+	};
 
-		nixpkgs.config.allowUnfree = true;
+	nixpkgs.config.allowUnfree = true;
 
-		environment.systemPackages = (with pkgs; [
-			# Libs
-			libnotify
-			jdk21
+	environment.systemPackages = (with pkgs; [
+		# Libs
+		libnotify
+		jdk21
 
-			# CLIs
-			pamixer # sound settings
-			brightnessctl # brightness settings
-			maim # screenshot
-			xclip # clipboard
-			xdotool # add keyboard automation
-			dunst # send notifications
-			inotify-tools # file events
-			#texlive.combined.scheme-full #tex
-			tealdeer # tldr man
-			ani-cli
+		# CLIs
+		pamixer # sound settings
+		brightnessctl # brightness settings
+		maim # screenshot
+		xclip # clipboard
+		xdotool # add keyboard automation
+		dunst # send notifications
+		inotify-tools # file events
+		#texlive.combined.scheme-full #tex
+		tealdeer # tldr man
+		ani-cli
 
-			# Custom Apps
-			calcifer # code editor
-			ingary # sddm theme
-			jiji # discord lite
-			kodama # terminal
-			marukuru # app menu
-			jenkins # windows manager
-			susuwatari # clipboard
-			turnip # status bar
-			zeniba # image viewer
+		# Custom Apps
+		calcifer # code editor
+		ingary # sddm theme
+		jiji # discord lite
+		kodama # terminal
+		marukuru # app menu
+		jenkins # windows manager
+		susuwatari # clipboard
+		turnip # status bar
+		zeniba # image viewer
 
-			# Other Apps
-			discord
-			mpv # video player
-			torrential
-			zathura
-			hmcl # minecraft
-			modrinth-app
-			godot_4
-			gimp
-			blender
-			qutebrowser
-			easyeffects
+		# Other Apps
+		discord
+		mpv # video player
+		torrential
+		zathura
+		hmcl # minecraft
+		modrinth-app
+		godot_4
+		gimp
+		blender
+		qutebrowser
+		easyeffects
 
-			# Appearance
-			feh # wallpaper
-			yaru-theme
-			papirus-icon-theme
-			lxappearance
-		]);
+		# Appearance
+		feh # wallpaper
+		yaru-theme
+		papirus-icon-theme
+		lxappearance
+	]);
 
-		documentation = {
-			dev.enable = true;
-			man.generateCaches = true;
-			nixos.includeAllModules = true;
-		};
+	documentation = {
+		dev.enable = true;
+		man.generateCaches = true;
+		nixos.includeAllModules = true;
+	};
 
-		# Enable sound with pipewire.
-		services.pulseaudio.enable = false;
-		security.rtkit.enable = true;
-		services.pipewire = {
-			enable = true;
-			alsa.enable = true;
-			alsa.support32Bit = true;
-			pulse.enable = true;
-		};
+	# Enable sound with pipewire.
+	services.pulseaudio.enable = false;
+	security.rtkit.enable = true;
+	services.pipewire = {
+		enable = true;
+		alsa.enable = true;
+		alsa.support32Bit = true;
+		pulse.enable = true;
+	};
 
-		# configuration system
-		services.dbus.packages = [ pkgs.dconf ];
+	# configuration system
+	services.dbus.packages = [ pkgs.dconf ];
 
-		# Gaming setup
-		programs.steam = {
-			enable = true;
-			gamescopeSession.enable = true;
-			remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
-			dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
-		};
-		programs.gamemode.enable = true;
+	# Gaming setup
+	programs.steam = {
+		enable = true;
+		gamescopeSession.enable = true;
+		remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+		dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+	};
+	programs.gamemode.enable = true;
 
-		services.mullvad-vpn.enable = true;
+	services.mullvad-vpn.enable = true;
 
-		# Before changing this value read the documentation for this option
-		# (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-		system.stateVersion = "23.11"; # Did you read the comment?
-	}
+	# Before changing this value read the documentation for this option
+	# (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+	system.stateVersion = "23.11"; # Did you read the comment?
+}

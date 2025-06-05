@@ -83,6 +83,7 @@ in {
 				"class_g = 'dwm'"       # Or exclude windows with class 'dwm' 
 				"class_g = 'dmenu'"
 			];
+			fade = true;
 		};
 	};
 

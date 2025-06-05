@@ -1,3 +1,4 @@
 #! /usr/bin/env bash
 
-qutebrowser &
+QTWEBENGINE_CHROMIUM_FLAGS="--disable-gpu" qutebrowser &
+# qutebrowser &

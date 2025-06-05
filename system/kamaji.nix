@@ -73,7 +73,7 @@ in {
 	# Round corners
 	services.picom = {
 		enable = true;
-		package = pkgs.picom-next; #picom-pijulius
+		package = pkgs.picom-pijulius;#:pkgs.picom-next; 
 		settings = {
 			vsync = true;
 			backend = "glx";
@@ -83,7 +83,7 @@ in {
 				"class_g = 'dwm'"       # Or exclude windows with class 'dwm' 
 				"class_g = 'dmenu'"
 			];
-			fade = true;
+			# fade = true;
 		};
 	};
 

@@ -73,150 +73,26 @@ in {
 	# Round corners
 	services.picom = {
 		enable = true;
-		package = pkgs.picom-pijulius;#:pkgs.picom-next; 
+		package = pkgs.picom-allusive;
 		vSync = true;
 		backend = "glx";
 		settings = {
-			animations = true;
-			animation-stiffness = 300.0;
-			animation-dampening = 35.0;
-			animation-clamping = false;
-			animation-mass = 1;
-			animation-for-workspace-switch-in = "auto";
-			animation-for-workspace-switch-out = "auto";
-			animation-for-open-window = "slide-down";
-			animation-for-menu-window = "none";
-			animation-for-transient-window = "slide-down";
+			# animations = true;
+			# animation-stiffness = 300.0;
+			# animation-dampening = 35.0;
+			# animation-clamping = false;
+			# animation-mass = 1;
+			# animation-for-workspace-switch-in = "auto";
+			# animation-for-workspace-switch-out = "auto";
+			# animation-for-open-window = "slide-down";
+			# animation-for-menu-window = "none";
+			# animation-for-transient-window = "slide-down";
 			corner-radius = 20;
 			rounded-corners-exclude = [
 				"window_type = 'dock'"  # Exclude windows of type 'dock'
 				"class_g = 'dwm'"       # Or exclude windows with class 'dwm' 
 				"class_g = 'dmenu'"
 			];
-			# rules = [
-			# 	{
-			# 		match = "window_type = 'normal'";
-			# 		animations = [
-			# 			{
-			# 				triggers = ["close"];
-			# 				opacity = {
-			# 					curve = "cubic-bezier(0,1,1,1)";
-			# 					duration = 0.3;
-			# 					start = "window-raw-opacity-before";
-			# 					end = 0;
-			# 				};
-			# 				blur-opacity = "opacity";
-			# 				shadow-opacity = "opacity";
-			#
-			# 				scale-x = {
-			# 					curve = "cubic-bezier(0,1.3,1,1)";
-			# 					duration = 0.3;
-			# 					start = 1;
-			# 					end = 0.6;
-			# 				};
-			# 				scale-y = "scale-x";
-			#
-			# 				offset-x = "(1 - scale-x) / 2 * window-width";
-			# 				offset-y = "(1 - scale-y) / 2 * window-height";
-			#
-			# 				shadow-scale-x = "scale-x";
-			# 				shadow-scale-y = "scale-y";
-			# 				shadow-offset-x = "offset-x";
-			# 				shadow-offset-y = "offset-y";
-			# 			}
-			#
-			# 			# Animación de APERTURA
-			# 			{
-			# 				triggers = ["open"];
-			# 				opacity = {
-			# 					curve = "cubic-bezier(0,1,1,1)";
-			# 					duration = 0.5;
-			# 					start = 0;
-			# 					end = "window-raw-opacity";
-			# 				};
-			# 				blur-opacity = "opacity";
-			# 				shadow-opacity = "opacity";
-			#
-			# 				scale-x = {
-			# 					curve = "cubic-bezier(0,1.3,1,1)";
-			# 					duration = 0.5;
-			# 					start = 0.6;
-			# 					end = 1;
-			# 				};
-			# 				scale-y = "scale-x";
-			#
-			# 				offset-x = "(1 - scale-x) / 2 * window-width";
-			# 				offset-y = "(1 - scale-y) / 2 * window-height";
-			#
-			# 				shadow-scale-x = "scale-x";
-			# 				shadow-scale-y = "scale-y";
-			# 				shadow-offset-x = "offset-x";
-			# 				shadow-offset-y = "offset-y";
-			# 			}
-			#
-			# 			# Animación de GEOMETRÍA (modificada para ambos casos)
-			# 			{
-			# 				triggers = ["geometry"];
-			# 				# Cuando la ventana CRECE (abrir/mover/redimensionar)
-			# 				scale-x = {
-			# 					curve = "cubic-bezier(0,0,0,1.28)";
-			# 					duration = 0.5;
-			# 					start = "window-width-before / window-width";
-			# 					end = 1;
-			# 				};
-			#
-			# 				# Cuando la ventana ENCOGE (cerrar/mover/redimensionar)
-			# 				scale-x-reverse = {
-			# 					curve = "cubic-bezier(0,0,0,1.28)";
-			# 					duration = 0.3;
-			# 					start = "window-width / window-width-before";
-			# 					end = 1;
-			# 				};
-			# 				scale-y = {
-			# 					curve = "cubic-bezier(0,0,0,1.28)";
-			# 					duration = 0.5;
-			# 					start = "window-height-before / window-height";
-			# 					end = 1;
-			# 				};
-			# 				scale-y-reverse = {
-			# 					curve = "cubic-bezier(0,0,0,1.28)";
-			# 					duration = 0.3;
-			# 					start = "window-height / window-height-before";
-			# 					end = 1;
-			# 				};
-			# 				offset-x = {
-			# 					curve = "cubic-bezier(0,0,0,1.28)";
-			# 					duration = 0.5;
-			# 					start = "window-x-before - window-x";
-			# 					end = 0;
-			# 				};
-			# 				offset-y = {
-			# 					curve = "cubic-bezier(0,0,0,1.28)";
-			# 					duration = 0.5;
-			# 					start = "window-y-before - window-y";
-			# 					end = 0;
-			# 				};
-			# 				shadow-scale-x = "scale-x";
-			# 				shadow-scale-y = "scale-y";
-			# 				shadow-offset-x = "offset-x";
-			# 				shadow-offset-y = "offset-y";
-			# 			}
-			# 		];
-			# 	}
-			# ];
-			# Animations
-			# animations = true;
-			# animation-stiffness = 350;
-			# animation-window-mass = 1.0;
-			# animation-dampening = 15;
-			# animation-clamping = true;
-			# animation-for-open-window = "fly-in 120";
-			# animation-for-unmap-window = "zoom-out 150";
-			# animation-for-transient-window = "slide-down 150";		# fade = true;
-			# # Animate move/resize
-			# animation-for-move = "slide 150";         # Animate window movement
-			# animation-for-resize = "scale 120";       # Animate resizing
-			# };
 		};
 	};
 
@@ -262,6 +138,7 @@ in {
 		blender
 		qutebrowser
 		easyeffects
+		librewolf
 
 		# Appearance
 		feh # wallpaper

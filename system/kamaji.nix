@@ -74,26 +74,27 @@ in {
 	services.picom = {
 		enable = true;
 		package = pkgs.picom-pijulius;
-		vSync = true;
-		backend = "glx";
-		settings = {
-			# animations = true;
-			# animation-stiffness = 300.0;
-			# animation-dampening = 35.0;
-			# animation-clamping = false;
-			# animation-mass = 1;
-			# animation-for-workspace-switch-in = "auto";
-			# animation-for-workspace-switch-out = "auto";
-			# animation-for-open-window = "slide-down";
-			# animation-for-menu-window = "none";
-			# animation-for-transient-window = "slide-down";
-			corner-radius = 20;
-			rounded-corners-exclude = [
-				"window_type = 'dock'"  # Exclude windows of type 'dock'
-				"class_g = 'dwm'"       # Or exclude windows with class 'dwm' 
-				"class_g = 'dmenu'"
-			];
-		};
+		configFile = "/home/penwing/picom/picom.conf";
+		# vSync = true;
+		# backend = "glx";
+		# settings = {
+		# 	# animations = true;
+		# 	# animation-stiffness = 300.0;
+		# 	# animation-dampening = 35.0;
+		# 	# animation-clamping = false;
+		# 	# animation-mass = 1;
+		# 	# animation-for-workspace-switch-in = "auto";
+		# 	# animation-for-workspace-switch-out = "auto";
+		# 	# animation-for-open-window = "slide-down";
+		# 	# animation-for-menu-window = "none";
+		# 	# animation-for-transient-window = "slide-down";
+		# 	corner-radius = 20;
+		# 	rounded-corners-exclude = [
+		# 		"window_type = 'dock'"  # Exclude windows of type 'dock'
+		# 		"class_g = 'dwm'"       # Or exclude windows with class 'dwm' 
+		# 		"class_g = 'dmenu'"
+		# 	];
+		# };
 	};
 
 	nixpkgs.config.allowUnfree = true;

@@ -1,5 +1,5 @@
 #! /usr/bin/env bash
 
-libreoffice &
+librewolf &
 # QTWEBENGINE_CHROMIUM_FLAGS="--disable-gpu" qutebrowser &
 # qutebrowser &

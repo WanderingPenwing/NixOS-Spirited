@@ -67,6 +67,8 @@ in {
 			turnip &
 			# start clipboard
 			susuwatari & 
+			# start picom
+			picom --config ~/nixos/apps/picom/picom.conf &
 		'';
 	};
 

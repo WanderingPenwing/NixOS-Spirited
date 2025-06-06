@@ -72,9 +72,9 @@ in {
 
 	# Round corners
 	services.picom = {
-		enable = true;
-		package = pkgs.picom-pijulius;
-		configFile = "/home/penwing/picom/picom.conf";
+		enable = false;
+		# package = pkgs.picom-pijulius;
+		# configFile = "/home/penwing/picom/picom.conf";
 		# vSync = true;
 		# backend = "glx";
 		# settings = {
@@ -115,6 +115,7 @@ in {
 		#texlive.combined.scheme-full #tex
 		tealdeer # tldr man
 		ani-cli
+		picom-pijulius
 
 		# Custom Apps
 		calcifer # code editor

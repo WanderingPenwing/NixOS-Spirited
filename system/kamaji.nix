@@ -149,12 +149,12 @@ in {
 		lxappearance
 	]);
 
-	documentation = {
-		dev.enable = true;
-		man.generateCaches = true;
-		nixos.includeAllModules = true;
-	};
-
+	# documentation = {
+	# 	dev.enable = true;
+	# 	man.generateCaches = true;
+	# 	nixos.includeAllModules = true;
+	# };
+	#
 	# Enable sound with pipewire.
 	services.pulseaudio.enable = false;
 	security.rtkit.enable = true;

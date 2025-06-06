@@ -73,7 +73,7 @@ in {
 	# Round corners
 	services.picom = {
 		enable = true;
-		package = pkgs.picom-allusive;
+		package = pkgs.picom-pijulius;
 		vSync = true;
 		backend = "glx";
 		settings = {

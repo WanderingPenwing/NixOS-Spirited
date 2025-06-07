@@ -53,7 +53,6 @@ in {
 		};
 
 
-		virtualisation.docker.enable = true;
 
 		xkb.layout = "us";
 		xkb.variant = "";
@@ -74,6 +73,8 @@ in {
 			picom --config ~/nixos/apps/picom/picom.conf &
 		'';
 	};
+
+	virtualisation.docker.enable = true;
 
 	# Round corners
 	services.picom = {

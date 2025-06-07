@@ -1,4 +1,4 @@
-mode=$(echo -e "extension\ncopy" | marukuru -i)
+mode=$(echo -e "extension\ncopy" | marukuru -c -l 2 -bw 6)
 
 if [ "$mode" == "extension" ]; then
 	notify-send -u low -a "hdmi" "$(xrandr --output HDMI-A-0 --right-of eDP --auto 2>&1)"

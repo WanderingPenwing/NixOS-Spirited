@@ -52,6 +52,9 @@ in {
 			enable = true;
 		};
 
+
+		virtualisation.docker.enable = true;
+
 		xkb.layout = "us";
 		xkb.variant = "";
 		xkb.options = "compose:ralt,caps:escape";

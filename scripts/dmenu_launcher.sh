@@ -6,7 +6,7 @@ APPS=("" "steam" "gimp" "hmcl" "discord" "noisetorch" "calcifer" "jiji" "godot4"
 APPS_STRING=$(printf "%s\n" "${APPS[@]}")
 
 # Pass the filtered list to dmenu
-SELECTED_APP=$(echo -e "$APPS_STRING" | marukuru )
+SELECTED_APP=$(echo -e "$APPS_STRING" | marukuru -x 6 -y 6 -z 1908)
 
 if [ "$SELECTED_APP" == "update" ]; then
 	 ~/nixos/scripts/update.sh &

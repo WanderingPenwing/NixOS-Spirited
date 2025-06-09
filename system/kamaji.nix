@@ -79,28 +79,6 @@ in {
 	# Round corners
 	services.picom = {
 		enable = false;
-		# package = pkgs.picom-pijulius;
-		# configFile = "/home/penwing/picom/picom.conf";
-		# vSync = true;
-		# backend = "glx";
-		# settings = {
-		# 	# animations = true;
-		# 	# animation-stiffness = 300.0;
-		# 	# animation-dampening = 35.0;
-		# 	# animation-clamping = false;
-		# 	# animation-mass = 1;
-		# 	# animation-for-workspace-switch-in = "auto";
-		# 	# animation-for-workspace-switch-out = "auto";
-		# 	# animation-for-open-window = "slide-down";
-		# 	# animation-for-menu-window = "none";
-		# 	# animation-for-transient-window = "slide-down";
-		# 	corner-radius = 20;
-		# 	rounded-corners-exclude = [
-		# 		"window_type = 'dock'"  # Exclude windows of type 'dock'
-		# 		"class_g = 'dwm'"       # Or exclude windows with class 'dwm' 
-		# 		"class_g = 'dmenu'"
-		# 	];
-		# };
 	};
 
 	nixpkgs.config.allowUnfree = true;
@@ -118,7 +96,6 @@ in {
 		xdotool # add keyboard automation
 		dunst # send notifications
 		inotify-tools # file events
-		#texlive.combined.scheme-full #tex
 		tealdeer # tldr man
 		ani-cli
 		picom-pijulius
@@ -155,12 +132,12 @@ in {
 		lxappearance
 	]);
 
-	# documentation = {
-	# 	dev.enable = true;
-	# 	man.generateCaches = true;
-	# 	nixos.includeAllModules = true;
-	# };
-	#
+	documentation = {
+		dev.enable = true;
+		man.generateCaches = true;
+		nixos.includeAllModules = true;
+	};
+
 	# Enable sound with pipewire.
 	services.pulseaudio.enable = false;
 	security.rtkit.enable = true;

@@ -2,13 +2,13 @@
 
 stdenv.mkDerivation rec {
   pname = "dwm";
-  version = "1.9.8d";
+  version = "1.9.9";
 
   src = fetchFromGitHub {
     owner = "WanderingPenwing";
     repo = "dwm-Jenkins";
     rev = "${version}";
-    sha256 = "sha256-1sD8AQSQsAVrc71kGIzN9qJ4LKSkKPs1WGDCvnnY4tA=";
+    sha256 = "sha256-N0gXRuIGRP6A9jA4WMZiBoVCOxDB/Kl4XK3ORiV6meU=";
   };
 
   nativeBuildInputs = [

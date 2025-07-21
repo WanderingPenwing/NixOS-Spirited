@@ -13,5 +13,6 @@ if [ "$type" = "window" ]; then
 fi
 
 if [ "$type" == "screen" ]; then
+	sleep 0.5
 	maim "$HOME/pics/screenshots/$(date '+%Y_%m_%d %H:%M:%S')_screen.png"
 fi

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-APPS=("steam" "gimp" "hmcl" "calcifer" "jiji" "godot4" "torrential" "reboot" "poweroff" "blender" "ModrinthApp") 
+APPS=("steam" "gimp" "hmcl" "calcifer" "jiji" "godot4" "torrential" "reboot" "poweroff" "blender" "ModrinthApp" "easyeffects") 
 
 # Join the array elements with newlines
 APPS_STRING=$(printf "%s\n" "${APPS[@]}")

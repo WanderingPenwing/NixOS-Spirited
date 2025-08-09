@@ -121,8 +121,8 @@ in {
 		godot_4
 		gimp
 		blender
+		audacity
 		qutebrowser
-		easyeffects
 		librewolf
 
 		# Appearance

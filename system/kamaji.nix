@@ -132,7 +132,7 @@ in {
 		lxappearance
 	]);
 
-	permittedInsecurePackages = [
+	nixpkgs.config.permittedInsecurePackages = [
 		"olm-3.2.16"
 	];
 

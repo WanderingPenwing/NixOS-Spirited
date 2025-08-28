@@ -117,13 +117,13 @@ in {
 		torrential
 		zathura
 		hmcl # minecraft
-		modrinth-app
 		godot_4
 		gimp
 		blender
 		audacity
 		qutebrowser
 		librewolf
+		nheko
 
 		# Appearance
 		feh # wallpaper
@@ -131,6 +131,10 @@ in {
 		papirus-icon-theme
 		lxappearance
 	]);
+
+	permittedInsecurePackages = [
+		"olm-3.2.16"
+	];
 
 	documentation = {
 		dev.enable = true;

@@ -58,6 +58,9 @@ in {
     recommendedProxySettings = true;
 
     virtualHosts = {
+      "penwing.org" = {
+        locations."/".proxyPass = "http://localhost:2180";
+      };
       "storage.penwing.org" = {
 		#locations."/".proxyPass = "http://localhost:1380";
 		locations."/Games/" = {

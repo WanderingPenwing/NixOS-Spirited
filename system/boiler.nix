@@ -59,7 +59,7 @@ in {
 
     virtualHosts = {
       "storage.penwing.org" = {
-        locations."/".proxyPass = "http://localhost:1380";
+		#locations."/".proxyPass = "http://localhost:1380";
 		locations."/Games/" = {
 			proxyPass = "http://localhost:1380/Games/";
 	        extraConfig = ''

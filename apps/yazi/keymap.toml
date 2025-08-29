@@ -30,7 +30,7 @@ run = "plugin toggle_layout --args='current'"
 desc = "change layout"
 
 [[manager.prepend_keymap]]
-on = ["<p>"]
+on = ["<v>"]
 run = "plugin toggle_layout --args='preview'"
 desc = "change layout"
 

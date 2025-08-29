@@ -104,6 +104,14 @@ in {
       "doc.penwing.org" = {
          locations."/".proxyPass = "http://localhost:5680";
        };
+		
+		"matrix.penwing.org" = {
+			location."/".proxyPass = "http:localhost:8008";
+		};
+
+		"matrix-federation.penwing.org" = {
+			location."/".proxyPass = "http:localhost:8448";
+		};
     };
   };
 

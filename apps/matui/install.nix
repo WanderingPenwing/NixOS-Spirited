@@ -1,4 +1,4 @@
-{ stdenv, lib, fetchFromGitHub, glib, rustPlatform }:
+{ lib, fetchFromGitHub, rustPlatform, pkg-config, openssl, ffmpeg, sqlite }:
 
 rustPlatform.buildRustPackage rec {
   pname = "matui";

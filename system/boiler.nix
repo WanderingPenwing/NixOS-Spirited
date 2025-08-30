@@ -111,7 +111,6 @@ in {
 		"matrix.penwing.org" = {
 			locations."/".proxyPass = "http://localhost:8008";
 			# Ensure URI is preserved
-			locations."/".proxyPassHeaders = ["X-Forwarded-For" "X-Forwarded-Proto" "X-Real-IP"];
 			locations."/".proxyPassUri = true; # Preserve URI while forwarding to backend
 			locations."/".proxySetHeaders = {
 			  "X-Forwarded-For" = "$remote_addr";

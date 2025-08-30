@@ -109,31 +109,33 @@ in {
        };
 		
 		"matrix.penwing.org" = {
+			locations = {
         # Well-known endpoints for Matrix federation
-			"/.well-known/matrix/server" = {
-			  return = "200 '{\"m.server\": \"matrix.penwing.org:443\"}'";
-			  extraConfig = ''
-				add_header Content-Type application/json;
-				add_header Access-Control-Allow-Origin *;
-			  '';
-			};
-			
-			"/.well-known/matrix/client" = {
-			  return = "200 '{\"m.homeserver\":{\"base_url\":\"https://matrix.penwing.org\"}}'";
-			  extraConfig = ''
-				add_header Content-Type application/json;
-				add_header Access-Control-Allow-Origin *;
-			  '';
-			};
-			
-			# Proxy all other requests to Tuwunel
-			"/" = {
-			  proxyPass = "http://localhost:8008";
-			  extraConfig = ''
-				proxy_set_header X-Forwarded-Host $host;
-				proxy_buffering off;
-				proxy_request_buffering off;
-			  '';
+				"/.well-known/matrix/server" = {
+				  return = "200 '{\"m.server\": \"matrix.penwing.org:443\"}'";
+				  extraConfig = ''
+					add_header Content-Type application/json;
+					add_header Access-Control-Allow-Origin *;
+				  '';
+				};
+				
+				"/.well-known/matrix/client" = {
+				  return = "200 '{\"m.homeserver\":{\"base_url\":\"https://matrix.penwing.org\"}}'";
+				  extraConfig = ''
+					add_header Content-Type application/json;
+					add_header Access-Control-Allow-Origin *;
+				  '';
+				};
+				
+				# Proxy all other requests to Tuwunel
+				"/" = {
+				  proxyPass = "http://localhost:8008";
+				  extraConfig = ''
+					proxy_set_header X-Forwarded-Host $host;
+					proxy_buffering off;
+					proxy_request_buffering off;
+				  '';
+				};
 			};
 		};
     };

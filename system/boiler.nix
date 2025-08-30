@@ -109,7 +109,7 @@ in {
        };
 		
 		"matrix.penwing.org" = {
-			extraConfig = "proxy_pass http://localhost:8008$request_uri;"
+			extraConfig = "proxy_pass http://localhost:8008$request_uri";
 		};
 
 		"matrix-federation.penwing.org" = {

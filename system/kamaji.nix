@@ -18,6 +18,7 @@
 	susuwatari = pkgs.libsForQt5.callPackage ../apps/susuwatari/install.nix {};
 	turnip = pkgs.callPackage ../apps/turnip/install.nix {};
 	zeniba = pkgs.callPackage ../apps/zeniba/install.nix {};
+	matui = pkgs.callPackage ../apps/matui/install.nix {};
 in {
 	imports = [
 		./kamaji-hardware.nix
@@ -99,6 +100,7 @@ in {
 		tealdeer # tldr man
 		ani-cli
 		picom-pijulius
+		matui
 
 		# Custom Apps
 		calcifer # code editor

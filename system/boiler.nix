@@ -109,13 +109,7 @@ in {
        };
 		
 		"matrix.penwing.org" = {
-			locations."/".proxyPass = "http://localhost:8008";
-			# Ensure URI is preserved
-			locations."/".proxyPassUri = true; # Preserve URI while forwarding to backend
-			locations."/".proxySetHeaders = {
-			  "X-Forwarded-For" = "$remote_addr";
-			  "X-Forwarded-Proto" = "$scheme";
-			};
+			extraConfig = "proxy_pass http://localhost:8008$request_uri;"
 		};
 
 		"matrix-federation.penwing.org" = {

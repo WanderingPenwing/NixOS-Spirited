@@ -1,0 +1,34 @@
+
+evaluation warning: Explicitly set the ABI version of 'webkitgtk'
+error: builder for '/nix/store/jv0j5hx29lycv099wkq8gm7jhfqa63x8-matui-v0.5.0.drv' failed with exit code 101;
+       last 25 log lines:
+       >    Compiling native-dialog v0.9.0
+       >    Compiling ratatui v0.29.0
+       >    Compiling textwrap v0.16.2
+       >    Compiling notify-rust v4.11.7
+       >    Compiling simple-logging v2.0.2
+       >    Compiling futures v0.3.31
+       >    Compiling config v0.15.11
+       >    Compiling emojis v0.7.0
+       >    Compiling crossterm v0.29.0
+       >    Compiling open v5.3.2
+       >    Compiling log-panics v2.1.0
+       >    Compiling linkify v0.10.0
+       >    Compiling human_bytes v0.4.3
+       >    Compiling matrix-sdk-base v0.13.0
+       >    Compiling matrix-sdk-sqlite v0.13.0
+       >    Compiling matui v0.5.0 (/build/source)
+       > error: linking with `/nix/store/0fsnicvfpf55nkza12cjnad0w84d6ba7-gcc-wrapper-14.2.1.20250322/bin/cc` failed: exit status: 1
+       >   |
+       >   = note:  "/nix/store/0fsnicvfpf55nkza12cjnad0w84d6ba7-gcc-wrapper-14.2.1.20250322/bin/cc" "-m64" "/build/rustcUdJvqY/symbols.o" "<1 object files omitted>" "-Wl,--as-needed" "-Wl,-Bstatic" "/build/rustcUdJvqY/{libblake3-f156d9828ab11082.rlib}.rlib" "<sysroot>/lib/rustlib/x86_64-unknown-linux-gnu/lib/{libcompiler_builtins-*}.rlib" "-Wl,-Bdynamic" "-lsqlite3" "-lssl" "-lcrypto" "-lgcc_s" "-lutil" "-lrt" "-lpthread" "-lm" "-ldl" "-lc" "-Wl,--eh-frame-hdr" "-Wl,-z,noexecstack" "-L" "/build/source/target/x86_64-unknown-linux-gnu/release/build/blake3-7d5b7bfe7102857e/out" "-L" "/build/source/target/x86_64-unknown-linux-gnu/release/build/blake3-7d5b7bfe7102857e/out" "-L" "/nix/store/8pviily4fgsl02ijm65binz236717wfs-openssl-3.4.1/lib" "-L" "<sysroot>/lib/rustlib/x86_64-unknown-linux-gnu/lib" "-o" "/build/source/target/x86_64-unknown-linux-gnu/release/deps/matui-f583fdbbedf396fc" "-Wl,--gc-sections" "-pie" "-Wl,-z,relro,-z,now" "-nodefaultlibs" "/build/source/target/x86_64-unknown-linux-gnu/release/deps/matui_audit_data.o" "-Wl,--undefined=AUDITABLE_VERSION_INFO"
+       >   = note: some arguments are omitted. use `--verbose` to show all linker arguments
+       >   = note: /nix/store/v63bxfiacw082c7ijshf60alvvrpfxsq-binutils-2.44/bin/ld: cannot find -lsqlite3: No such file or directory
+       >           collect2: error: ld returned 1 exit status
+       >
+       >
+       > error: could not compile `matui` (bin "matui") due to 1 previous error
+       For full logs, run:
+         nix log /nix/store/jv0j5hx29lycv099wkq8gm7jhfqa63x8-matui-v0.5.0.drv
+error: 1 dependencies of derivation '/nix/store/hj0yi01rifjnlix2dnvxi8gk72422nxr-man-paths.drv' failed to build
+error: 1 dependencies of derivation '/nix/store/jkyvvsglhnqdbgvkfjaal81f2q7r8i85-system-path.drv' failed to build
+error: 1 dependencies of derivation '/nix/store/c26nrmklmsx8542kskjxziyas520p339-nixos-system-kamaji-25.05.20250528.7282cb5.drv' failed to build

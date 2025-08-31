@@ -17,11 +17,11 @@ rustPlatform.buildRustPackage rec {
 
   buildInputs = [
 	openssl
+	sqlite
   ];
   nativeBuildInputs = [
 	pkg-config
     ffmpeg 
-	sqlite
   ];
 
   meta = with lib; {

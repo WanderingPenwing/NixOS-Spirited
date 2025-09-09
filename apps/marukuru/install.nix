@@ -1,4 +1,4 @@
-{ stdenv, lib, fetchFromGitHub, gnumake}:
+{ stdenv, lib, fetchFromGitHub}:
 
 stdenv.mkDerivation rec {
   pname = "marukuru";
@@ -10,10 +10,6 @@ stdenv.mkDerivation rec {
       rev = "${version}";
       sha256 = "sha256-U4HA0lgBbsgspAR53uBNKle7EUkzGSJ4oTWsaNa5xds=";
     };
-
-  nativeBuildInputs = [
-    gnumake
-  ];
 
   sourceRoot = "source";
   
@@ -27,7 +23,7 @@ stdenv.mkDerivation rec {
   '';
 
   meta = with lib; {
-    description = "dmenu";
+    description = "dmenu-marukuru";
     homepage = "https://tools.suckless.org/dmenu/";
     license = licenses.mit;
     platforms = platforms.linux;

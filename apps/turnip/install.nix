@@ -2,7 +2,7 @@
 
 rustPlatform.buildRustPackage rec {
   pname = "turnip";
-  version = "1.4.1";
+  version = "1.5";
 
   src = fetchFromGitHub {
     owner = "WanderingPenwing";

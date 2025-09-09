@@ -8,7 +8,7 @@ stdenv.mkDerivation rec {
       owner = "WanderingPenwing";
       repo = "Marukuru";
       rev = "${version}";
-      sha256 = "sha256-u4HA0lgBbsgspAR53uBNKle7EUkzGSJ4oTWsaNa5xds=";
+      sha256 = "sha256-1/3ruutiPpcE1p8L1h0CkXb+vtf9w2eBpsAOKAZhLII=";
     };
 
   nativeBuildInputs = [

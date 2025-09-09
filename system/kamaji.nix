@@ -10,7 +10,7 @@
 	ingary = pkgs.libsForQt5.callPackage ../apps/ingary/install.nix {};
 	jiji = pkgs.callPackage ../apps/jiji/install.nix {};
 	kodama = pkgs.callPackage ../apps/kodama/install.nix {};
- 	marukuru = pkgs.callPackage ../apps/marukuru/install.nix {};
+ 	# marukuru = pkgs.callPackage ../apps/marukuru/install.nix {};
 	jenkins = pkgs.callPackage ../apps/jenkins/install.nix {};
 	susuwatari = pkgs.libsForQt5.callPackage ../apps/susuwatari/install.nix {};
 	turnip = pkgs.callPackage ../apps/turnip/install.nix {};
@@ -104,7 +104,7 @@ in {
 		ingary # sddm theme
 		jiji # discord lite
 		kodama # terminal
-		marukuru # app menu
+		# marukuru # app menu
 		jenkins # windows manager
 		susuwatari # clipboard
 		turnip # status bar

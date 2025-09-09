@@ -15,7 +15,7 @@ stdenv.mkDerivation rec {
     make
   '';
 
-  dontPatchShebangs = true;
+  dontFixup = true;
   installPhase = ''
     mkdir -p $out/bin
     cp dmenu $out/bin/marukuru

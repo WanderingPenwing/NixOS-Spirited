@@ -11,8 +11,6 @@ stdenv.mkDerivation rec {
       sha256 = "sha256-U4HA0lgBbsgspAR53uBNKle7EUkzGSJ4oTWsaNa5xds=";
     };
 
-  sourceRoot = "source";
-  
   buildPhase = ''
     make
   '';

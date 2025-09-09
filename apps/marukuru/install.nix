@@ -1,4 +1,4 @@
-{ stdenv, lib, fetchFromGitHub, autoPatchelfHook, patchelf, xorg, gcc, gnumake, pkg-config }:
+{ stdenv, lib, fetchFromGitHub, gnumake}:
 
 stdenv.mkDerivation rec {
   pname = "marukuru";
@@ -8,27 +8,11 @@ stdenv.mkDerivation rec {
       owner = "WanderingPenwing";
       repo = "Marukuru";
       rev = "${version}";
-      sha256 = "sha256-U4Hw0lgBbsgspAR53uBNKle7EUkzGSJ4oTWsaNa5xds=";
+      sha256 = "sha256-U4HA0lgBbsgspAR53uBNKle7EUkzGSJ4oTWsaNa5xds=";
     };
 
   nativeBuildInputs = [
-    autoPatchelfHook
     gnumake
-    #gcc
-    pkg-config
-  ];
-
-  passthru.debug = true;
-
-  buildInputs = [
-    #xorg.libX11
-    #xorg.libXft
-    #xorg.libXcursor
-    #xorg.libXrandr
-    #xorg.libXinerama
-    #xorg.libXext
-    #xorg.libXpm
-    #xorg.libXmu
   ];
 
   sourceRoot = "source";
@@ -40,12 +24,6 @@ stdenv.mkDerivation rec {
   installPhase = ''
     mkdir -p $out/bin
     cp dmenu $out/bin/marukuru
-  '';
-
-  # Optional post-fixup to handle dynamic linking
-  postFixup = ''
-    patchelf --add-needed ${xorg.libX11}/lib/libX11.so $out/bin/marukuru
-    patchelf --add-needed ${xorg.libXft}/lib/libXft.so $out/bin/marukuru
   '';
 
   meta = with lib; {

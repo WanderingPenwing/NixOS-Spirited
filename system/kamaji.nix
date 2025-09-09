@@ -13,7 +13,7 @@
 	ingary = pkgs.libsForQt5.callPackage ../apps/ingary/install.nix {};
 	jiji = pkgs.callPackage ../apps/jiji/install.nix {};
 	kodama = pkgs.callPackage ../apps/kodama/install.nix {};
-	marukuru = pkgs.callPackage ../apps/marukuru/install.nix {};
+ 	marukuru = pkgs.callPackage ../apps/marukuru/install.nix {};
 	jenkins = pkgs.callPackage ../apps/jenkins/install.nix {};
 	susuwatari = pkgs.libsForQt5.callPackage ../apps/susuwatari/install.nix {};
 	turnip = pkgs.callPackage ../apps/turnip/install.nix {};
@@ -125,7 +125,6 @@ in {
 		audacity
 		qutebrowser
 		librewolf
-		nheko
 
 		# Appearance
 		feh # wallpaper

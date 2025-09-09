@@ -79,3 +79,4 @@ setxkbmap -layout us 																					# set qwerty keyboard layout
 Ψ # psi maj
 Ω # omega maj
 
+C0:7C:D1:FB:C9:86

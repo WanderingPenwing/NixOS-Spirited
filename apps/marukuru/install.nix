@@ -12,7 +12,7 @@ stdenv.mkDerivation rec {
     };
 
   nativeBuildInputs = [
-    #autoPatchelfHook
+    autoPatchelfHook
     gnumake
     gcc
     pkg-config
@@ -21,14 +21,14 @@ stdenv.mkDerivation rec {
   passthru.debug = true;
 
   buildInputs = [
-    xorg.libX11
-    xorg.libXft
-    xorg.libXcursor
-    xorg.libXrandr
-    xorg.libXinerama
-    xorg.libXext
-    xorg.libXpm
-    xorg.libXmu
+    #xorg.libX11
+    #xorg.libXft
+    #xorg.libXcursor
+    #xorg.libXrandr
+    #xorg.libXinerama
+    #xorg.libXext
+    #xorg.libXpm
+    #xorg.libXmu
   ];
 
   sourceRoot = "source";

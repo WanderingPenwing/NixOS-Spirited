@@ -12,11 +12,13 @@ stdenv.mkDerivation rec {
     };
 
   nativeBuildInputs = [
-    autoPatchelfHook
+    #autoPatchelfHook
     gnumake
     gcc
     pkg-config
   ];
+
+  passthru.debug = true;
 
   buildInputs = [
     xorg.libX11

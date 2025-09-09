@@ -14,7 +14,7 @@ stdenv.mkDerivation rec {
   nativeBuildInputs = [
     autoPatchelfHook
     gnumake
-    gcc
+    #gcc
     pkg-config
   ];
 

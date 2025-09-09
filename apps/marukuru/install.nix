@@ -8,7 +8,7 @@ stdenv.mkDerivation rec {
       owner = "WanderingPenwing";
       repo = "Marukuru";
       rev = "${version}";
-      sha256 = "sha256-U4HA0lgBbsgspAR53uBNKle7EUkzGSJ4oTWsaNa5xds=";
+      # sha256 = "sha256-U4HA0lgBbsgspAR53uBNKle7EUkzGSJ4oTWsaNa5xds=";
     };
 
   nativeBuildInputs = [
@@ -40,11 +40,11 @@ stdenv.mkDerivation rec {
     cp dmenu $out/bin/marukuru
   '';
 
-  # # Optional post-fixup to handle dynamic linking
-  # postFixup = ''
-  #   patchelf --add-needed ${xorg.libX11}/lib/libX11.so $out/bin/marukuru
-  #   patchelf --add-needed ${xorg.libXft}/lib/libXft.so $out/bin/marukuru
-  # '';
+  # Optional post-fixup to handle dynamic linking
+  postFixup = ''
+    patchelf --add-needed ${xorg.libX11}/lib/libX11.so $out/bin/marukuru
+    patchelf --add-needed ${xorg.libXft}/lib/libXft.so $out/bin/marukuru
+  '';
 
   meta = with lib; {
     description = "dmenu";

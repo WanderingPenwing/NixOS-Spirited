@@ -8,7 +8,7 @@ rustPlatform.buildRustPackage rec {
     owner = "WanderingPenwing";
     repo = "Turnip";
     rev = "${version}";
-    sha256 = "sha256-HyhbCnZFrGM0S/OsZM6vqkLBE7RPKIegSR1fB7AfGgA=";
+    sha256 = "sha256-Y22j958RIyolmFOyZEfbUekoemIwxruoXKSkzQv+FnE=";
   };
 
   cargoLock = {

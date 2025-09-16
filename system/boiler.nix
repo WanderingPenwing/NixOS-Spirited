@@ -110,12 +110,13 @@ in {
 		
       "project.penwing.org" = {
          locations."/".proxyPass = "http://localhost:3013";
+		locations."/".proxyWebsockets = true; # needed if you need to use WebSocket
 		# WebSocket configuration
-      locations."/socket.io".proxyPass = "ws://localhost:3013/socket.io/";
-      locations."/socket.io".proxyPassReverse = "ws://localhost:3013/socket.io/";
-      
-      # Optionally, ensure the Host header is preserved for all proxies
-      locations."/".proxyPreserveHost = true;
+      # locations."/socket.io".proxyPass = "ws://localhost:3013/socket.io/";
+      # locations."/socket.io".proxyPassReverse = "ws://localhost:3013/socket.io/";
+      #
+      # # Optionally, ensure the Host header is preserved for all proxies
+      # locations."/".proxyPreserveHost = true;
        };
 
 		"matrix.penwing.org" = {

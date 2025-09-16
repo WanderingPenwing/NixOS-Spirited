@@ -24,6 +24,7 @@ in {
 	# Bootloader.
 	boot.loader.systemd-boot.enable = true;
 	boot.loader.efi.canTouchEfiVariables = true;
+	boot.initrd.kernelModules = [ "amdgpu" ];
 
 	networking.hostName = hostname;
 	networking.nameservers = [ "8.8.8.8" "8.8.4.4" ];
@@ -39,10 +40,6 @@ in {
 		enable = true;
 
 		videoDrivers = [ "amdgpu" ];
-		deviceSection = ''
-			Option "DRI" "3"
-			Option "PixmapCacheSize" "512"
-		'';
 		desktopManager.xterm.enable = false;
 
 		windowManager.dwm = {

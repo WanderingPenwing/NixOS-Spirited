@@ -108,6 +108,10 @@ in {
          locations."/".proxyPass = "http://localhost:5680";
        };
 		
+      "project.penwing.org" = {
+         locations."/".proxyPass = "http://localhost:3013";
+       };
+
 		"matrix.penwing.org" = {
 			locations = {
         # Well-known endpoints for Matrix federation

@@ -119,8 +119,8 @@ in {
 		gimp
 		blender
 		audacity
-		qutebrowser
 		librewolf
+		chromium
 
 		# Appearance
 		feh # wallpaper

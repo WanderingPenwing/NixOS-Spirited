@@ -1,5 +1,6 @@
 #! /usr/bin/env bash
 
-librewolf &
+chromium &
+# librewolf &
 # QTWEBENGINE_CHROMIUM_FLAGS="--disable-gpu" qutebrowser &
 # qutebrowser &

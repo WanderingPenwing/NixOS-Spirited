@@ -31,11 +31,20 @@ in {
 	networking.hostName = hostname;
 	networking.nameservers = [ "8.8.8.8" "8.8.4.4" ];
 
-	services.displayManager = {
-		defaultSession = "none+dwm";
-		sddm.enable = true;
-		sddm.package = pkgs.libsForQt5.sddm;
-		sddm.theme = "ingary";
+	services.displayManager.defaultSession = "none+dwm";
+	services.displayManager.sddm = {
+		enable = true;
+		package = pkgs.libsForQt5.sddm;
+		theme = "ingary";
+		settings = {
+			General = {
+				InputMethod = "";
+			};
+			X11 = {
+				KeyboardLayout = "us";
+				KeyboardVariant = "";
+			};
+		};
 	};
 
 	services.xserver = {
@@ -165,5 +174,5 @@ in {
 
 	# Before changing this value read the documentation for this option
 	# (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-	system.stateVersion = "23.11"; # Did you read the comment?
+	system.stateVersion = "25.05"; # Did you read the comment?
 }

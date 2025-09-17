@@ -2,5 +2,6 @@
 
 chromium &
 # librewolf &
-# QTWEBENGINE_CHROMIUM_FLAGS="--disable-gpu" qutebrowser &
+# export QTWEBENGINE_CHROMIUM_FLAGS="--disable-gpu" 
+# qutebrowser &
 # qutebrowser &

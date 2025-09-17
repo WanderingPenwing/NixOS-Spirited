@@ -36,15 +36,6 @@ in {
 		enable = true;
 		package = pkgs.libsForQt5.sddm;
 		theme = "ingary";
-		settings = {
-			General = {
-				InputMethod = "";
-			};
-			X11 = {
-				KeyboardLayout = "us";
-				KeyboardVariant = "";
-			};
-		};
 	};
 
 	services.xserver = {

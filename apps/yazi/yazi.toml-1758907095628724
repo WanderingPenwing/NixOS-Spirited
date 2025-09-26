@@ -1,5 +1,5 @@
 #A TOML linter such as https://taplo.tamasfe.dev/ can use this schema to validate your config.
-[mgr]
+[manager]
 ratio          = [ 1, 2, 1 ]
 linemode       = "fullsize"
 

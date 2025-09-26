@@ -22,6 +22,10 @@ in {
 	];
 
 	hardware.bluetooth.enable = true;
+	hardware.graphics = {
+	  enable = true;
+	  enable32Bit = true;
+	};
 
 	# Bootloader.
 	boot.loader.systemd-boot.enable = true;

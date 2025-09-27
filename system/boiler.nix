@@ -28,6 +28,7 @@ in {
   users.users.penwing = {
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIN/SQbXjL6O2zjKFdybiMLu7Imc10IGrTMUnRtIxf0jJ nicolas.pinson31@gmail.com"
+		  "ssh-ed25519 AAAAC3NzaC1lzDI1NTE5AAAAIDqd8Et0IY3/60ldtRuDDukn+zhGMhd6TbQREKr8R+hZ wandering.penwing@gmail.com"
         ];
   };
 

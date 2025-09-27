@@ -101,6 +101,8 @@ in {
 		ani-cli
 		picom-pijulius
 		matui
+		unzip
+		zip
 
 		# Custom Apps
 		#calcifer # code editor

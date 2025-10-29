@@ -129,6 +129,7 @@ in {
 		#librewolf
 		chromium
 		easyeffects
+		nautilus
 
 		# Appearance
 		feh # wallpaper

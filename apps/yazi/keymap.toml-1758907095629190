@@ -1,45 +1,45 @@
-[[mgr.prepend_keymap]]
+[[manager.prepend_keymap]]
 on = ["<l>"]
 run = "plugin open_force"
 desc = "open force"
 
-[[mgr.prepend_keymap]]
+[[manager.prepend_keymap]]
 on = ["<S-l>"]
 run = "plugin open_force --args='detatch'"
 desc = "open detatch"
 
-[[mgr.prepend_keymap]]
+[[manager.prepend_keymap]]
 on  = ["<k>"]
 run = "plugin wrap --args=-1"
 
-[[mgr.prepend_keymap]]
+[[manager.prepend_keymap]]
 on  = ["<j>"]
 run = "plugin wrap --args=1"
 
-[[mgr.prepend_keymap]]
+[[manager.prepend_keymap]]
 on  = ["<S-k>"]
 run = "plugin wrap --args=-5"
 
-[[mgr.prepend_keymap]]
+[[manager.prepend_keymap]]
 on  = ["<S-j>"]
 run = "plugin wrap --args=5"
 
-[[mgr.prepend_keymap]]
+[[manager.prepend_keymap]]
 on = ["<m>"]
 run = "plugin toggle_layout --args='current'"
 desc = "change layout"
 
-[[mgr.prepend_keymap]]
+[[manager.prepend_keymap]]
 on = ["<v>"]
 run = "plugin toggle_layout --args='preview'"
 desc = "change layout"
 
-[[mgr.prepend_keymap]]
+[[manager.prepend_keymap]]
 on = ["<n>"]
 run = "create"
 desc = "create file/folder"
 
-[[mgr.prepend_keymap]]
+[[manager.prepend_keymap]]
 on   = [ "c", "m" ]
 run  = "plugin chmod"
 desc = "Chmod on selected files"

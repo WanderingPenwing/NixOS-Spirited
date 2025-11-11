@@ -2,7 +2,7 @@
 
 # : Manager {{{
 
-[mgr]
+[manager]
 cwd = { fg = "#5bc5b0" } ##3f6db3
 
 # Hovered

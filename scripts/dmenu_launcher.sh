@@ -1,30 +1,25 @@
 #!/usr/bin/env bash
 
-APPS=("" "steam" "gimp" "hmcl" "discord" "noisetorch" "calcifer" "jiji" "godot4" "torrential" "wifi" "poweroff" "reboot" "update" "blender" "ModrinthApp" "kill")
+APPS=("easyeffects" "prismlauncher" "steam" "gimp" "hmcl" "calcifer" "jiji" "godot4" "qutebrowser" "torrential" "reboot" "poweroff" "blender" "nheko" "audacity") 
 
 # Join the array elements with newlines
 APPS_STRING=$(printf "%s\n" "${APPS[@]}")
 
+SCRIPTS_STRING=$(ls ~/nixos/scripts)
 # Pass the filtered list to dmenu
-SELECTED_APP=$(echo -e "$APPS_STRING" | marukuru )
-
-if [ "$SELECTED_APP" == "update" ]; then
-	 ~/nixos/scripts/update.sh &
-	 exit 0
-fi
-
-if [ "$SELECTED_APP" == "wifi" ]; then
-	 ~/nixos/scripts/wifi_connect.sh &
-	 exit 0
-fi
+SELECTED_APP=$(echo -e "$APPS_STRING\n$SCRIPTS_STRING" | marukuru -c -bw 6 -l 15)
 
 if [ "$SELECTED_APP" == "torrential" ]; then
 	"com.github.davidmhewitt.torrential" &
 	exit 0
 fi
 
-if [ "$SELECTED_APP" == "discord" ]; then
-	 ~/nixos/scripts/discord.sh &
+if [[ "$SELECTED_APP" == *.sh ]]; then
+	OUTPUT="$("$HOME/nixos/scripts/$SELECTED_APP" 2>&1)"
+	STATUS=$?
+	if [[ $STATUS -eq 1 ]]; then
+		notify-send -u critical -a "$SELECTED_APP" "$OUTPUT"
+	fi
 	 exit 0
 fi
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-option=$((echo "new"; ls -t ~/docs/notes) | marukuru -l 5 -p "edit note file :" )
+option=$( (echo "new"; ls -t ~/docs/notes) | marukuru -i -c -bw 6 -l 5 -p "edit note file :" )
 
 if [[ $option == "" ]]; then
 	notify-send -u low -a "notes" "no file selected"
@@ -8,7 +8,7 @@ if [[ $option == "" ]]; then
 fi
 
 if [[ $option == "new" ]]; then
-	name=$(marukuru -p "name :")
+	name=$(marukuru -p "name :" -c -bw 6)
 
 	if [[ $name == "" ]]; then
 		name=$(date '+%Y_%m_%d-%H_%M')

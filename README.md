@@ -9,4 +9,8 @@ copy (and modify if needed) the etc-configuration.nix to /etc/nixos/configuratio
 then use the rebuild script to rebuild the nixos, and if successful it will commit,
 with the number of the generation.
   
+<<<<<<< HEAD
 Generation: 45
+=======
+Generation: 15
+>>>>>>> fb5ea45b28c5d50fcbe32bbdeb6dd42180badeb5

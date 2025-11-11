@@ -9,9 +9,10 @@ if [ "$type" == "selection" ]; then
 fi
 
 if [ "$type" = "window" ]; then
-	maim -i $(xdotool getactivewindow) "$HOME/pics/screenshots/$(date '+%Y_%m_%d %H:%M:%S')_window.png"
+	maim -i "$(xdotool getactivewindow)" "$HOME/pics/screenshots/$(date '+%Y_%m_%d %H:%M:%S')_window.png"
 fi
 
 if [ "$type" == "screen" ]; then
+	sleep 0.5
 	maim "$HOME/pics/screenshots/$(date '+%Y_%m_%d %H:%M:%S')_screen.png"
 fi

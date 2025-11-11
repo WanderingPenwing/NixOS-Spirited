@@ -80,6 +80,7 @@ options,
 		nerd-fonts.hurmit
 		nerd-fonts.fira-code
 		nerd-fonts.mononoki
+		linja-pi-pu-lukin
 	];
 
 	nix.settings.experimental-features = ["nix-command" "flakes"];

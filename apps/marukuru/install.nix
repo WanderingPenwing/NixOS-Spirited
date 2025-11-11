@@ -2,13 +2,13 @@
 
 stdenv.mkDerivation rec {
   pname = "marukuru";
-  version = "1.0";
+  version = "1.1.1";
 
   src = fetchFromGitHub {
       owner = "WanderingPenwing";
       repo = "Marukuru";
       rev = "${version}";
-      sha256 = "sha256-3UIMM3FoWKXxdlRwGGp8f8Qt5BDfyNWMpvd2pw2hIDk=";
+      sha256 = "sha256-1/3ruutiPpcE1p8L1h0CkXb+vtf9w2eBpsAOKAZhLII=";
     };
 
   nativeBuildInputs = [

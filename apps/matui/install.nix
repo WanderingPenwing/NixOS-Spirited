@@ -1,22 +1,27 @@
-{ stdenv, lib, fetchFromGitHub, glib, rustPlatform }:
+{ lib, fetchFromGitHub, rustPlatform, pkg-config, openssl, ffmpeg, sqlite }:
 
 rustPlatform.buildRustPackage rec {
-  pname = "turnip";
-  version = "1.7";
+  pname = "matui";
+  version = "v0.5.0";
 
   src = fetchFromGitHub {
-    owner = "WanderingPenwing";
-    repo = "Turnip";
-    rev = "${version}";
-    sha256 = "sha256-t4NQ4wDpLCdxJUnEzG+/LP/KPejoUqRxtxptwbMjJGE=";
-  };
+      owner = "pkulak";
+      repo = "matui";
+      rev = "${version}";
+      sha256 = "sha256-RTHsyrFwRz2AveInzMz0nTEUDrplj6einqzyp0KX6kM=";
+    };
 
   cargoLock = {
     lockFile = "${src}/Cargo.lock"; 
   };
 
+  buildInputs = [
+	openssl
+	sqlite
+  ];
   nativeBuildInputs = [
-    glib
+	pkg-config
+    ffmpeg 
   ];
 
   meta = with lib; {
@@ -26,3 +31,4 @@ rustPlatform.buildRustPackage rec {
     platforms = platforms.linux;
   };
 }
+

@@ -1,51 +1,59 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 {
 	config,
 	pkgs,
 	pkgs-unstable,
 	options,
 	...
-}: let
+	}: let
 	hostname = "kamaji"; # to alllow per-machine config
-	calcifer = pkgs.callPackage ../apps/calcifer/install.nix {};
+	#	calcifer = pkgs.callPackage ../apps/calcifer/install.nix {};
 	ingary = pkgs.libsForQt5.callPackage ../apps/ingary/install.nix {};
-	jiji = pkgs.callPackage ../apps/jiji/install.nix {};
+	#	jiji = pkgs.callPackage ../apps/jiji/install.nix {};
 	kodama = pkgs.callPackage ../apps/kodama/install.nix {};
-	marukuru = pkgs.callPackage ../apps/marukuru/install.nix {};
+ 	marukuru = pkgs.callPackage ../apps/marukuru/install.nix {};
 	jenkins = pkgs.callPackage ../apps/jenkins/install.nix {};
 	susuwatari = pkgs.libsForQt5.callPackage ../apps/susuwatari/install.nix {};
 	turnip = pkgs.callPackage ../apps/turnip/install.nix {};
 	zeniba = pkgs.callPackage ../apps/zeniba/install.nix {};
+	matui = pkgs.callPackage ../apps/matui/install.nix {};
 in {
 	imports = [
 		./kamaji-hardware.nix
 	];
 
-# Bootloader.
+	hardware.bluetooth.enable = true;
+	hardware.graphics = {
+	  enable = true;
+	  enable32Bit = true;
+	};
+
+	# Bootloader.
 	boot.loader.systemd-boot.enable = true;
 	boot.loader.efi.canTouchEfiVariables = true;
+	boot.initrd.kernelModules = [ "amdgpu" ];
 
 	networking.hostName = hostname;
 	networking.nameservers = [ "8.8.8.8" "8.8.4.4" ];
 
-	services.displayManager = {
-		defaultSession = "none+dwm";
-		sddm.enable = true;
-		sddm.package = pkgs.libsForQt5.sddm;
-		sddm.theme = "ingary";
+	services.displayManager.defaultSession = "none+dwm";
+	services.displayManager.sddm = {
+		enable = true;
+		package = pkgs.libsForQt5.sddm;
+		theme = "ingary";
 	};
 
 	services.xserver = {
 		enable = true;
 
+		videoDrivers = [ "amdgpu" ];
 		desktopManager.xterm.enable = false;
 
 		windowManager.dwm = {
 			package = jenkins;
 			enable = true;
 		};
+
+
 
 		xkb.layout = "us";
 		xkb.variant = "";
@@ -62,23 +70,16 @@ in {
 			turnip &
 			# start clipboard
 			susuwatari & 
+			# start picom
+			picom --config ~/nixos/apps/picom/picom.conf &
 		'';
 	};
 
+	virtualisation.docker.enable = true;
+
 	# Round corners
 	services.picom = {
-		enable = true;
-		package = pkgs.picom-next;
-		settings = {
-			vsync = true;
-			backend = "glx";
-			corner-radius = 20;
-			rounded-corners-exclude = [
-				"window_type = 'dock'"  # Exclude windows of type 'dock'
-				"class_g = 'dwm'"       # Or exclude windows with class 'dwm' 
-				"class_g = 'dmenu'"
-			];
-		};
+		enable = false;
 	};
 
 	nixpkgs.config.allowUnfree = true;
@@ -96,14 +97,17 @@ in {
 		xdotool # add keyboard automation
 		dunst # send notifications
 		inotify-tools # file events
-		#texlive.combined.scheme-full #tex
 		tealdeer # tldr man
 		ani-cli
+		picom-pijulius
+		matui
+		unzip
+		zip
 
 		# Custom Apps
-		calcifer # code editor
+		#calcifer # code editor
 		ingary # sddm theme
-		jiji # discord lite
+		#jiji # discord lite
 		kodama # terminal
 		marukuru # app menu
 		jenkins # windows manager
@@ -116,13 +120,16 @@ in {
 		mpv # video player
 		torrential
 		zathura
-		hmcl # minecraft
-		modrinth-app
+		#hmcl # minecraft
+		prismlauncher
 		godot_4
 		gimp
 		blender
-		qutebrowser
+		audacity
+		#librewolf
+		chromium
 		easyeffects
+		nautilus
 
 		# Appearance
 		feh # wallpaper
@@ -130,6 +137,10 @@ in {
 		papirus-icon-theme
 		lxappearance
 	]);
+
+	nixpkgs.config.permittedInsecurePackages = [
+		"olm-3.2.16"
+	];
 
 	documentation = {
 		dev.enable = true;
@@ -163,5 +174,5 @@ in {
 
 	# Before changing this value read the documentation for this option
 	# (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-	system.stateVersion = "23.11"; # Did you read the comment?
+	system.stateVersion = "25.05"; # Did you read the comment?
 }

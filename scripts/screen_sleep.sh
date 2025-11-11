@@ -4,9 +4,9 @@
 status="$(xset q)"
 
 if [[ $status == *"DPMS is Disabled"* ]]; then
-	choice="$(echo -e enable sleep\\nscreen off | marukuru)"
+	choice="$(echo -e enable sleep\\nscreen off | marukuru -c -l 2 -bw 6)"
 else
-	choice="$(echo -e disable sleep\\nscreen off | marukuru)"
+	choice="$(echo -e disable sleep\\nscreen off | marukuru -c -l 2 -bw 6)"
 fi
 
 echo $choice
